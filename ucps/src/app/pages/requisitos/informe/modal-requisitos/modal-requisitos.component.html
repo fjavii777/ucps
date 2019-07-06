@@ -1,0 +1,30 @@
+<nb-card>
+    <nb-card-header>{{ title }}</nb-card-header>
+    <nb-card-body>
+    {{casoUsoF}}
+    <table class="table table-striped"  >      
+      <thead>
+      <tr>
+          <th scope="col">Autor</th>
+          <th scope="col">Titulo</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Hora</th>
+          <th scope="col">Estado</th>
+      </tr>
+      </thead>
+      <tbody>
+            <tr *ngFor="let x of listarReqCas">
+              <td>{{ x.author.name}}</td>
+              <td>{{ x.title }}</td> 
+              <td>{{ x.created_at }}</td> 
+              <td>{{ x.Hora }}</td>
+              <td>{{ x.estado_commit }}</td>  
+            </tr>
+      </tbody>  
+    </table>
+    </nb-card-body>
+    <nb-card-footer>
+      <button nbButton hero status="primary" (click)="dismiss()">Cerrar</button>
+    </nb-card-footer>
+  </nb-card>
+  

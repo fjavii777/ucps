@@ -1,0 +1,39 @@
+/**
+ * @license
+ * Copyright Akveo. All Rights Reserved.
+ * Licensed under the MIT License. See License.txt in the project root for license information.
+ */
+import { APP_BASE_HREF } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { appconfig } from './app.config';
+import { HttpClientModule } from '@angular/common/http';
+import { CoreModule } from './@core/core.module';
+import { RepositorService } from './services/repositor.service';
+import { LugarService} from './services/lugar.service';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ThemeModule } from './@theme/theme.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    AppRoutingModule,
+
+    NgbModule,
+    ThemeModule.forRoot(),
+    CoreModule.forRoot(),
+  ],
+  bootstrap: [AppComponent],
+  providers: [RepositorService,LugarService,appconfig,
+    {provide: APP_BASE_HREF, useValue: '/'},
+    
+  ],
+})
+export class AppModule {
+}
