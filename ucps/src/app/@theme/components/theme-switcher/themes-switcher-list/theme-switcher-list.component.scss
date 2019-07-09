@@ -29,12 +29,7 @@ $icon-top-color-corporate: #e9e8eb;
 
       i {
         font-size: 2rem;
-        &.drop-icon-corporate {
-          color: $icon-color-corporate;
 
-          // Hack for IE11, IE11 should not set background
-          background: -webkit-linear-gradient($icon-top-color-corporate, $icon-color-corporate);
-        }
         &.drop-icon-default {
           color: $icon-color-default;
 
@@ -49,11 +44,16 @@ $icon-top-color-corporate: #e9e8eb;
           background: -webkit-linear-gradient($icon-top-color-cosmic, $icon-color-cosmic);
         }
 
-      
-        &.drop-icon-corporate, 
+        &.drop-icon-corporate {
+          color: $icon-color-corporate;
+
+          // Hack for IE11, IE11 should not set background
+          background: -webkit-linear-gradient($icon-top-color-corporate, $icon-color-corporate);
+        }
+
         &.drop-icon-default,
-        &.drop-icon-cosmic
-        {
+        &.drop-icon-cosmic,
+        &.drop-icon-corporate {
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }

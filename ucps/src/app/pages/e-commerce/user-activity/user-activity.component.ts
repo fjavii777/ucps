@@ -8,9 +8,9 @@ import { UserActivityData, UserActive } from '../../../@core/data/user-activity'
   selector: 'ngx-user-activity',
   styleUrls: ['./user-activity.component.scss'],
   template: `
-    <nb-card size="medium">  
+    <nb-card size="medium">
       <nb-card-header>
-        <span>Robert Arce </span>
+        <span>User Activity</span>
         <div class="dropdown ghost-dropdown" ngbDropdown>
           <button type="button" class="btn btn-sm" ngbDropdownToggle
                   [ngClass]="{ 'btn-success': currentTheme == 'default', 'btn-primary': currentTheme != 'default'}">

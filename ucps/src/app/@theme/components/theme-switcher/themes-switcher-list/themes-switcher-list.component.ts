@@ -29,13 +29,14 @@ export class ThemeSwitcherListComponent {
       key: 'corporate',
     },
     {
-      title: 'Light',
-      key: 'default',
+      title: 'corporate',
+      key: 'corporate',
     },
     {
-      title: 'Cosmic',
-      key: 'cosmic',
-    } 
+      title: 'corporate',
+      key: 'corporate',
+    },
+   
   ];
 
   constructor(

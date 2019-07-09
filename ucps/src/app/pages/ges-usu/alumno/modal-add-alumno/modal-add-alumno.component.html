@@ -1,0 +1,180 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{titulo}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.close(false)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  
+  <div class="modal-body">
+    <form [formGroup]="myformalumnos">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="row">
+            <label class="col-sm-5 col-form-label p-r-0">DNI Alumno</label>
+            <div class="col-sm-7">
+              <input
+                formControlName="formdni"
+                type="text"
+                maxlength="30"
+                class="form-control form-control-sm"
+                placeholder="Documento de Identidad">
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-group col-md-6">
+          <div class="row">
+            <label class="col-sm-5 col-form-label p-r-0">Nombres Alumno</label>
+            <div class="col-sm-7">
+              <input
+                formControlName="formnombres"
+                type="text"
+                maxlength="20"
+                class="form-control form-control-sm"
+                placeholder="Ambos Nombres">
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="row">
+            <label class="col-sm-5 col-form-label p-r-0">Apellido Paterno</label>
+            <div class="col-sm-7">
+              <input
+                formControlName="formapepat"
+                type="text"
+                maxlength="20"
+                class="form-control form-control-sm"
+                placeholder="Ejm: Arce">
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-group col-md-6">
+          <div class="row">
+            <label class="col-sm-5 col-form-label p-r-0">Apellido Materno</label>
+            <div class="col-sm-7">
+              <input
+                formControlName="formapemat"
+                type="text"
+                maxlength="20"
+                class="form-control form-control-sm"
+                placeholder="Ejm: Apaza">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="row">
+            <label class="col-sm-5 col-form-label p-r-0">CUI Alumno</label>
+            <div class="col-sm-7">
+              <input
+                formControlName="formcui"
+                type="text"
+                maxlength="50"
+                class="form-control form-control-sm"
+                placeholder="Ejm: 20191957">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="row">
+            <label class="col-sm-5 col-form-label p-r-0">Correo Alumno</label>
+            <div class="col-sm-7">
+              <input
+                formControlName="formcorreo"
+                type="text"
+                maxlength="100"
+                class="form-control form-control-sm"
+                placeholder="Ejm: alumno@gmail.com">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="row">
+            <label class="col-sm-5 col-form-label p-r-0">Fecha Nacimiento</label>
+            <div class="col-sm-7">
+              <input
+                formControlName="formfecnac"
+                type="date"
+                maxlength="50"
+                class="form-control form-control-sm">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="row">
+            <label class="col-sm-5 col-form-label p-r-0">Telefono Alumno</label>
+            <div class="col-sm-7">
+              <input
+                formControlName="formtel"
+                type="text"
+                maxlength="100"
+                class="form-control form-control-sm"
+                placeholder="Celular o Fijo">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="row">
+            <label class="col-sm-5 col-form-label p-r-0">Direccion Alumno</label>
+            <div class="col-sm-7">
+              <input
+                formControlName="formdir"
+                type="text"
+                maxlength="50"
+                class="form-control form-control-sm"
+                placeholder="Ejm: Av. Alcides Carrion 108">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="row">
+            <label class="col-sm-5 col-form-label p-r-0">Nombre Usuario</label>
+            <div class="col-sm-7">
+              <input
+                formControlName="formnomusu"
+                type="text"
+                maxlength="100"
+                class="form-control form-control-sm"
+                placeholder="Ejm: usuario123">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="row">
+            <label class="col-sm-5 col-form-label p-r-0">Contrasena Usuario</label>
+            <div class="col-sm-7">
+              <input
+                formControlName="formcont"
+                type="password"
+                maxlength="50"
+                class="form-control form-control-sm">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button nbButton status="success" size="medium" [nbSpinner]="loadingGuardar" nbSpinnerStatus="success" nbSpinnerMessage="" (click)="btn_clickAceptar()">{{boton}}</button>
+    <button type="button" class="btn btn-danger waves-effect text-center m-b-20" (click)="activeModal.close(false)">Cancelar</button>
+  </div>
+  

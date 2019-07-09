@@ -22,7 +22,7 @@ export class ChartjsMultipleXaxisComponent implements OnDestroy {
         labels: ['January', 'February', 'March', 'April', 'May', 'June'],
         datasets: [{
           label: 'dataset - big points',
-          data: [this.random()],
+          data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
           borderColor: colors.primary,
           backgroundColor: colors.primary,
           fill: false,

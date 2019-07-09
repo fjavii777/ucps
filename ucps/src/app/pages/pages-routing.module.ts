@@ -1,14 +1,28 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
+
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
+import { GesHomeComponent } from './ges-home/ges-home.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [{
+    path: 'ges-usu',
+    loadChildren: './ges-usu/ges-usu.module#GesUsuModule',
+  },
+  {
+    path: 'ges-matricula',
+    loadChildren: './ges-matricula/ges-matricula.module#GesMatriculaModule',
+  } ,  
+  {
+    path :'view-home',
+    component: GesHomeComponent,
+  },
+  {
     path: 'dashboard',
     component: ECommerceComponent,
   }, {
@@ -18,13 +32,6 @@ const routes: Routes = [{
     path: 'ui-features',
     loadChildren: './ui-features/ui-features.module#UiFeaturesModule',
   }, {
-    path: 'requisitos',
-    loadChildren: './requisitos/requisitos.module#RequisitosModule',
-  },
-  {
-    path: 'tables-ucps',
-    loadChildren: './tables-ucps/tables-ucps.module#TablesucpsModule',
-  },{
     path: 'modal-overlays',
     loadChildren: './modal-overlays/modal-overlays.module#ModalOverlaysModule',
   }, {
@@ -53,7 +60,7 @@ const routes: Routes = [{
     loadChildren: './miscellaneous/miscellaneous.module#MiscellaneousModule',
   }, {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'view-home',
     pathMatch: 'full',
   }, {
     path: '**',

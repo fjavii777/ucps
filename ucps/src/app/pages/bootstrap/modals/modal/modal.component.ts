@@ -20,12 +20,15 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalComponent {
 
-  modalHeader: string;
+  modalService:any;
+  modalHeader: any;
   modalContent = `Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
     nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
     nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.`;
 
-  constructor(private activeModal: NgbActiveModal) { }
+  constructor(private activeModal: NgbActiveModal) { 
+    console.log(this.modalHeader);
+  }
 
   closeModal() {
     this.activeModal.close();

@@ -1,0 +1,36 @@
+<nb-card size="medium">
+    <nb-card-header>
+
+    </nb-card-header>
+    <nb-card-body>
+        <p-table #dt [columns]="cols" [value]="listMatriculaDetalle" [paginator]="true" [rows]="10">
+            <ng-template pTemplate="caption">
+                <div style="text-align: right">        
+                    <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                    <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                    <th>
+                      <span>seleccion</span>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr [pSelectableRow]="rowData">
+                    <td *ngFor="let col of columns">
+                        {{rowData[col.field]}}
+                    </td>
+                    <td>
+                        <button nbButton class="mb-3"  (click)="selectCarWithButton(rowData)">MODIFICAR</button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </nb-card-body>
+
+</nb-card>

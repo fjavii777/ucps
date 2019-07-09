@@ -1,0 +1,61 @@
+import {Component, OnInit} from '@angular/core';
+import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {ModalAddAlumnoComponent} from './modal-add-alumno/modal-add-alumno.component';
+import {AlumnoService} from '../../../services/ges-usu/alumno.service';
+import {GesUsuAlumnoModel} from '../../../models/ges-usu/ges-usu-alumno.model';
+
+@Component({
+  selector: 'ngx-usu-alumno',
+  styleUrls: ['./usu-alumno.component.scss'],
+  templateUrl: './usu-alumno.component.html',
+})
+export class UsuAlumnoComponent implements OnInit {
+  loading = false;
+  listAlumnos: GesUsuAlumnoModel[] = [];
+  modalref: NgbModalRef;
+
+  constructor(private modalService: NgbModal,
+              private alumnoservice: AlumnoService) {
+  }
+  ngOnInit(): void {
+    this.listarAlumnos();
+  }
+  listarAlumnos() {
+    this.loading = true;
+    this.alumnoservice.getListarAlumnos()
+      .subscribe(res => {
+        this.listAlumnos = res;
+        this.loading = false;
+      });
+  }
+  btnAddAlumno() {
+    const modalR = this.modalService.open(ModalAddAlumnoComponent, { size: 'lg'});
+    modalR.result.then(result => {
+      if (result) {
+        this.listarAlumnos();
+      } else {
+      }
+    }).catch((res) => {});
+  }
+  editarAlumno(dni: string) {
+    this.alumnoservice.postBuscarAlumnoxId(dni)
+      .subscribe(res => {
+        if (res[0].AlDni) {
+          this.modalref = this.modalService.open(ModalAddAlumnoComponent, {size: 'lg'});
+          (<ModalAddAlumnoComponent>(this.modalref.componentInstance)).iniciarFormulario(res[0]);
+          this.modalref.result.then(result => {
+            if (result) {
+              this.listarAlumnos();
+            } else {
+            }
+          }).catch((resp) => {});
+        } else {
+          console.log('No existe alumno');
+        }
+      });
+  }
+}
+
+
+
+

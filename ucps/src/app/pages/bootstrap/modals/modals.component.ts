@@ -29,8 +29,8 @@ export class ModalsComponent {
       backdrop: 'static',
       container: 'nb-layout',
     });
-
-    activeModal.componentInstance.modalHeader = 'Static modal';
+    activeModal.componentInstance.modalService=2;
+    activeModal.componentInstance.modalHeader = 3;
     activeModal.componentInstance.modalContent = `This is static modal, backdrop click
                                                     will not close it. Click × or confirmation button to close modal.`;
   }

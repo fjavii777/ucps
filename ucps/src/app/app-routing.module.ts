@@ -1,19 +1,19 @@
-import { ExtraOptions, RouterModule, Routes } from '@angular/router';
+import {ExtraOptions, RouterModule, Routes} from '@angular/router';
 import { NgModule } from '@angular/core';
-import {
-  NbAuthComponent,
+/*import {
+  // NbAuthComponent,
   NbLoginComponent,
   NbLogoutComponent,
   NbRegisterComponent,
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
-} from '@nebular/auth';
+  AuthUcpsComponent,
+} from '@nebular/auth';*/
 
 const routes: Routes = [
   { path: 'pages', loadChildren: 'app/pages/pages.module#PagesModule' },
-  {
-    path: 'auth',
-    component: NbAuthComponent,
+  { path: '', loadChildren: 'app/pages/@auth/auth-ucps.module#AuthUcpsModule' },
+ /*   component: AuthUcpsComponent,
     children: [
       {
         path: '',
@@ -21,7 +21,7 @@ const routes: Routes = [
       },
       {
         path: 'login',
-        component: NbLoginComponent,
+        component: AuthUcpsComponent,`
       },
       {
         path: 'register',
@@ -39,10 +39,11 @@ const routes: Routes = [
         path: 'reset-password',
         component: NbResetPasswordComponent,
       },
-    ],
-  },
-  { path: '', redirectTo: 'pages', pathMatch: 'full' }, // si no pone nada redirecciona a pages
-  { path: '**', redirectTo: 'pages' }, // si pones otra cualquier cosa redirecciona a pages
+    ],*/
+  // },
+  // { path: '', redirectTo: 'pages', pathMatch: 'full' }, // si no pone nada redirecciona a pages
+  // { path: '', redirectTo: 'pages', pathMatch: 'full' }, // si no pone nada redirecciona a pages
+  { path: '**', redirectTo: '' }, // si pones otra cualquier cosa redirecciona a pages
 ];
 
 const config: ExtraOptions = {
