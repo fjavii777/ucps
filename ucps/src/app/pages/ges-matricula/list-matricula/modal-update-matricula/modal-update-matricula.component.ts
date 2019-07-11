@@ -6,23 +6,27 @@ import {GesMatriculaListaUpdateModel} from '../../../../models/ges-matricula/ges
 import {GesHorarioReadProgramaModel} from '../../../../models/ges-horario/ges-horario-read.model';
 import { CurrencyIndex } from '@angular/common/src/i18n/locale_data';
 import {MatriculaDetalleService} from '../../../../services/ges-matricula/matriculaDetalle.service';
+import { GesMatriculaDetalleModel } from '../../../../models/ges-matricula/ges-matricula-detalle.model';
 @Component({
     selector: 'ngx-modal-update-matricula',
     styleUrls: ['./modal-update-matricula.component.scss'],
     templateUrl: './modal-update-matricula.component.html',
 })
 export class ModalUpdateMatriculaComponent {
+    titulo = 'Actualizar Matricula';
     public myformmatricula: FormGroup;
     listaCursos:any[] = [];
-    lisupdatePrograma:GesMatriculaListaUpdateModel = new GesMatriculaListaUpdateModel();
+    programaToSend:GesMatriculaListaUpdateModel = new GesMatriculaListaUpdateModel();
     listahorario:GesHorarioReadProgramaModel[] = [];
-    miIdcurso:string;
     listaMatriculaAlumnoSeleccionado: GesMatriculaListaProgramaModel;
     nombrescompletos: string;
+    loadingGuardar = false;
     horario: string;
+    loading = false;
     constructor(public activeModal: NgbActiveModal,
                 private fb: FormBuilder,private matriculdetalleprogramaservice: MatriculaDetalleService) {
         this.myformmatricula = this.fb.group({
+            formdeid: [null, Validators.required],
             formdni: [null, Validators.required],
             formmonto: [null, Validators.required],
             formcurso: [null, Validators.required],
@@ -30,23 +34,13 @@ export class ModalUpdateMatriculaComponent {
             formnombrescompletos: [null, Validators.required],
             formtprograma: [null, Validators.required],
           });
-
-          this.myformmatricula.controls['formcurso'].setValue("asdadasdasd");
         }
-ngOnInit():void{
-    
-    
-    //this.myformmatricula.get('formdni').value;
-  //  this.myformmatricula.setValue(2);
-//    console.log("Mi Horario es : ",this.listahorario);
-    //console.log("Evuluo:",this.myformmatricula.get('formcurso').value);
-}
-btn_clickAceptar() {   
 
-      this.lisupdatePrograma.matdetid ="5";
-      this.lisupdatePrograma.matdetfkcur = this.myformmatricula.get('formcurso').value;
-      this.lisupdatePrograma.matdetfkhor = this.myformmatricula.get('formhorario').value;      
-      this.matriculdetalleprogramaservice.putModificarDetalle(this.lisupdatePrograma).subscribe(
+btn_clickAceptar() {   
+      
+      this.passFormToObject();
+      this.loadingGuardar = true;
+      this.matriculdetalleprogramaservice.putModificarDetalle(this.programaToSend).subscribe(
         resp => {
           this.activeModal.close(true);
         },
@@ -55,6 +49,14 @@ btn_clickAceptar() {
         });
     
   }
-  
+  passFormToObject() {
+    this.programaToSend.matdetid= this.myformmatricula.get('formdeid').value;
+    this.programaToSend.matdetfkcur= this.myformmatricula.get('formcurso').value;
+    this.programaToSend.matdetfkhor = this.myformmatricula.get('formhorario').value;
+  }
+  iniciarFormulario(alumnodetalle: GesMatriculaListaProgramaModel) {
+    console.log("Este es ",alumnodetalle.MatDetId);
+    this.myformmatricula.controls['formdeid'].setValue(alumnodetalle.MatDetId);
+  }
 }
 

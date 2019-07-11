@@ -1,9 +1,8 @@
-import {Component, OnInit , Output, EventEmitter} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {GesMatriculaListaProgramaModel} from '../../../models/ges-matricula/ges-matricula-listaprograma.model';
 import {MatriculaListaProgramaService} from '../../../services/ges-matricula/matriculaListaPrograma.service';
-import { SmartTableData } from '../../../@core/data/smart-table';
-import { LocalDataSource } from 'ng2-smart-table';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {LocalDataSource } from 'ng2-smart-table';
+import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {ModalUpdateMatriculaComponent} from './modal-update-matricula/modal-update-matricula.component';
 import {CursoService} from '../../../services/ges-curso/curso.service';
 import {HorarioService} from '../../../services/ges-horario/horario.service';
@@ -17,6 +16,7 @@ import {GesHorarioReadProgramaModel} from '../../../models/ges-horario/ges-horar
 export class ListMatriculaComponent implements OnInit  {
   cols: any[];
   loading = false;
+  modalR: NgbModalRef;
   listaHorarioPrograma:any[];
   listacurso:GesCursoReadModel[] = [];
   listahorario:GesHorarioReadProgramaModel[] = [];
@@ -27,7 +27,7 @@ export class ListMatriculaComponent implements OnInit  {
               private cursoService: CursoService,
               private horarioService: HorarioService
               ) {
-                this.listaHorarioPrograma=[];
+                this.listaHorarioPrograma = [];
   }
   ngOnInit(): void {
     this.listarAlumnos();
@@ -40,23 +40,24 @@ export class ListMatriculaComponent implements OnInit  {
     this.listarCurso();
     this.listarHorario();
   }
-  selectCarWithButton(lisprog: GesMatriculaListaProgramaModel) {
+  selectAlumnoWithButton(lisprog: GesMatriculaListaProgramaModel) {
     this.listaPrograma = lisprog;
-    const modalR = this.modalService.open(ModalUpdateMatriculaComponent, {
+    this.modalR = this.modalService.open(ModalUpdateMatriculaComponent, {
       size: 'lg',
     });
-    modalR.componentInstance.listaMatriculaAlumnoSeleccionado = this.listaPrograma;
-    modalR.componentInstance.nombrescompletos =
+    (<ModalUpdateMatriculaComponent>(this.modalR.componentInstance)).iniciarFormulario(Object(this.listaPrograma));
+    this.modalR.componentInstance.listaMatriculaAlumnoSeleccionado = this.listaPrograma;
+    this.modalR.componentInstance.nombrescompletos =
       this.listaPrograma.AlNom + ' ' +
       this.listaPrograma.AlPePat + ' ' +
       this.listaPrograma.AlPeMat;
-    modalR.componentInstance.horario =
+    this.modalR.componentInstance.horario =
       this.listaPrograma.GenCodMos + ' (' +
       this.listaPrograma.HorHorIni + ' - ' +
       this.listaPrograma.HorHorFin + ' )';
-    modalR.componentInstance.listaCursos=this.listacurso;
-    modalR.componentInstance.listahorario=this.listahorario;
-    modalR.result.then(result => {
+    this.modalR.componentInstance.listaCursos = this.listacurso;
+    this.modalR.componentInstance.listahorario = this.listahorario;
+    this.modalR.result.then(result => {
       if (result) {
         this.listarAlumnos();
       } else {
@@ -67,28 +68,24 @@ export class ListMatriculaComponent implements OnInit  {
     this.loading = true;
     this.matdetaleservice.getListarMatriculaPrograma()
       .subscribe(res => {
-        console.log(res);
         this.listMatriculaDetalle = res;
         this.loading = false;
         const data = this.listMatriculaDetalle;
-        this.source.load(data);
       });
   }
   listarCurso() {
     this.cursoService.getListarCursos()
       .subscribe(res => {
-        console.log(res);
         this.listacurso = res;
       });
   }
   listarHorario() {
     this.horarioService.getListarHorario()
       .subscribe(res => {
-
-        for(var j=0 ; j<res.length;j++){
+        for(var j = 0 ; j < res.length;j++) {
           this.listaHorarioPrograma.push({
             horid : res[j].horid,
-            mihorario:res[j].gencodmos+ "("+res[j].horhorini+"-"+res[j].horhorfin+")"      
+            mihorario:res[j].gencodmos + "(" + res[j].horhorini+"-"+res[j].horhorfin+")"
           });
         }
         this.listahorario = this.listaHorarioPrograma;
@@ -101,39 +98,6 @@ export class ListMatriculaComponent implements OnInit  {
       } else {
       }
     }).catch((res) => {});
-  }
-  settings = {
-    columns: {
-      edit: {
-        title: '<h1>Hola</h1>>',
-        type: 'html',
-      },
-      AlCod: {
-        title: 'DNI DEL ALUMNO',
-        type: 'number',
-      },
-      CurDes: {
-        title: 'PROGRAMA',
-        type: 'string',
-      },
-      GenCodMos: {
-        title: 'MONTO',
-        type: 'string',
-      },
-      MatDetNomBan: {
-        title: 'BANCO',
-        type: 'string',
-      },
-    },
-  };
-
-  source: LocalDataSource = new LocalDataSource();
-  onDeleteConfirm(event): void {
-    if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
-    } else {
-      event.confirm.reject();
-    }
   }
 }
 

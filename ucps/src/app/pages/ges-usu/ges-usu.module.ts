@@ -3,7 +3,6 @@ import {ThemeModule} from '../../@theme/theme.module';
 import { CommonModule } from '@angular/common';
 import {NbActionsModule, NbDialogModule, NbWindowModule} from '@nebular/theme';
 import {RouterModule, Routes} from '@angular/router';
-
 import {UsuAlumnoComponent} from './alumno/usu-alumno.component';
 import {GesUsuComponent} from './ges-usu.component';
 import {ModalAddAlumnoComponent} from './alumno/modal-add-alumno/modal-add-alumno.component';

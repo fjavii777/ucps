@@ -1,91 +1,97 @@
 <div class="modal-header">
-        <h4 class="modal-title">Modificar Matricula</h4>
-        <button type="button" class="close" aria-label="Close" (click)="activeModal.close(false)">
-          <span aria-hidden="true">&times;</span>
-        </button>
-</div>
-<div class="modal-body">
-        <form [formGroup]="myformmatricula"> 
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <div class="row">
-                <label class="col-sm-5 col-form-label p-r-0">DNI Alumno</label>
-                <div class="col-sm-7">
-                        <input
-                        formControlName="formdni"
-                        type="text"
-                        maxlength="30"
-                        disabled="true"
-                        value={{listaMatriculaAlumnoSeleccionado.AlCod}}
-                        class="form-control form-control-sm"
-                        placeholder="Documento de Identidad">
-                </div>
-              </div>
-            </div>
-      
-            <div class="form-group col-md-6">
-              <div class="row">
-                <label class="col-sm-5 col-form-label p-r-0">Monto depositado</label>
-                <div class="col-sm-7">
-                        <input
-                        formControlName="formdni"
-                        type="text"
-                        maxlength="30"
-                        disabled="true"
-                        value={{listaMatriculaAlumnoSeleccionado.MatDetMonPag}}
-                        class="form-control form-control-sm"
-                        placeholder="Documento de Identidad">
-                </div>
-              </div>
+    <h4 class="modal-title">{{titulo}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.close(false)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  
+  <div class="modal-body">
+    <form [formGroup]="myformmatricula">
+        <div class="col-sm-7">
+            <input
+              formControlName="formdeid"
+              type="hidden"
+              maxlength="30"
+              class="form-control form-control-sm"
+              >
+          </div>
+      <div class="form-row">           
+        <div class="form-group col-md-6">
+          <div class="row">
+            <label class="col-sm-5 col-form-label p-r-0">Nombre Completo</label>
+            <div class="col-sm-7">
+              <input
+                formControlName="formnombrescompletos"
+                type="text"
+                maxlength="30"
+                class="form-control form-control-sm"
+                >
             </div>
           </div>
-      
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <div class="row">
-                <label class="col-sm-5 col-form-label p-r-0">Nombres Completos</label>
-                <div class="col-sm-7">
-                        <input
-                        formControlName="formdni"
-                        type="text"
-                        maxlength="30"
-                        disabled="true"
-                        value={{nombrescompletos}}
-                        class="form-control form-control-sm"
-                        placeholder="Documento de Identidad">
-                </div>
-              </div>
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="row">
+            <label class="col-sm-5 col-form-label p-r-0">Curso</label>
+            <div class="col-sm-7">
+              <input
+                formControlName="formcurso"
+                type="text"
+                maxlength="20"
+                class="form-control form-control-sm">
             </div>
-      
           </div>
-    
-          <div class="form-row">
-                <div class="form-group col-md-6">
-                  <div class="row">
-                    <label class="col-sm-5 col-form-label p-r-0">Programa</label>
-                    <div class="col-sm-6">
-                      <select  class="form-control" value={{listaMatriculaAlumnoSeleccionado.MatDetMonPag}} formControlName="formcurso">
-                          <option value="0">PROGRAMA</option>
-                          <option *ngFor="let s of listaCursos" [ngValue]="s.curid">{{s.curdes}} </option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group col-md-5">
-                  <div class="row">
-                    <label class="col-sm-2 col-form-label p-r-0">Horario</label>
-                    <div class="col-sm-6">
-                        <select  class="form-control" formControlName="formhorario">
-                            <option value="0">HORARIO</option>
-                            <option *ngFor="let s of  listahorario" [ngValue]="s.horid">{{s.mihorario}}</option>
-                        </select>
-                      </div>
-                  </div>
-                </div>
-              </div>
-        </form>
+        </div>
+  
+        <div class="form-group col-md-6">
+          <div class="row">
+            <label class="col-sm-5 col-form-label p-r-0">Horario</label>
+            <div class="col-sm-7">
+              <input
+                formControlName="formhorario"
+                type="text"
+                maxlength="20"
+                class="form-control form-control-sm">
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button nbButton status="success" size="medium" [nbSpinner]="loadingGuardar" nbSpinnerStatus="success" nbSpinnerMessage="" (click)="btn_clickAceptar()">Guardar</button>
-        <button type="button" class="btn btn-danger waves-effect text-center m-b-20" (click)="activeModal.close(false)">Cancelar</button>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="row">
+            <label class="col-sm-5 col-form-label p-r-0">DNI </label>
+            <div class="col-sm-7">
+              <input
+                formControlName="formdni"
+                type="text"
+                maxlength="50"
+                class="form-control form-control-sm"
+                >
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="row">
+            <label class="col-sm-5 col-form-label p-r-0">Programa</label>
+            <div class="col-sm-7">
+              <input
+                formControlName="formtprograma"
+                type="text"
+                maxlength="100"
+                class="form-control form-control-sm"
+                >
+            </div>
+          </div>
+        </div>
       </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button nbButton status="success" size="medium" [nbSpinner]="loadingGuardar" nbSpinnerStatus="success" nbSpinnerMessage="" (click)="btn_clickAceptar()">{{boton}}</button>
+    <button type="button" class="btn btn-danger waves-effect text-center m-b-20" (click)="activeModal.close(false)">Cancelar</button>
+  </div>
+  

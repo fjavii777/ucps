@@ -1,4 +1,4 @@
-<nb-card size="medium">
+<nb-card size="medium" [nbSpinner]="loading" nbSpinnerSize="xxlarge">
     <nb-card-header>
 
     </nb-card-header>
@@ -26,7 +26,7 @@
                         {{rowData[col.field]}}
                     </td>
                     <td>
-                        <button nbButton class="mb-3"  (click)="selectCarWithButton(rowData)">MODIFICAR</button>
+                      <i (click)="selectAlumnoWithButton(rowData)" class="ion-edit" style="font-size:25px;" placement="top" ngbTooltip="Editar Alumno"></i>
                     </td>
                 </tr>
             </ng-template>

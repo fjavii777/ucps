@@ -7,40 +7,40 @@
                 <div class="col-md-11">
                   <div class="">
                     <div class="card-body">
-                      <form id = "matriculaForm" method="post" action="">
+                      <form [formGroup]="myformmatricula">
                         <div class="row">
                           <div class="col-md-4">
                             <div class="form-group">
                               <label class="bmd-label-floating">Sede (*)</label>
                                 <div class="form-group">
-                                  <select class="form-control">
+                                  <select class="form-control" formControlName="formsede">
                                     <option>AREQUIPA</option>
                                     <option>ILO</option>
-                                    <option>MOLLENDO</option>                                    
+                                    <option>MOLLENDO</option>
                                   </select>
-                                </div>                              
+                                </div>
                             </div>
                           </div>
                           <div class="col-md-5">
                             <div class="form-group">
-                              <label class="bmd-label-floating">Programa (*)</label>                             
+                              <label class="bmd-label-floating">Programa (*)</label>
                               <div class="form-group">
-                                <select lect class="form-control">
+                                <select lect class="form-control" formControlName="formprograma">
                                   <option>COMPUTACION E INFORMATICA</option>
                                   <option>GESTION AMBIENTAL</option>
-                                  <option>GASTRONOMIA</option>                                    
+                                  <option>GASTRONOMIA</option>
                                 </select>
-                              </div>  
+                              </div>
                             </div>
                           </div>
                           <div class="col-md-3">
                             <div class="form-group">
                               <label class="bmd-label-floating">Horario (*)</label>
-                                <select class="form-control">
+                                <select class="form-control" formControlName="formhorario">
                                   <option>MAÑANA</option>
                                   <option>MEDIO DIA</option>
-                                  <option>TARDE</option>                                    
-                                </select>   
+                                  <option>TARDE</option>
+                                </select>
                             </div>
                           </div>
                         </div>
@@ -49,43 +49,63 @@
                           <div class="col-md-7">
                             <div class="form-group">
                               <label class="">Estudiante (*)</label>
-                              <input type="text" name="busqueda" id="busqueda" width="148" value="" placeholder="" autocomplete="off" onKeyUp="buscarEstudiante();" class="form-control">
+                              <input
+                                id="busqueda"
+                                type="text"
+                                class="form-control"
+                                placeholder="Nombre Alumno..."
+                                formControlName="formIdEstudiante"
+                                [ngbTypeahead]="searchAlumnoXdni"
+                                [resultFormatter]="formatearEntradaAlumnoXdni"
+                                [inputFormatter]="formatearEntradaAlumnoXdni">
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="form-group">
                               <label class="bmd-label-floating">Fecha (*)</label>
-                              <input type="date" name="fechaMatricula" id="dateMatricula" class="form-control" disabled = "true">
-                              <input type="hidden" name ="fechaMat" id="fechaHoy" value="">
+                              <input
+                                formControlName="formfecha"
+                                type="date"
+                                name="fechaMatricula"
+                                id="dateMatricula"
+                                class="form-control">
                             </div>
                           </div>
                         </div>
-                        <div class="row">
-                          <div class="col-md-6" id="resultadoEstudiantes">
-                          </div>
-                        </div>
-                        
+
                         <br>
                         <div class="row">
                           <div class="col-md-4">
                             <div class="form-group">
                               <label class="bmd-label-floating">Nombre del Banco (*)</label>
-  
+                              <select class="form-control" formControlName="formBanco">
                                 <option value="BANCO DE LA NACION" >BANCO DE LA NACIÓN</option>
                                 <option value="BCP" >BCP</option>
-                              
+                              </select>
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="form-group">
                               <label class="bmd-label-floating">Codigo de Transacción (*)</label>
-                              <input type="text" name="codigoPago" onkeyup="var pattern = /[^0-9\-]/g; this.value = this.value.replace(pattern, '');" class="form-control">
+                              <input
+                                formControlName="formTransaccion"
+                                type="text"
+                                name="codigoPago"
+                                onkeyup="var pattern = /[^0-9\-]/g;
+                                this.value = this.value.replace(pattern, '');"
+                                class="form-control">
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="form-group">
                               <label class="bmd-label-floating">Monto Depositado (*)</label>
-                              <input type="text" name="montoDePago" onkeyup="var pattern = /[^0-9\.]/g; this.value = this.value.replace(pattern, '');" class="form-control">
+                              <input
+                                formControlName="formMonDep"
+                                type="text"
+                                name="montoDePago"
+                                onkeyup="var pattern = /[^0-9\.]/g;
+                                this.value = this.value.replace(pattern, '');"
+                                class="form-control">
                             </div>
                           </div>
                         </div>
@@ -94,17 +114,28 @@
                           <div class="col-md-12">
                             <div class="form-group">
                                 <label class="bmd-label-floating"> Observaciones (Opcional)</label>
-                                <textarea class="form-control" name="observaciones" rows="3"></textarea>
+                                <textarea
+                                  formControlName="formObservaciones"
+                                  class="form-control"
+                                  name="observaciones"
+                                  rows="3">
+                                </textarea>
                             </div>
                           </div>
                         </div>
-                        
+
+                        <div class="row">
+                          <div class="col-md-12">
+                            <button (click)="guardar()">Guardar</button>
+                          </div>
+                        </div>
+
                         <div class="clearfix"></div>
                       </form>
                     </div>
                   </div>
                 </div>
-                
+
               </div>
             </div>
     </nb-card-body>

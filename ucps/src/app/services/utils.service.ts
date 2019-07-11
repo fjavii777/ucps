@@ -42,4 +42,18 @@ export class UtilsService {
       `Mensaje ${this.index}${titleContent}`,
       config);
   }
+  public getDateNow(): string { // 2019-07-09
+    const today = new Date();
+    const anio = String(today.getFullYear());
+    const mes = this.transformTwoDigits(String(today.getMonth() + 1));
+    const dia = this.transformTwoDigits(String(today.getDate()));
+    return anio + '-' + mes + '-' + dia;
+  }
+  private transformTwoDigits(diaOrMes: string): string {
+    let temp: any;
+    if (diaOrMes.length === 1) {
+      temp = '0' + diaOrMes;
+    }
+    return temp;
+  }
 }

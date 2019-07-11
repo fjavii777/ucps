@@ -8,6 +8,7 @@ export class GesMatriculaListaProgramaModel {
     AlPeMat:string;
     HorHorIni:string;
     HorHorFin:string;
+    MatDetId:string;
    
 
 constructor(obj?: any) {
@@ -20,5 +21,6 @@ constructor(obj?: any) {
     this.AlPeMat = obj && obj.AlPeMat || null;
     this.HorHorIni = obj && obj.HorHorIni || null;
     this.HorHorFin = obj && obj.HorHorFin || null;
+    this.MatDetId = obj && obj.MatDetId || null;
     }
 }

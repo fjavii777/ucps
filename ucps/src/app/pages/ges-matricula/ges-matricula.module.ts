@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import {NgModule } from '@angular/core';
 import {ThemeModule} from '../../@theme/theme.module';
-import { CommonModule } from '@angular/common';
-import { NbDialogModule, NbWindowModule } from '@nebular/theme';
+import {CommonModule } from '@angular/common';
+import {NbDialogModule, NbWindowModule,NbActionsModule } from '@nebular/theme';
 import {RouterModule, Routes} from '@angular/router';
 import {AddMatriculaComponent} from './add-matricula/add-matricula.component';
 import {GesMatriculaComponent} from './ges-matricula.component';
@@ -12,9 +12,10 @@ import {CursoService} from '../../services/ges-curso/curso.service';
 import {HorarioService} from '../../services/ges-horario/horario.service';
 import {SedeService} from '../../services/ges-sede/sede.service';
 import {UtilsService} from '../../services/utils.service';
-import { Ng2SmartTableModule } from 'ng2-smart-table';
+import {Ng2SmartTableModule } from 'ng2-smart-table';
 import {TableModule} from 'primeng/table';
 import {ModalUpdateMatriculaComponent} from './list-matricula/modal-update-matricula/modal-update-matricula.component';
+import {AlumnoService} from '../../services/ges-usu/alumno.service';
 
 const rutasgesusu: Routes = [{
   path: '',
@@ -46,6 +47,7 @@ const rutasgesusu: Routes = [{
     NbWindowModule.forChild(),
     Ng2SmartTableModule,
     TableModule,
+    NbActionsModule,
   ],
   providers: [
     MatriculaDetalleService,
@@ -54,6 +56,7 @@ const rutasgesusu: Routes = [{
     UtilsService,
     HorarioService,
     SedeService,
+    AlumnoService,
   ],
   entryComponents: [
     ModalUpdateMatriculaComponent,

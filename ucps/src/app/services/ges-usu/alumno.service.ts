@@ -30,6 +30,14 @@ export class AlumnoService {
       })
       .catch(this.handleError);
   }
+  public postBuscarAlumnoxParteId(partOfdni: string): Observable<GesUsuAlumnoModel[]> {
+    return this._http
+      .post<any>(this.rutaAlumno + `/usuarios/alumno/read_id_autocomplete.php`, '{"AlDni":"' + partOfdni + '"}')
+      .map((response: any) => {
+        return response.map(d => new GesUsuAlumnoModel(d));
+      })
+      .catch(this.handleError);
+  }
   public postCrearAlumno(alumno: GesUsuAlumnoModel): Observable<GesUsuAlumnoModel> {
     return this._http
       .post(this.rutaAlumno + `/usuarios/alumno/create.php`, alumno)
