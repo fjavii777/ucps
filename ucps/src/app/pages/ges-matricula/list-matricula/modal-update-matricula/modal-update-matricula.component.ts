@@ -4,9 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {GesMatriculaListaProgramaModel} from '../../../../models/ges-matricula/ges-matricula-listaprograma.model';
 import {GesMatriculaListaUpdateModel} from '../../../../models/ges-matricula/ges-matricula-update.model';
 import {GesHorarioReadProgramaModel} from '../../../../models/ges-horario/ges-horario-read.model';
-import { CurrencyIndex } from '@angular/common/src/i18n/locale_data';
 import {MatriculaDetalleService} from '../../../../services/ges-matricula/matriculaDetalle.service';
-import { GesMatriculaDetalleModel } from '../../../../models/ges-matricula/ges-matricula-detalle.model';
 @Component({
     selector: 'ngx-modal-update-matricula',
     styleUrls: ['./modal-update-matricula.component.scss'],

@@ -6,8 +6,19 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'ngx-auth-ucps',
-  styleUrls: ['./auth-ucps.component.scss'],
   templateUrl: './auth-ucps.component.html',
+  styleUrls: ['./auth-ucps.component.scss',
+              './login/vendor/bootstrap/css/bootstrap.min.css',
+              './login/fonts/font-awesome-4.7.0/css/font-awesome.min.css',
+              './login/fonts/iconic/css/material-design-iconic-font.min.css',
+              './login/vendor/animate/animate.css',
+              './login/vendor/css-hamburgers/hamburgers.min.css',
+              './login/vendor/animsition/css/animsition.min.css',
+              './login/vendor/select2/select2.min.css',
+              './login/vendor/daterangepicker/daterangepicker.css',
+              './login/css/util.css',
+              './login/css/main.css',
+  ],
 })
 
 export class AuthUcpsComponent {

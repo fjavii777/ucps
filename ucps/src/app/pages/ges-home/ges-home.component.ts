@@ -5,4 +5,9 @@ import { Component } from '@angular/core';
   })
 export class GesHomeComponent {
  
+
+  patchSite(){
+    console.log("Redireccionar");
+  }
+
 }
