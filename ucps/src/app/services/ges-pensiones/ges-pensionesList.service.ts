@@ -21,6 +21,15 @@ export class PensionListService {
       })
       .catch(this.handleError);
   }
+  public getListarPensionxDNIFiltro(dni: string): Observable<GesPensionlListModel[]> {
+    return this._http
+      .post<any>(this.rutaPensionList + `/pension/dni_busqueda.php`,
+        '{"aldni":"' + dni + '"}')
+      .map((response: any) => {
+        return response.map(d => new GesPensionlListModel(d));
+      })
+      .catch(this.handleError);
+  }
   private handleError(error: any): Observable<any> {
     // this.utilsservice.showMensaje(false);
     console.error('An error occurred', error); // for demo purposes only

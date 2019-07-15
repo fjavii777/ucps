@@ -45,6 +45,14 @@ export class AddPensionComponent implements OnInit {
         }
       }).catch((res) => {});
     }
+    listarPensionesxDni(dni: string) {
+      this.loading = true;
+      this.pensionListservice.getListarPensionxDNIFiltro(dni)
+        .subscribe(res => {
+          this.listPension = res;
+          this.loading = false;
+        });
+    }
 
     abrirDetallesPensiones(idcabecera: number,obj:GesPensionlListModel) {
         console.log("Estoy enviando",obj);

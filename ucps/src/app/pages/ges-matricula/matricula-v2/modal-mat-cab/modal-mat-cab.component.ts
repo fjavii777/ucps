@@ -81,6 +81,7 @@ export class ModalMatCabComponent implements OnInit {
     this.passFormToObject();
     this.loadingGuardar = true;
     if (this.flagIsModificar) {
+      console.log(this.cabeceraToSend);
       this.cabeceraservice.putModificarMatriculaCabecera(this.cabeceraToSend).subscribe(
         resp => {
           this.activeModal.close(true);
@@ -100,8 +101,12 @@ export class ModalMatCabComponent implements OnInit {
     }
   }
   passFormToObject() {
+    if (this.flagIsModificar) {
+      this.cabeceraToSend.aldni = this.myformcabecera.get('formidestudiante').value;
+    } else {
+      this.cabeceraToSend.aldni = this.myformcabecera.get('formidestudiante').value.AlDni;
+    }
     this.cabeceraToSend.matcabid = this.myformcabecera.get('formmatcabid').value;
-    this.cabeceraToSend.aldni = this.myformcabecera.get('formidestudiante').value.AlDni;
     this.cabeceraToSend.sedid = this.myformcabecera.get('formidsede').value;
     this.cabeceraToSend.proid = this.myformcabecera.get('formidprograma').value;
     this.cabeceraToSend.matcabestreg = this.myformcabecera.get('formestreg').value;

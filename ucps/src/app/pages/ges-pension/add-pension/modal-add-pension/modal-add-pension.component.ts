@@ -11,7 +11,7 @@ import {PensionService} from '../../../../services/ges-pensiones/ges-pensiones.s
 })
 export class ModalAddPensionComponent {
 
-
+  listMes:any[];
   titulo = 'Agregar Pension';
   boton = 'Guardar';
   idDetalle:string;
@@ -33,10 +33,27 @@ export class ModalAddPensionComponent {
       formpagestreg: ['A', Validators.required],
 
      });
+     this.listMes = [
+      { id: 'ENERO', nombreMes: 'ENERO' },
+      { id: 'FEBRERO', nombreMes: 'FEBRERO' },
+      { id: 'MARZO', nombreMes: 'MARZO' },
+      { id: 'ABRIL', nombreMes: 'ABRIL ' },
+      { id: 'MAYO', nombreMes: 'MAYO ' },
+      { id: 'JUNIO', nombreMes: 'JUNIO ' },
+      { id: 'JULIO', nombreMes: 'JULIO ' },
+      { id: 'AGOSTO', nombreMes: 'AGOSTO ' },
+      { id: 'SETIEMBRE', nombreMes: 'SETIEMBRE ' },
+      { id: 'OCTUBRE', nombreMes: 'OCTUBRE ' },
+      { id: 'NOVIEMBRE', nombreMes: 'NOVIEMBRE ' },
+      { id: 'DICIEMBRE', nombreMes: 'DICIEMBRE ' },
+      ];
   }
   enviarId(id:string){
     this.idDetalle=id;
   }
+  onSubmit(f) {
+    console.log(f.value);
+}
   myId(){
     return this.idDetalle;
   }

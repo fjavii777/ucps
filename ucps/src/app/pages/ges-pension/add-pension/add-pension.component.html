@@ -11,6 +11,8 @@
         <div class="col-md-3">
             <div class="input-group has-person-icon">
               <input
+                (keyup.enter)="listarPensionesxDni(inputBuscar)"
+                [(ngModel)]="inputBuscar"
                 type="text"
                 placeholder="Buscar por DNI"
                 shape="round"

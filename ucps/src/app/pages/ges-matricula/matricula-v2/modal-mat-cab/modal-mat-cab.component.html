@@ -7,7 +7,7 @@
 
 <div class="modal-body">
   <form [formGroup]="myformcabecera">
-    <div class="form-row">
+    <div *ngIf="!flagIsModificar" class="form-row">
       <div class="form-group col-md-12">
         <div class="row">
           <label class="col-sm-3 col-form-label p-r-0">DNI Alumno</label>
