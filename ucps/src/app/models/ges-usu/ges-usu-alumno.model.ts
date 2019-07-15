@@ -27,3 +27,7 @@ export class GesUsuAlumnoModel {
     this.AlEstReg = obj && obj.AlEstReg || null;
   }
 }
+export class DeleteAlumnoModel {
+  aldni: string;
+  alestreg: string;
+}

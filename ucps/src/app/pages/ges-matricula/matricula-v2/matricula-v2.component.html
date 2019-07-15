@@ -1,0 +1,144 @@
+<nb-card size="medium" [nbSpinner]="loading" nbSpinnerSize="xxlarge">
+  <nb-card-header>
+    <span>Matriculas</span>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="row justify-content-between m-b-0 p-b-0">
+      <div class="col-md-2">
+        <button nbButton class="mb-3" (click)="btnAddCabecera()">Agregar Cabecera</button>
+      </div>
+      <div class="col-md-3">
+        <div class="input-group has-person-icon">
+          <input
+            (keyup.enter)="listarCabacerasxDni(inputBuscar)"
+            [(ngModel)]="inputBuscar"
+            type="text"
+            nbInput fullWidth
+            placeholder="Buscar por DNI"
+            shape="round"
+            class="form-control"/>
+        </div>
+      </div>
+    </div>
+
+    <table class="table table-bordered table-hover-cells">
+      <thead>
+      <tr>
+        <th style="width: 10%">
+          <div class="table-contain">
+            <h6 class="d-flex justify-content-center"><strong>Nro</strong></h6>
+          </div>
+        </th>
+        <th style="width: 10%">
+          <div class="table-contain">
+            <h6 class="d-flex justify-content-center"><strong>DNI</strong></h6>
+          </div>
+        </th>
+        <th style="width: 12%">
+          <div class="table-contain">
+            <h6 class="d-flex justify-content-center"><strong>Nombres</strong></h6>
+          </div>
+        </th>
+        <th style="width: 12%">
+          <div class="table-contain">
+            <h6 class="d-flex justify-content-center"><strong>Sede</strong></h6>
+          </div>
+        </th>
+        <th style="width: 12%">
+          <div class="table-contain">
+            <h6 class="d-flex justify-content-center"><strong>Programa</strong></h6>
+          </div>
+        </th>
+        <th style="width: 12%">
+          <div class="table-contain">
+            <h6 class="d-flex justify-content-center"><strong>Estado</strong></h6>
+          </div>
+        </th>
+        <th style="width: 12%">
+          <div class="table-contain">
+            <h6 class="d-flex justify-content-center"><strong>Acciones</strong></h6>
+          </div>
+        </th>
+        <th style="width: 12%">
+          <div class="table-contain">
+            <h6 class="d-flex justify-content-center"><strong>Matriculas</strong></h6>
+          </div>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let m of listCabeceras; let id = index">
+        <td>
+          <div  class="d-flex flex-column">
+            <div class="d-flex justify-content-center" >
+              <p>{{id + 1}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div  class="d-flex flex-column">
+            <div class="d-flex justify-content-center" >
+              <p>{{m.aldni}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div  class="d-flex flex-column">
+            <div class="d-flex justify-content-center" >
+              <p>{{m.alnom}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div  class="d-flex flex-column">
+            <div class="d-flex justify-content-center" >
+              <p>{{m.seddes}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div  class="d-flex flex-column">
+            <div class="d-flex justify-content-center" >
+              <p>{{m.pronom}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div  class="d-flex flex-column">
+            <div class="d-flex justify-content-center" >
+              <p>{{m.matcabestreg | matriculaestadoregPipe}}</p>
+            </div>
+          </div>
+        </td>
+
+        <td>
+          <div  class="d-flex flex-column">
+            <div class="d-flex justify-content-center" >
+              <i (click)="cambiarEstado(m)" class="ion-trash-a mr-4" style="font-size:23px;" placement="top" ngbTooltip="Eliminar Cabecera"></i>
+
+              <i (click)="editarCabecera(m.matcabid)" class="ion-edit" style="font-size:23px;" placement="top" ngbTooltip="Editar Cabecera"></i>
+            </div>
+          </div>
+        </td>
+
+        <td>
+          <div  class="d-flex flex-column">
+            <div class="d-flex justify-content-center" >
+              <i (click)="abrirDetalles(m.matcabid)" class="ion-clipboard" style="font-size:23px;" placement="top" ngbTooltip="Ver/Agregar/Editar Detalle"></i>
+            </div>
+          </div>
+        </td>
+        <!--     <td class="text-muted">
+               <div  class="d-flex flex-column">
+                 <div class="d-flex justify-content-center" >
+                   <p><strong>{{m.EstadoActivo | estadotipomatriculaPipe}}</strong></p>
+                 </div>
+               </div>
+             </td>-->
+      </tr>
+
+      </tbody>
+    </table>
+  </nb-card-body>
+</nb-card>

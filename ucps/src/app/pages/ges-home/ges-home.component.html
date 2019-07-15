@@ -1,44 +1,104 @@
+
 <div class="row">
-    <div class="col-xxl-2">
-      <div class="row">
-        <div class="col-md-6">
-            <nb-card size="xsmall">  
-                    <nb-card-body>   
-                                <nb-alert status="danger" > <H3 style="text-align: center" style="font-family:Georgia, 'Times New Roman', Times, serif ;text-align: center ;color: cornsilk"> MATRICULA </H3>   </nb-alert>                              
-                                <button  class="btn btn-success btn-rectangle btn-success"  style="background-size: 100%" (click)="patchSite()" >REGISTRO DE MATRICULA</button>   
-                    </nb-card-body>   
-            </nb-card>
-        </div>
-        <div class="col-md-6">
-            <nb-card size="xsmall">  
-                    <nb-card-body>   
-                            <nb-alert status="success" > <H3 style="text-align: center" style="font-family:Georgia, 'Times New Roman', Times, serif ;text-align: center ;color: cornsilk"> ALUMNOS </H3>   </nb-alert>
-                            <nb-alert status="disabled" accent="success">REGISTRO DE ALUMNOS</nb-alert>   
-                </nb-card-body>    
-            </nb-card>
-        </div>
+    <div class="col-md-12 col-lg-6 col-xxxl-6">
+        <nb-card>
+          <nb-card-header>
+              <nb-alert status="danger" > <H3 style="text-align: center" style="font-family:Georgia, 'Times New Roman', Times, serif ;text-align: center ;color: cornsilk"> REGISTRO DE MATRICULA </H3>   </nb-alert>   
+              <nb-alert status="disabled" accent="success">REGISTRO DE MATRICULA</nb-alert>
+          </nb-card-header>
+          <nb-card-body>
+          </nb-card-body>
+        </nb-card>
       </div>
-    </div>
+  
+      <div class="col-md-12 col-lg-6 col-xxxl-6">
+          <nb-card>
+            <nb-card-header>
+                <nb-alert status="success" > <H3 style="text-align: center" style="font-family:Georgia, 'Times New Roman', Times, serif ;text-align: center ;color: cornsilk"> REGISTRO DE PENSIONES </H3>   </nb-alert>   
+                <nb-alert status="disabled" accent="success">REGISTRO DE PENSIONES</nb-alert>
+            </nb-card-header>
+            <nb-card-body>
+                                           
+                      
+            </nb-card-body>
+          </nb-card>
+        </div>
+  
   </div>
   <div class="row">
+      <div class="col-md-12 col-lg-6 col-xxxl-6">
+        <nb-card>
+          <nb-card-header>
+              <nb-alert status="primary" > <H3 style="text-align: center" style="font-family:Georgia, 'Times New Roman', Times, serif ;text-align: center ;color: cornsilk"> REGISTRO DE ALUMNOS </H3>   </nb-alert>   
+              <nb-alert status="disabled" accent="success">REGISTRO DE ALUMNOS</nb-alert>
+          </nb-card-header>
+          <nb-card-body>
+                                         
+                    
+          </nb-card-body>
+        </nb-card>
+      </div>
+    
+      <div class="col-md-12 col-lg-6 col-xxxl-6">
+          <nb-card>
+            <nb-card-header>
+                <nb-alert status="info" > <H3 style="text-align: center" style="font-family:Georgia, 'Times New Roman', Times, serif ;text-align: center ;color: cornsilk"> REGISTRO DE ASISTENCIA </H3>   </nb-alert>   
+                <nb-alert status="disabled" accent="success">REGISTRO DE ASISTENCIA</nb-alert>
+            </nb-card-header>
+            <nb-card-body>
+                                           
+                      
+            </nb-card-body>
+          </nb-card>
+        </div>
+    
+    </div>
+  
+<!-- <nb-card>
+  <nb-card-body>
+    <div class="row">
         <div class="col-xxl-2">
           <div class="row">
             <div class="col-md-6">
-                <nb-card size="xsmall">  
-                    <nb-card-body>   
-                                <nb-alert status="primary" > <H3 style="text-align: center" style="font-family:Georgia, 'Times New Roman', Times, serif ;text-align: center ;color: cornsilk"> ASISTENCIA</H3>   </nb-alert>
-                                <nb-alert status="disabled" accent="success">REGISTRO DE ASISTENCIA</nb-alert>   
-                    </nb-card-body>        
-                </nb-card>
+                   
+                                    <nb-alert status="danger" > <H3 style="text-align: center" style="font-family:Georgia, 'Times New Roman', Times, serif ;text-align: center ;color: cornsilk"> MATRICULA </H3>   </nb-alert>                              
+                                    <button  class="btn btn-success btn-rectangle btn-success"  style="background-size: 100%" (click)="patchSite()" >REGISTRO DE MATRICULA</button>
+                                        
+                                        <nb-alert status="disabled" accent="success">REGISTRO DE MATRICULA</nb-alert>   
+                   
             </div>
             <div class="col-md-6">
                 <nb-card size="xsmall">  
-                    <nb-card-body>   
-                                <nb-alert status="info" > <H3 style="text-align: center" style="font-family:Georgia, 'Times New Roman', Times, serif ;text-align: center ;color: cornsilk"> PENSIONES </H3>   </nb-alert>
-                                <nb-alert status="disabled" accent="success">REGISTRO DE PENSIONES</nb-alert>   
-                    </nb-card-body>    
+                      
+                                <nb-alert status="success" > <H3 style="text-align: center" style="font-family:Georgia, 'Times New Roman', Times, serif ;text-align: center ;color: cornsilk"> ALUMNOS </H3>   </nb-alert>
+                                <nb-alert status="disabled" accent="success">REGISTRO DE ALUMNOS</nb-alert>   
+                        
                 </nb-card>
             </div>
           </div>
         </div>
       </div>
+      <div class="row">
+            <div class="col-xxl-2">
+              <div class="row">
+                <div class="col-md-6">
+                    <nb-card size="xsmall">  
+                        <nb-card-body>   
+                                    <nb-alert status="primary" > <H3 style="text-align: center" style="font-family:Georgia, 'Times New Roman', Times, serif ;text-align: center ;color: cornsilk"> ASISTENCIA</H3>   </nb-alert>
+                                    <nb-alert status="disabled" accent="success">REGISTRO DE ASISTENCIA</nb-alert>   
+                        </nb-card-body>        
+                    </nb-card>
+                </div>
+                <div class="col-md-6">
+                    <nb-card size="xsmall">  
+                        <nb-card-body>   
+                                    <nb-alert status="info" > <H3 style="text-align: center" style="font-family:Georgia, 'Times New Roman', Times, serif ;text-align: center ;color: cornsilk"> PENSIONES </H3>   </nb-alert>
+                                    <nb-alert status="disabled" accent="success">REGISTRO DE PENSIONES</nb-alert>   
+                        </nb-card-body>    
+                    </nb-card>
+                </div>
+              </div>
+            </div>
+          </div>
+      </nb-card-body>
+</nb-card> -->

@@ -53,6 +53,8 @@ export class UtilsService {
     let temp: any;
     if (diaOrMes.length === 1) {
       temp = '0' + diaOrMes;
+    } else {
+      temp = diaOrMes;
     }
     return temp;
   }

@@ -85,7 +85,7 @@ export class ListMatriculaComponent implements OnInit  {
         for(var j = 0 ; j < res.length;j++) {
           this.listaHorarioPrograma.push({
             horid : res[j].horid,
-            mihorario:res[j].gencodmos + "(" + res[j].horhorini+"-"+res[j].horhorfin+")"
+            // mihorario:res[j].gencodmos + "(" + res[j].horhorini+"-"+res[j].horhorfin+")"
           });
         }
         this.listahorario = this.listaHorarioPrograma;

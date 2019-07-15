@@ -145,14 +145,14 @@
           <td>
             <div  class="d-flex flex-column">
               <div class="d-flex justify-content-center" >
-                <p>{{m.AlEstReg}}</p>
+                <p>{{m.AlEstReg|alumnoestadoregPipe}}</p>
               </div>
             </div>
           </td>
           <td>
             <div  class="d-flex flex-column">
               <div class="d-flex justify-content-center" >
-                <i class="ion-trash-a mr-4" style="font-size:23px;" placement="top" ngbTooltip="Eliminar Alumno"></i>
+                <i (click)="cambiarEstado(m)" class="ion-trash-a mr-4" style="font-size:23px;" placement="top" ngbTooltip="Eliminar Alumno"></i>
 
                 <i (click)="editarAlumno(m.AlDni)" class="ion-edit" style="font-size:23px;" placement="top" ngbTooltip="Editar Alumno"></i>
               </div>

@@ -17,7 +17,19 @@ const routes: Routes = [{
   {
     path: 'ges-matricula',
     loadChildren: './ges-matricula/ges-matricula.module#GesMatriculaModule',
-  } ,  
+  } ,
+  {
+    path: 'ges-pension',
+    loadChildren: './ges-pension/ges-pension.module#GesPensionModule',
+  } ,
+  // {
+  //   path: 'ges-curso',
+  //   loadChildren: './ges-curso/ges-curso.module#GesCursoModule',
+  // } ,
+  {
+    path: 'ges-docente',
+    loadChildren: './ges-docente/ges-docente.module#GesDocenteModule',
+  } ,    
   {
     path :'view-home',
     component: GesHomeComponent,

@@ -1,0 +1,113 @@
+<nb-card size="medium" [nbSpinner]="loading" nbSpinnerSize="xxlarge">
+      <nb-card-header>
+          <nb-alert status="primary" style="text-align: center">PENSIONES</nb-alert>
+      </nb-card-header>
+    <nb-card-body>
+      <!-- <button nbButton class="mb-3" (click)="btnAddDocente()">Agregar Docente</button> -->
+      <div class="row">
+          <!-- <div class="col-md-3">
+              <nb-alert status="disabled" accent="success">Busqueda DNI</nb-alert>
+          </div> -->
+        <div class="col-md-3">
+            <div class="input-group has-person-icon">
+              <input
+                (keyup.enter)="listarCabacerasxDni(inputBuscar)"
+                [(ngModel)]="inputBuscar"
+                type="text"
+                nbInput fullWidth
+                placeholder="Buscar por DNI"
+                shape="round"
+                class="form-control"/>
+            </div>
+            <br>
+        </div>
+    </div>
+      <table class="table table-bordered table-hover-cells">
+        <thead>
+        <tr>
+            <th style="width: 12%">
+                <div class="table-contain">
+                  <h6 class="d-flex justify-content-center"><strong>DNI</strong></h6>
+                </div>
+              </th>
+          <th style="width: 15%">
+            <div class="table-contain">
+              <h6 class="d-flex justify-content-center"><strong>Nombre del Alumno</strong></h6>
+            </div>
+          </th>
+          <th style="width: 10%">
+            <div class="table-contain">
+              <h6 class="d-flex justify-content-center"><strong>Sede</strong></h6>
+            </div>
+          </th>
+          <th style="width: 20%">
+            <div class="table-contain">
+              <h6 class="d-flex justify-content-center"><strong>Programa</strong></h6>
+            </div>
+          </th>
+          <th style="width: 12%">
+            <div class="table-contain">
+              <h6 class="d-flex justify-content-center"><strong>Fecha</strong></h6>
+            </div>
+          </th>
+          <th style="width: 12%">
+              <div class="table-contain">
+                <h6 class="d-flex justify-content-center"><strong>Acciones</strong></h6>
+              </div>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr *ngFor="let m of listPension; let id = index">       
+          <td>
+            <div  class="d-flex flex-column">
+              <div class="d-flex justify-content-center" >
+                <p>{{m.aldni}}</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div  class="d-flex flex-column">
+              <div class="d-flex justify-content-center" >
+                {{m.alnom}} {{m.alapepat}} {{m.alpemat}}  
+              </div>
+            </div>
+          </td>
+          <td>
+            <div  class="d-flex flex-column">
+              <div class="d-flex justify-content-center" >
+                <p>{{m.seddes}}</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div  class="d-flex flex-column">
+              <div class="d-flex justify-content-center" >
+                <p>{{m.pronom}}</p>
+              </div>
+            </div>
+          </td>
+          <td>
+              <div  class="d-flex flex-column">
+                <div class="d-flex justify-content-center" >
+                  <p>{{m.matdetfec}}</p>
+                </div>
+              </div>
+            </td>
+          <td>
+            <div  class="d-flex flex-column">
+              <div class="d-flex justify-content-center" >
+                <!-- <i (click)="agregarPensiones(m.matdetid)"class="ion-trash-a mr-4" style="font-size:23px;" placement="top" ngbTooltip="Agregar Pension"></i> -->
+                
+                <i (click)="abrirDetallesPensiones(m.matdetid,m)" class="ion-clipboard" style="font-size:23px;" placement="top" ngbTooltip="Ver Pensiones"></i>
+                
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </nb-card-body>
+  </nb-card>

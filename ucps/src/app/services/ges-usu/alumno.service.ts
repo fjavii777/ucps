@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {GesUsuAlumnoModel} from '../../models/ges-usu/ges-usu-alumno.model';
+import {DeleteAlumnoModel, GesUsuAlumnoModel} from '../../models/ges-usu/ges-usu-alumno.model';
 import {UtilsService} from '../utils.service';
 import { throwError } from 'rxjs';
 import 'rxjs-compat/add/operator/map';
@@ -51,6 +51,15 @@ export class AlumnoService {
     return this._http
       .put(this.rutaAlumno + `/usuarios/alumno//update.php`, alumno)
       .map((response: GesUsuAlumnoModel) => {
+        this.utilsservice.showMensaje(true);
+        return response;
+      })
+      .catch(this.handleError);
+  }
+  public deleteAlumno(alumno: DeleteAlumnoModel): Observable<DeleteAlumnoModel> {
+    return this._http
+      .put(this.rutaAlumno + `/usuarios/alumno/delete.php`, alumno)
+      .map((response: DeleteAlumnoModel) => {
         this.utilsservice.showMensaje(true);
         return response;
       })

@@ -38,13 +38,13 @@ btn_clickAceptar() {
       
       this.passFormToObject();
       this.loadingGuardar = true;
-      this.matriculdetalleprogramaservice.putModificarDetalle(this.programaToSend).subscribe(
-        resp => {
-          this.activeModal.close(true);
-        },
-        err => {
-          console.log(err);
-        });
+      // this.matriculdetalleprogramaservice.putModificarDetalle(this.programaToSend).subscribe(
+      //   resp => {
+      //     this.activeModal.close(true);
+      //   },
+      //   err => {
+      //     console.log(err);
+      //   });
     
   }
   passFormToObject() {

@@ -1,0 +1,167 @@
+<nb-card size="medium" [nbSpinner]="loading" nbSpinnerSize="xxlarge">
+        <nb-card-header>
+          <span>Docente</span>
+        </nb-card-header>
+        <nb-card-body>
+          <button nbButton class="mb-3" (click)="btnAddDocente()">Agregar Docente</button>
+          <table class="table table-bordered table-hover-cells">
+            <thead>
+            <tr>
+              <th>
+                <div class="table-contain">
+                  <h6 class="d-flex justify-content-center"><strong>Nro</strong></h6>
+                </div>
+              </th>
+              <th style="width: 10%">
+                <div class="table-contain">
+                  <h6 class="d-flex justify-content-center"><strong>DNI</strong></h6>
+                </div>
+              </th>
+              <th style="width: 12%">
+                <div class="table-contain">
+                  <h6 class="d-flex justify-content-center"><strong>Nombres</strong></h6>
+                </div>
+              </th>
+              <th style="width: 12%">
+                <div class="table-contain">
+                  <h6 class="d-flex justify-content-center"><strong>Apellidos</strong></h6>
+                </div>
+              </th>
+              <!-- <th style="width: 12%">
+                <div class="table-contain">
+                  <h6 class="d-flex justify-content-center"><strong>CUI</strong></h6>
+                </div>
+              </th> -->
+              <th style="width: 12%">
+                <div class="table-contain">
+                  <h6 class="d-flex justify-content-center"><strong>Usuario</strong></h6>
+                </div>
+              </th>
+              <th style="width: 10%">
+                <div class="table-contain">
+                  <h6 class="d-flex justify-content-center"><strong>Telefono</strong></h6>
+                </div>
+              </th>
+              <th style="width: 12%">
+                <div class="table-contain">
+                  <h6 class="d-flex justify-content-center"><strong>Direccion</strong></h6>
+                </div>
+              </th>
+              <th style="width: 12%">
+                <div class="table-contain">
+                  <h6 class="d-flex justify-content-center"><strong>Correo</strong></h6>
+                </div>
+              </th>
+              <th style="width: 12%">
+                <div class="table-contain">
+                  <h6 class="d-flex justify-content-center"><strong>Fec Nacimiento</strong></h6>
+                </div>
+              </th>
+              <th style="width: 12%">
+                <div class="table-contain">
+                  <h6 class="d-flex justify-content-center"><strong>Estado Alumno</strong></h6>
+                </div>
+              </th>
+              <th style="width: 12%">
+                <div class="table-contain">
+                  <h6 class="d-flex justify-content-center"><strong>Acciones</strong></h6>
+                </div>
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+    
+            <tr *ngFor="let m of listDocente; let id = index">
+              <td>
+                <div  class="d-flex flex-column">
+                  <div class="d-flex justify-content-center" >
+                    <p>{{id + 1}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div  class="d-flex flex-column">
+                  <div class="d-flex justify-content-center" >
+                    <p>{{m.docdni}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div  class="d-flex flex-column">
+                  <div class="d-flex justify-content-center" >
+                    <p>{{m.docnom}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div  class="d-flex flex-column">
+                  <div class="d-flex justify-content-center" >
+                    <p>{{m.docapepat}} {{m.docpemat}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div  class="d-flex flex-column">
+                  <div class="d-flex justify-content-center" >
+                    <p>{{m.docnomusu}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div  class="d-flex flex-column">
+                  <div class="d-flex justify-content-center" >
+                    <p>{{m.doctel}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div  class="d-flex flex-column">
+                  <div class="d-flex justify-content-center" >
+                    <p>{{m.docdir}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div  class="d-flex flex-column">
+                  <div class="d-flex justify-content-center" >
+                    <p>{{m.doccorele}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div  class="d-flex flex-column">
+                  <div class="d-flex justify-content-center" >
+                    <p>{{m.docfecnac}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div  class="d-flex flex-column">
+                  <div class="d-flex justify-content-center" >
+                    <p>{{m.docestereg}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div  class="d-flex flex-column">
+                  <div class="d-flex justify-content-center" >
+                    <i class="ion-trash-a mr-4" style="font-size:23px;" placement="top" ngbTooltip="Eliminar Docente"></i>
+    
+                    <i (click)="editarDocente(m.docdni)" class="ion-edit" style="font-size:23px;" placement="top" ngbTooltip="Editar Docente"></i>
+                  </div>
+                </div>
+              </td>
+         <!--     <td class="text-muted">
+                <div  class="d-flex flex-column">
+                  <div class="d-flex justify-content-center" >
+                    <p><strong>{{m.EstadoActivo | estadotipomatriculaPipe}}</strong></p>
+                  </div>
+                </div>
+              </td>-->
+            </tr>
+    
+            </tbody>
+          </table>
+        </nb-card-body>
+      </nb-card>
+    

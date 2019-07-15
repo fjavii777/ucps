@@ -5,7 +5,9 @@
     <a (click)="toggleSidebar()" href="#" class="navigation"><i class="nb-menu"></i></a>
     <div class="logo" (click)="goToHome()">UCPS<span></span></div>
   </div>
-  <ngx-theme-switcher></ngx-theme-switcher>
+  <div style="background:center">
+    <ngx-theme-switcher></ngx-theme-switcher>
+  </div>
 </div>
 
 <div class="header-container">
@@ -17,9 +19,9 @@
     <nb-action *nbIsGranted="['view', 'user']" >
       <nb-user [nbContextMenu]="userMenu" [name]="user?.name" ></nb-user>
     </nb-action>
-    <nb-action class="control-item" disabled icon="nb-notifications"></nb-action>
+    <!-- <nb-action class="control-item" disabled icon="nb-notifications"></nb-action>
     <nb-action class="control-item" icon="nb-email"></nb-action>
     <nb-action class="control-item">
-    </nb-action>
+    </nb-action> -->
   </nb-actions>
 </div>

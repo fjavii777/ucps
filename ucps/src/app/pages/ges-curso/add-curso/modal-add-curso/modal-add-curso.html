@@ -1,0 +1,46 @@
+<div class="modal-header">
+        <h4 class="modal-title">{{titulo}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.close(false)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        <form [formGroup]="myformcurso">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <div class="row">
+                <label class="col-sm-5 col-form-label p-r-0">Descripcion</label>
+                <div class="col-sm-7">
+                  <input
+                    formControlName="formdescripcion"
+                    type="text"
+                    maxlength="30"
+                    class="form-control form-control-sm"
+                    placeholder="Descripcion del Curso">
+                </div>
+              </div>
+            </div>
+          </div> 
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <div class="row">
+                <label class="col-sm-5 col-form-label p-r-0">Codigo del Curso</label>
+                <div class="col-sm-7">
+                  <input
+                    formControlName="formcont"
+                    type="text"
+                    maxlength="50"
+                    class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button nbButton status="success" size="medium" [nbSpinner]="loadingGuardar" nbSpinnerStatus="success" nbSpinnerMessage="" (click)="btn_clickAceptar()">{{boton}}</button>
+        <button type="button" class="btn btn-danger waves-effect text-center m-b-20" (click)="activeModal.close(false)">Cancelar</button>
+      </div>
+      
+    

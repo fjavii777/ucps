@@ -1,0 +1,94 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{titulo}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.close(false)">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <form [formGroup]="myformdetalle">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <div class="row">
+          <label class="col-sm-3 col-form-label p-r-0">Horario</label>
+          <div class="col-sm-9">
+            <select  class="form-control" formControlName="formidhorario">
+              <option *ngFor="let s of listHorarios" [ngValue]="s.horid">{{s.turcodmos}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <div class="row">
+          <label class="col-sm-3 col-form-label p-r-0">Banco</label>
+          <div class="col-sm-9">
+            <select  class="form-control" formControlName="formbanco">
+              <option value="Banco de la Nacion">Banco de la Nacion</option>
+              <option value="BCP">BCP</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <div class="row">
+          <label class="col-sm-3 col-form-label p-r-0">Codigo Pago</label>
+          <div class="col-sm-9">
+            <input
+              formControlName="formcodpago"
+              type="text"
+              maxlength="30"
+              class="form-control form-control-sm">
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <div class="row">
+          <label class="col-sm-3 col-form-label p-r-0">Monto Pago</label>
+          <div class="col-sm-9">
+            <input
+              formControlName="formmontopago"
+              type="text"
+              maxlength="10"
+              class="form-control form-control-sm">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <div class="row">
+          <label class="col-sm-3 col-form-label p-r-0">Fecha</label>
+          <div class="col-sm-9">
+            <input
+              formControlName="formfecha"
+              type="date"
+              name="fechaMatricula"
+              id="dateMatricula"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <div class="row">
+          <label class="col-sm-3 col-form-label p-r-0">Observaciones</label>
+          <div class="col-sm-9">
+            <input
+              formControlName="formobs"
+              type="text"
+              maxlength="50"
+              class="form-control form-control-sm">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button nbButton status="success" size="medium" [nbSpinner]="loadingGuardar" nbSpinnerStatus="success" nbSpinnerMessage="" (click)="btn_clickAceptar()">{{boton}}</button>
+  <button type="button" class="btn btn-danger waves-effect text-center m-b-20" (click)="activeModal.close(false)">Cancelar</button>
+</div>
+

@@ -8,6 +8,7 @@ import {GesUsuComponent} from './ges-usu.component';
 import {ModalAddAlumnoComponent} from './alumno/modal-add-alumno/modal-add-alumno.component';
 import {AlumnoService} from '../../services/ges-usu/alumno.service';
 import {UtilsService} from '../../services/utils.service';
+import {AlumnoEstadoPipe} from '../../pipes/ges-usu/alumno-estado.pipe';
 
 const rutasgesusu: Routes = [{
   path: '',
@@ -25,6 +26,7 @@ const rutasgesusu: Routes = [{
     GesUsuComponent,
     UsuAlumnoComponent,
     ModalAddAlumnoComponent,
+    AlumnoEstadoPipe,
   ],
   imports: [
     ThemeModule,

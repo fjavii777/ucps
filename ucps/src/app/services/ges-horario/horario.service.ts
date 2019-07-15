@@ -17,8 +17,7 @@ export class HorarioService {
   public getListarHorario(): Observable<GesHorarioReadProgramaModel[]> {
     return this._http
       .get<any>(this.rutaHorario + `/horario/read.php`)
-      .map((response: any) => 
-      {
+      .map((response: any) => {
         return response.map(d => new GesHorarioReadProgramaModel(d));
       })
       .catch(this.handleError);

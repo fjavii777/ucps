@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {ModalAddAlumnoComponent} from './modal-add-alumno/modal-add-alumno.component';
 import {AlumnoService} from '../../../services/ges-usu/alumno.service';
-import {GesUsuAlumnoModel} from '../../../models/ges-usu/ges-usu-alumno.model';
+import {DeleteAlumnoModel, GesUsuAlumnoModel} from '../../../models/ges-usu/ges-usu-alumno.model';
 
 @Component({
   selector: 'ngx-usu-alumno',
@@ -52,6 +52,19 @@ export class UsuAlumnoComponent implements OnInit {
         } else {
           console.log('No existe alumno');
         }
+      });
+  }
+  cambiarEstado(c: GesUsuAlumnoModel) {
+    const deleteAlumno = new DeleteAlumnoModel();
+    deleteAlumno.aldni = c.AlDni;
+    if (c.AlEstReg === 'A') {
+      deleteAlumno.alestreg = '*';
+    } else {
+      deleteAlumno.alestreg = 'A';
+    }
+    this.alumnoservice.deleteAlumno(deleteAlumno)
+      .subscribe(res => {
+        c.AlEstReg = res.alestreg;
       });
   }
 }
