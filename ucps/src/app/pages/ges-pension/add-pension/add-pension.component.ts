@@ -17,7 +17,7 @@ import 'rxjs/add/operator/switchMap';
   templateUrl: './add-pension.component.html',
 })
 export class AddPensionComponent implements OnInit {
-  
+    inputBuscar = '';
     loading = false;
     listPension: GesPensionlListModel[] = [];
     modalref: NgbModalRef;
