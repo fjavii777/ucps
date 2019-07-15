@@ -27,7 +27,7 @@ export class ModalDetCabComponent implements OnInit {
   public myformdetalle: FormGroup;
   detalleToSend: GesMatriculaDetalleDTO = new GesMatriculaDetalleDTO();
   constructor(private fb: FormBuilder,
-              private activeModal: NgbActiveModal,
+              public activeModal: NgbActiveModal,
               private utilService: UtilsService,
               private matriculadetalleservice: MatriculaDetalleService,
               private horarioservice: HorarioService,

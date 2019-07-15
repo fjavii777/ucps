@@ -30,7 +30,7 @@ export class ModalMatCabComponent implements OnInit {
   public myformcabecera: FormGroup;
   cabeceraToSend: GesMatriculaCabeceraDTO = new GesMatriculaCabeceraDTO();
   constructor(private fb: FormBuilder,
-              private activeModal: NgbActiveModal,
+              public activeModal: NgbActiveModal,
               private sedeService: SedeService,
               private programaService: ProgramaService,
               private cabeceraservice: MatriculaCabeceraService,

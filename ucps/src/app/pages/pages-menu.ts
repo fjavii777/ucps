@@ -51,6 +51,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
+    title: 'Gestionar Matricula',
+    icon: 'nb-star',
+    children: [
+      {
+        title: 'Matriculas',
+        link: '/pages/ges-matricula/agregarmatricula',
+      },
+    ],
+  },
+  {
     title: 'Gestionar Pensiones',
     icon: 'nb-compose',
     children: [
@@ -71,24 +81,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //   ],
   // },
   
-  {
-    title: 'Gestionar Matricula',
-    icon: 'nb-star',
-    children: [
-      {
-        title: 'Matriculas',
-        link: '/pages/ges-matricula/agregarmatricula',
-      },
-    /*  {
-        title: 'Registrar Matricula',
-        link: '/pages/ges-matricula/agregarmatricula',
-      },
-      {
-        title: 'Listar Matricula',
-        link: '/pages/ges-matricula/listamatricula',
-      },*/
-    ],
-  },
+
   //
   // {
   //   title: 'Extra Components',
