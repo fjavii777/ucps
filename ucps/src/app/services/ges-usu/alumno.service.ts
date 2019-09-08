@@ -6,6 +6,7 @@ import {UtilsService} from '../utils.service';
 import { throwError } from 'rxjs';
 import 'rxjs-compat/add/operator/map';
 import 'rxjs-compat/add/operator/catch';
+import {error} from "util";
 
 @Injectable()
 export class AlumnoService {
@@ -47,10 +48,11 @@ export class AlumnoService {
       })
       .catch(this.handleError);
   }
-  public putModificarAlumno(alumno: GesUsuAlumnoModel): Observable<GesUsuAlumnoModel> {
+  public putModificarAlumno(alumno: GesUsuAlumnoModel): Observable<any> {
     return this._http
-      .put(this.rutaAlumno + `/usuarios/alumno//update.php`, alumno)
-      .map((response: GesUsuAlumnoModel) => {
+      .put(this.rutaAlumno + `/usuarios/alumno/update.php`, alumno)
+      .map((response: any) => {
+        console.log('response', response);
         this.utilsservice.showMensaje(true);
         return response;
       })

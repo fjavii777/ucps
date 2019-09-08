@@ -10,6 +10,7 @@ import {AlumnoService} from '../../../../services/ges-usu/alumno.service';
   templateUrl: './modal-add-alumno.component.html',
 })
 export class ModalAddAlumnoComponent {
+  formError = false;
   titulo = 'Agregar Alumno';
   boton = 'Guardar';
   flagIsModificar = false;
@@ -24,7 +25,7 @@ export class ModalAddAlumnoComponent {
        formnombres: [null, Validators.required],
        formapepat: [null, Validators.required],
        formapemat: [null, Validators.required],
-       formcui: [null, Validators.required],
+       formcui: [null],
        formcorreo: [null, Validators.required],
        formfecnac: [null, Validators.required],
        formtel: [null, Validators.required],
@@ -35,24 +36,32 @@ export class ModalAddAlumnoComponent {
      });
   }
   btn_clickAceptar() {
-    this.passFormToObject();
-    this.loadingGuardar = true;
-    if (this.flagIsModificar) {
-      this.alumnoservice.putModificarAlumno(this.alumnoToSend).subscribe(
-        resp => {
-          this.activeModal.close(true);
-        },
-        err => {
-          console.log(err);
-        });
+    this.formError = false;
+    if (this.myformalumnos.valid) {
+      this.formError = false;
+      this.passFormToObject();
+      this.loadingGuardar = true;
+      if (this.flagIsModificar) {
+        this.alumnoservice.putModificarAlumno(this.alumnoToSend).subscribe(
+          resp => {
+            this.activeModal.close(true);
+          },
+          err => {
+            this.activeModal.close(true);
+            console.log(err);
+          });
+      } else {
+        this.alumnoservice.postCrearAlumno(this.alumnoToSend).subscribe(
+          resp => {
+            this.activeModal.close(true);
+          },
+          err => {
+            this.activeModal.close(true);
+            console.log(err);
+          });
+      }
     } else {
-      this.alumnoservice.postCrearAlumno(this.alumnoToSend).subscribe(
-        resp => {
-          this.activeModal.close(true);
-        },
-        err => {
-          console.log(err);
-        });
+      this.formError = true;
     }
   }
   passFormToObject() {

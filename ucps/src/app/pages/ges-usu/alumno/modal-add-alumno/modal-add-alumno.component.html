@@ -4,7 +4,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  
+
   <div class="modal-body">
     <form [formGroup]="myformalumnos">
       <div class="form-row">
@@ -13,53 +13,61 @@
             <label class="col-sm-5 col-form-label p-r-0">DNI Alumno</label>
             <div class="col-sm-7">
               <input
+                required
                 formControlName="formdni"
                 type="text"
-                maxlength="30"
+                minlength="8"
+                maxlength="10"
                 class="form-control form-control-sm"
                 placeholder="Documento de Identidad">
             </div>
           </div>
         </div>
-  
+
         <div class="form-group col-md-6">
           <div class="row">
             <label class="col-sm-5 col-form-label p-r-0">Nombres Alumno</label>
             <div class="col-sm-7">
               <input
+                required
                 formControlName="formnombres"
                 type="text"
                 maxlength="20"
+                minlength="2"
                 class="form-control form-control-sm"
                 placeholder="Ambos Nombres">
             </div>
           </div>
         </div>
       </div>
-  
+
       <div class="form-row">
         <div class="form-group col-md-6">
           <div class="row">
             <label class="col-sm-5 col-form-label p-r-0">Apellido Paterno</label>
             <div class="col-sm-7">
               <input
+                required
                 formControlName="formapepat"
                 type="text"
                 maxlength="20"
+                minlength="2"
                 class="form-control form-control-sm"
                 placeholder="Ejm: Arce">
             </div>
           </div>
         </div>
-  
+
         <div class="form-group col-md-6">
           <div class="row">
             <label class="col-sm-5 col-form-label p-r-0">Apellido Materno</label>
             <div class="col-sm-7">
               <input
+                required
                 formControlName="formapemat"
                 type="text"
                 maxlength="20"
+                minlength="2"
                 class="form-control form-control-sm"
                 placeholder="Ejm: Apaza">
             </div>
@@ -87,8 +95,10 @@
             <label class="col-sm-5 col-form-label p-r-0">Correo Alumno</label>
             <div class="col-sm-7">
               <input
+                required
                 formControlName="formcorreo"
                 type="text"
+                minlength="5"
                 maxlength="100"
                 class="form-control form-control-sm"
                 placeholder="Ejm: alumno@gmail.com">
@@ -103,6 +113,7 @@
             <label class="col-sm-5 col-form-label p-r-0">Fecha Nacimiento</label>
             <div class="col-sm-7">
               <input
+                required
                 formControlName="formfecnac"
                 type="date"
                 maxlength="50"
@@ -116,8 +127,10 @@
             <label class="col-sm-5 col-form-label p-r-0">Telefono Alumno</label>
             <div class="col-sm-7">
               <input
+                required
                 formControlName="formtel"
                 type="text"
+                minlength="8"
                 maxlength="100"
                 class="form-control form-control-sm"
                 placeholder="Celular o Fijo">
@@ -132,8 +145,10 @@
             <label class="col-sm-5 col-form-label p-r-0">Direccion Alumno</label>
             <div class="col-sm-7">
               <input
+                required
                 formControlName="formdir"
                 type="text"
+                minlength="5"
                 maxlength="50"
                 class="form-control form-control-sm"
                 placeholder="Ejm: Av. Alcides Carrion 108">
@@ -146,8 +161,10 @@
             <label class="col-sm-5 col-form-label p-r-0">Nombre Usuario</label>
             <div class="col-sm-7">
               <input
+                required
                 formControlName="formnomusu"
                 type="text"
+                minlength="3"
                 maxlength="100"
                 class="form-control form-control-sm"
                 placeholder="Ejm: usuario123">
@@ -162,8 +179,10 @@
             <label class="col-sm-5 col-form-label p-r-0">Contrasena Usuario</label>
             <div class="col-sm-7">
               <input
+                required
                 formControlName="formcont"
                 type="password"
+                minlength="4"
                 maxlength="50"
                 class="form-control form-control-sm">
             </div>
@@ -174,7 +193,8 @@
     </form>
   </div>
   <div class="modal-footer">
+    <div *ngIf="formError" class="colorTextRed">Comprobar que todos los campos sean correctos</div>
     <button nbButton status="success" size="medium" [nbSpinner]="loadingGuardar" nbSpinnerStatus="success" nbSpinnerMessage="" (click)="btn_clickAceptar()">{{boton}}</button>
     <button type="button" class="btn btn-danger waves-effect text-center m-b-20" (click)="activeModal.close(false)">Cancelar</button>
   </div>
-  
+

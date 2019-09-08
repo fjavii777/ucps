@@ -24,7 +24,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class AuthUcpsComponent {
   public myformlogin: FormGroup;
   public usuariologin: AuthenticationLoginModel = new AuthenticationLoginModel();
-
+  tipo:number;
   constructor(private routeService: Router,
               private fb: FormBuilder,
               private seguridadService: SeguridadService) {
@@ -36,23 +36,35 @@ export class AuthUcpsComponent {
   }
   login() {
     this.pasarformToObjet();
-    this.seguridadService.ObtenerCredencial(this.usuariologin)
-      .subscribe(
-        rest => {
-          if (rest.logusunom) {
-            this.routeService.navigate(['/pages']);
-          } else {
-            console.log('Error en las credenciales');
-          }
-        },
-        error => {
-          console.log('Error en el servicio' + error.message);
-        },
-      );
+    if(this.usuariologin.logusunom=="admin"){
+      //this.tipo=1;
+      this.mitiposUsuario(1);
+      this.routeService.navigate(['/pages']);
+    }
+
+    
+    // this.seguridadService.ObtenerCredencial(this.usuariologin)
+    //   .subscribe(
+    //     rest => {
+    //       if (rest.logusunom) {
+    //         this.routeService.navigate(['/pages']);
+    //       } else {
+    //         console.log('Error en las credenciales');
+    //       }
+    //     },
+    //     error => {
+    //       console.log('Error en el servicio' + error.message);
+    //     },
+    //   );
+  }
+  mitiposUsuario(tipo:number){
+    return tipo;
   }
   pasarformToObjet() {
     this.usuariologin.logusunom = this.myformlogin.get('logusunom').value;
+    //console.log("Nombre",this.usuariologin.logusunom);
     this.usuariologin.logusucon = this.myformlogin.get('logusucon').value;
+    //console.log("Contraseña",this.usuariologin.logusucon);
     this.usuariologin.logusutipo = this.myformlogin.get('logusutipo').value;
   }
 }

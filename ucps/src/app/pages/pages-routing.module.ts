@@ -22,6 +22,10 @@ const routes: Routes = [{
     path: 'ges-pension',
     loadChildren: './ges-pension/ges-pension.module#GesPensionModule',
   } ,
+  {
+    path: 'ges-asistencia',
+    loadChildren: './ges-asistencia/ges-asistencia.module#GesAsistenciaModule',
+  } ,
   // {
   //   path: 'ges-curso',
   //   loadChildren: './ges-curso/ges-curso.module#GesCursoModule',

@@ -3,11 +3,11 @@ export const CORPORATE_THEME = {
   base: 'default',
   variables: {
     temperature: [
-      '#ffa36b',
-      '#ffa36b',
-      '#ff9e7a',
-      '#ff9888',
-      '#ff8ea0',
+      '#6D0D18',
+      '#6D0D18',
+      '#6D0D18',
+      '#6D0D18',
+      '#6D0D18',
     ],
 
     solar: {

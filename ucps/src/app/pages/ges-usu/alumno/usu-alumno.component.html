@@ -17,36 +17,36 @@
               <h6 class="d-flex justify-content-center"><strong>DNI</strong></h6>
             </div>
           </th>
-          <th style="width: 12%">
+          <th style="width: 16%">
             <div class="table-contain">
-              <h6 class="d-flex justify-content-center"><strong>Nombres</strong></h6>
+              <h6 class="d-flex justify-content-center"><strong>Nombres y Apellidos</strong></h6>
             </div>
           </th>
-          <th style="width: 12%">
-            <div class="table-contain">
-              <h6 class="d-flex justify-content-center"><strong>Apellidos</strong></h6>
-            </div>
-          </th>
+<!--          <th style="width: 12%">-->
+<!--            <div class="table-contain">-->
+<!--              <h6 class="d-flex justify-content-center"><strong>Apellidos</strong></h6>-->
+<!--            </div>-->
+<!--          </th>-->
           <th style="width: 12%">
             <div class="table-contain">
               <h6 class="d-flex justify-content-center"><strong>CUI</strong></h6>
             </div>
           </th>
-          <th style="width: 12%">
+<!--          <th style="width: 12%">-->
+<!--            <div class="table-contain">-->
+<!--              <h6 class="d-flex justify-content-center"><strong>Usuario</strong></h6>-->
+<!--            </div>-->
+<!--          </th>-->
+          <th style="width: 15%">
             <div class="table-contain">
-              <h6 class="d-flex justify-content-center"><strong>Usuario</strong></h6>
+              <h6 class="d-flex justify-content-center"><strong>Datos</strong></h6>
             </div>
           </th>
-          <th style="width: 10%">
-            <div class="table-contain">
-              <h6 class="d-flex justify-content-center"><strong>Telefono</strong></h6>
-            </div>
-          </th>
-          <th style="width: 12%">
-            <div class="table-contain">
-              <h6 class="d-flex justify-content-center"><strong>Direccion</strong></h6>
-            </div>
-          </th>
+<!--          <th style="width: 12%">-->
+<!--            <div class="table-contain">-->
+<!--              <h6 class="d-flex justify-content-center"><strong>Direccion</strong></h6>-->
+<!--            </div>-->
+<!--          </th>-->
           <th style="width: 12%">
             <div class="table-contain">
               <h6 class="d-flex justify-content-center"><strong>Correo</strong></h6>
@@ -89,17 +89,17 @@
           <td>
             <div  class="d-flex flex-column">
               <div class="d-flex justify-content-center" >
-                <p>{{m.AlNom}}</p>
+                <p>{{m.AlNom}} {{m.AlApePat}} {{m.AlApeMat}}</p>
               </div>
             </div>
           </td>
-          <td>
-            <div  class="d-flex flex-column">
-              <div class="d-flex justify-content-center" >
-                <p>{{m.AlApePat}} {{m.AlApeMat}}</p>
-              </div>
-            </div>
-          </td>
+<!--          <td>-->
+<!--            <div  class="d-flex flex-column">-->
+<!--              <div class="d-flex justify-content-center" >-->
+<!--                <p>{{m.AlApePat}} {{m.AlApeMat}}</p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </td>-->
           <td>
             <div  class="d-flex flex-column">
               <div class="d-flex justify-content-center" >
@@ -107,27 +107,31 @@
               </div>
             </div>
           </td>
+<!--          <td>-->
+<!--            <div  class="d-flex flex-column">-->
+<!--              <div class="d-flex justify-content-center" >-->
+<!--                <p>{{m.AlNomUsu}}</p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </td>-->
           <td>
             <div  class="d-flex flex-column">
               <div class="d-flex justify-content-center" >
-                <p>{{m.AlNomUsu}}</p>
+                <p>
+                  {{m.AlDir}}<br>
+                  <strong>Tel: </strong>
+                  {{m.AlTel}}
+                </p>
               </div>
             </div>
           </td>
-          <td>
-            <div  class="d-flex flex-column">
-              <div class="d-flex justify-content-center" >
-                <p>{{m.AlTel}}</p>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div  class="d-flex flex-column">
-              <div class="d-flex justify-content-center" >
-                <p>{{m.AlDir}}</p>
-              </div>
-            </div>
-          </td>
+<!--          <td>-->
+<!--            <div  class="d-flex flex-column">-->
+<!--              <div class="d-flex justify-content-center" >-->
+<!--                <p>{{m.AlDir}}</p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </td>-->
           <td>
             <div  class="d-flex flex-column">
               <div class="d-flex justify-content-center" >

@@ -1,11 +1,24 @@
 import { NbMenuItem } from '@nebular/theme';
-
+// 1 : Alummno
+// 2 : Docente
+// 3 : Secretaria
+// 4 : Administrador
 export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Inicio',
     icon: 'nb-home',
     link: '/pages/view-home/',
     home: true,
+    hidden:true,
+    data:[{
+      number:1
+    },{
+      number:2
+    },{
+      number:3
+    },{
+      number:4
+    }]
   },
 /*  {
     title: 'E-commerce',
@@ -21,10 +34,25 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Sistema',
     group: true,
+    hidden:true,
+    data:[
+      {
+      number:1
+      },{
+      number:3
+    },{
+      number:4
+    }],
   },
   {
     title: 'Gestionar Alumnos',
     icon: 'nb-compose',
+    hidden:true,
+    data:[{
+      number:1
+    },{
+      number:4
+    }],
     children: [
       {
         title: 'Alumnos',
@@ -43,6 +71,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Gestionar Docente',
     icon: 'nb-compose',
+    hidden:true,
+    data:[{
+      number:1
+    },{
+      number:4
+    }],
     children: [
       {
         title: 'Docente',
@@ -53,6 +87,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Gestionar Matricula',
     icon: 'nb-star',
+    hidden:true,
+    data:[{
+      number:1
+    },{
+      number:4
+    },{
+      number:2
+    }],
     children: [
       {
         title: 'Matriculas',
@@ -63,6 +105,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Gestionar Pensiones',
     icon: 'nb-compose',
+    hidden:true,
+    data:[{
+      number:3
+    },{
+      number:4
+    }],
     children: [
       {
         title: 'Pensiones',
@@ -70,19 +118,43 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
-  // {
-  //   title: 'Gestionar Programa',
-  //   icon: 'nb-locked',
-  //   children: [
-  //     {
-  //       title: 'Programa',
-  //       link: '/pages/ges-/agregarcurso',
-  //     },
-  //   ],
-  // },
+  {
+    title: 'Mis Asignaturas',
+    icon: 'nb-compose',
+    hidden:true,
+    data:[{
+      number:1
+    },{
+      number:4
+    }],
+    children: [
+      {
+        title: 'Asistencia',
+        link: '/pages/ges-asistencia/agregarasistencia',
+      },
+    ],
+  },
+  {
+    title: 'Gestionar Programa',
+    icon: 'nb-locked',
+    hidden:true,
+    data:[{
+      number:3
+    },{
+      number:4
+    },{
+      number:1
+    }],
+    children: [
+      {
+        title: 'Programa',
+        link: '/pages/ges-/agregarcurso',
+      },
+    ],
+  },
   
 
-  //
+  
   // {
   //   title: 'Extra Components',
   //   icon: 'nb-star',
@@ -346,5 +418,5 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //     },
   //   ],
   // },
-  //
+  
 ];
