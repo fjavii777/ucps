@@ -152,6 +152,23 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
+  {
+    title: 'Gestionar Administrativo',
+    icon: 'nb-compose',
+    hidden:true,
+    data:[{
+      number:1
+    },{
+      number:4
+    }],
+    children: [
+      {
+        title: 'Administrativo',
+        link: '/pages/ges-administrativo/administrativo',
+      },
+    ],
+  },
+
   
 
   

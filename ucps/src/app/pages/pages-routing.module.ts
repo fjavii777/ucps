@@ -33,6 +33,10 @@ const routes: Routes = [{
   {
     path: 'ges-docente',
     loadChildren: './ges-docente/ges-docente.module#GesDocenteModule',
+  } , 
+  {
+    path: 'ges-administrativo',
+    loadChildren: './ges-administrativo/ges-administrativo.module#GesAdministrativoModule',
   } ,    
   {
     path :'view-home',
