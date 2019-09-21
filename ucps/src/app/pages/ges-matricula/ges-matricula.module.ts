@@ -22,14 +22,16 @@ import {ProgramaService} from '../../services/ges-programa/programa.service';
 import {MatriculaCabeceraService} from '../../services/ges-matricula/matriculaCabecera.service';
 import {ModalDetCabComponent} from './matricula-v2/mat-detalle/modal-det-cab/modal-det-cab.component';
 import {MatriculaEstadoPipe} from '../../pipes/get-mat/matricula-estado.pipe';
+import {DocenteService} from '../../services/ges-docente/docente.service';
+import {MatriculaService} from '../../services/ges-matricula/matricula.service';
 
 const rutasgesusu: Routes = [{
   path: '',
-  component: MatriculaV2Component,
+  component: ListMatriculaComponent,
   children: [
     {
       path: 'matricula',
-      component: MatriculaV2Component,
+      component: ListMatriculaComponent,
     },
     {
       path: 'agregarmatricula',
@@ -78,6 +80,8 @@ const rutasgesusu: Routes = [{
     SedeService,
     AlumnoService,
     ProgramaService,
+    DocenteService,
+    MatriculaService,
   ],
   entryComponents: [
     ModalUpdateMatriculaComponent,

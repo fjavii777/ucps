@@ -1,38 +1,50 @@
-import {Component} from '@angular/core';
+import {Component,Input} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
-import {GesPensionModel} from '../../../../models/ges-pensiones/ges-pensiones.model';
-import {PensionService} from '../../../../services/ges-pensiones/ges-pensiones.service';
-import {GesPensionlListModel} from '../../../../models/ges-pensiones/ges-pensiones-list.model';
+import { AlumnoDocenteService } from '../../../../services/ges-asistencia/alumno-docente.service';
+import { AlumnoDocenteModel } from '../../../../models/ges_asistencia/alumno-docente.model';
 @Component({
     selector: 'ngx-asistencia-alumno',
     templateUrl: './asistencia-alumno.component.html',
     styleUrls: ['./asistencia-alumno.component.scss'],
   })
   export class AsistenciaAlumnoComponent {
-    idCabecera:any;
+    idCur:any;
+    idPro:any;
+    dnido:any;
+    loading = false;
+    alumnoDocentelist:AlumnoDocenteModel[]=[];
     cars:any[];
+    @Input() public myInputVariable: string;
+    
+
     val2: string = 'asistio';
-    constructor(private modalService: NgbModal,private route: ActivatedRoute) {
+    constructor(private modalService: NgbModal,private route: ActivatedRoute,
+                private alumnoDocenteService:AlumnoDocenteService ) {
                 
                 route.params.subscribe(
                     data => {
-                        this.idCabecera = data.id;                     
+                        this.idCur = data.idcur; 
+                        this.idPro = data.idpro;
+                        this.dnido = data.dni;
                     },
                 );
-                this.cars = [
-                    { fila: '1', codigo: '20090727',alumno:"ROBERT TEODORO ARCE APAZA"},
-                    { fila: '2', codigo: '2020727',alumno:"JULIO GOMEZ BOBADILLA"},
-                    { fila: '3', codigo: '20010225',alumno:"MAURICIO MALDONADO PORTILLA"},
-                    { fila: '4', codigo: '3009027',alumno:"ALEX BEJARANO"},
-                    { fila: '5', codigo: '10090727',alumno:"ANDRES CONDORI HUARCA"},
-                    { fila: '6', codigo: '40090745',alumno:"NICOLAS HERENCIA CASTRO"}
-                ];
+             
     }
     ngOnInit(): void {
-      
+        this.listarAlumnoDocente();
+        console.log(this.idCur+this.idPro+this.dnido);
+
     }
-   
+
+    listarAlumnoDocente() {
+        this.loading = true;
+        this.alumnoDocenteService.getListarAlumnoDocente(this.dnido,this.idPro,this.idCur)
+          .subscribe(res => {
+            this.alumnoDocentelist= res;
+            
+          });
+      }
  
     }
     

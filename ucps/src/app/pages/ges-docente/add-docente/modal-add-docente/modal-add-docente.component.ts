@@ -10,6 +10,7 @@ import {DocenteService} from '../../../../services/ges-docente/docente.service';
   templateUrl: './modal-add-docente.component.html',
 })
 export class ModalAddDocenteComponent {
+  formError = false;
   titulo = 'Agregar Docente';
   boton = 'Guardar';
   flagIsModificar = false;
@@ -34,25 +35,30 @@ export class ModalAddDocenteComponent {
      });
   }
   btn_clickAceptar() {
-    this.passFormToObject();
-    this.loadingGuardar = true;
-    if (this.flagIsModificar) {
-      //console.log(this.docenteToSend);
-      this.docenteservice.putModificarDocente(this.docenteToSend).subscribe(
-        resp => {
-          this.activeModal.close(true);
-        },
-        err => {
-          console.log(err);
-        });
+    this.formError = false;
+    if (this.myformdocente.valid) {
+      this.passFormToObject();
+      this.loadingGuardar = true;
+      if (this.flagIsModificar) {
+        // console.log(this.docenteToSend);
+        this.docenteservice.putModificarDocente(this.docenteToSend).subscribe(
+          resp => {
+            this.activeModal.close(true);
+          },
+          err => {
+            console.log(err);
+          });
+      } else {
+        this.docenteservice.postCrearDocente(this.docenteToSend).subscribe(
+          resp => {
+            this.activeModal.close(true);
+          },
+          err => {
+            console.log(err);
+          });
+      }
     } else {
-      this.docenteservice.postCrearDocente(this.docenteToSend).subscribe(
-        resp => {
-          this.activeModal.close(true);
-        },
-        err => {
-          console.log(err);
-        });
+      this.formError = true;
     }
   }
   passFormToObject() {

@@ -1,0 +1,61 @@
+// @import '../../../@theme/styles/themes';
+
+// @include nb-install-component() {
+//   .show-grid {
+//     .row {
+//       margin: -0.5rem;
+//     }
+
+//     div[class^=col-] {
+//       padding: 0.5rem;
+//       box-sizing: border-box;
+
+//       div {
+//         text-align: center;
+//         background-color: nb-theme(color-bg-active);
+//         padding: 0.75rem 0.25rem;
+//         border-radius: 0.25rem;
+//       }
+//     }
+//   }
+
+//   .grid-h {
+//     margin-top: 1.5rem;
+
+//     &:first-child {
+//       margin-top: 0;
+//     }
+//   }
+
+//   .table-responsive {
+//     margin-top: 1rem;
+//   }
+// }
+table {
+    width: 100%;
+ }
+ th, td {
+    width: 20%;
+    text-align: left;
+ }
+ table {
+    width: 100%;
+    border: 1px solid #000;
+ }
+ th, td {
+    width: 15%;
+    text-align: center;
+    //vertical-align: top;
+    border: 1px solid #000;
+    border-collapse: collapse;
+    padding: 0.3em;
+    caption-side: bottom;
+ }
+ caption {
+    padding: 0.3em;
+    color: #fff;
+     background: #000;
+ }
+ th {
+    background: #eee;
+ }

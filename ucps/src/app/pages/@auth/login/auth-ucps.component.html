@@ -62,6 +62,7 @@
           <button (click)="login()" class="login100-form-btn">
             Ingresar
           </button>
+          <div *ngIf="iserrorCredenciales" style="color: white">Error en las credenciales</div>
         </div>
 
         <div class="text-center p-t-90">

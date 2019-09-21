@@ -14,6 +14,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RedirectGuard} from './services/authentication/redirect.guard';
+import { SeguridadService} from './services/authentication/seguridad.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +31,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   bootstrap: [AppComponent],
   providers: [
+    SeguridadService,
+    RedirectGuard,
     { provide: APP_BASE_HREF, useValue: '/' },
   ],
 })

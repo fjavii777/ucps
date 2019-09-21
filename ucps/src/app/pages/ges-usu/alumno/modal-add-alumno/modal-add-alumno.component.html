@@ -17,7 +17,7 @@
                 formControlName="formdni"
                 type="text"
                 minlength="8"
-                maxlength="10"
+                maxlength="12"
                 class="form-control form-control-sm"
                 placeholder="Documento de Identidad">
             </div>
@@ -194,7 +194,7 @@
   </div>
   <div class="modal-footer">
     <div *ngIf="formError" class="colorTextRed">Comprobar que todos los campos sean correctos</div>
-    <button nbButton status="success" size="medium" [nbSpinner]="loadingGuardar" nbSpinnerStatus="success" nbSpinnerMessage="" (click)="btn_clickAceptar()">{{boton}}</button>
-    <button type="button" class="btn btn-danger waves-effect text-center m-b-20" (click)="activeModal.close(false)">Cancelar</button>
+    <button nbButton style="background-color: #6D0D18" status="success" size="medium" [nbSpinner]="loadingGuardar" nbSpinnerStatus="success" nbSpinnerMessage="" (click)="btn_clickAceptar()">{{boton}}</button>
+    <button style="background-color: #D9BA82" type="button" class="btn btn-danger waves-effect text-center m-b-20" (click)="activeModal.close(false)">Cancelar</button>
   </div>
 

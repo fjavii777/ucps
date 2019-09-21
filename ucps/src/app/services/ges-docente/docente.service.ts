@@ -1,22 +1,28 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {GesDocenteModel} from '../../models/ges-docente/ges-docente.model';
 import {UtilsService} from '../utils.service';
 import { throwError } from 'rxjs';
 import 'rxjs-compat/add/operator/map';
 import 'rxjs-compat/add/operator/catch';
+import {SeguridadService} from "../authentication/seguridad.service";
 
 @Injectable()
 export class DocenteService {
    rutaDocente = 'https://api-ucps-unsa.herokuapp.com/api';
   constructor(private _http: HttpClient,
+              private seguridadService: SeguridadService,
               private utilsservice: UtilsService) {
 
   }
+  headers: HttpHeaders = new HttpHeaders({
+    'Authorization': '$' + this.seguridadService.obtenerToken(),
+  });
   public getListarDocente(): Observable<GesDocenteModel[]> {
+    console.log(this.headers);
     return this._http
-      .get<any>(this.rutaDocente + `/usuarios/docente/read.php`)
+      .get<any>(this.rutaDocente + `/usuarios/docente/read.php`, {headers: this.headers})
       .map((response: any) => {
         return response.map(d => new GesDocenteModel(d));
       })

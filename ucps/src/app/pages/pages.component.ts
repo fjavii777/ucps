@@ -1,34 +1,46 @@
-import { Component } from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 
 import { MENU_ITEMS } from './pages-menu';
+import {SeguridadService} from '../services/authentication/seguridad.service';
 
 
 @Component({
   selector: 'ngx-pages',
-  styleUrls: ['pages.component.scss'], 
+  styleUrls: ['pages.component.scss'],
   template: `
-    <ngx-sample-layout>
-      <nb-menu [items]="menu"></nb-menu>
-      <router-outlet></router-outlet>
-    </ngx-sample-layout>
+      <ngx-sample-layout>
+          <nb-menu [items]="menu"></nb-menu>
+          <router-outlet></router-outlet>
+      </ngx-sample-layout>
   `,
 })
-export class PagesComponent {
-
+export class PagesComponent implements OnInit {
+  token: any;
+  tipoUser: number;
+  @HostBinding('class.is-login')
   menu = MENU_ITEMS;
-  constructor() {
-    //this.auth.mitiposUsuario()
-    this.mostrarVista(1);  
+  constructor(private seguridadService: SeguridadService) {
+    if (this.seguridadService.existeToken()) {
+      this.token =  this.seguridadService.getDecodedAccessToken();
+      this.tipoUser = Number(this.token.aud);
+      this.mostrarVista(this.tipoUser);
+    }
   }
-  mostrarVista(estado:any){
-        this.recorrerMenu(estado);
+  @HostBinding('class.is-open')
+  prueba() {
   }
-  recorrerMenu(numero:number){
-    for(var i=0;i<this.menu.length;i++){
-      for(var j=0;j<this.menu[i].data.length;j++){
-         if(this.menu[i].data[j].number == numero){
-            this.menu[i].hidden=false;
-         }
+  ngOnInit(): void {
+  }
+
+  mostrarVista(estado: any) {
+    this.recorrerMenu(estado);
+  }
+  recorrerMenu(numero: number) {
+    for (let i = 0; i < this.menu.length; i++) {
+      for (let j = 0; j < this.menu[i].data.length; j++) {
+        if (this.menu[i].data[j].number === numero) {
+          this.menu[i].hidden = false;
+        }
       }
     }
   }

@@ -12,8 +12,12 @@ import {UtilsService} from '../../services/utils.service';
 import {TableModule} from 'primeng/table';
 import {CardModule} from 'primeng/card';
 import {AsistenciaAlumnoComponent} from './add-asistencia/asistencia-alumno/asistencia-alumno.component';
-
+import {DropdownModule} from 'primeng/dropdown';
+import { ProgramaDocenteService } from '../../services/ges-asistencia/programadocente.service';
+import { CursoDocenteService } from '../../services/ges-asistencia/cursodocente.service';
+import { AlumnoDocenteService } from '../../services/ges-asistencia/alumno-docente.service';
 const rutasgesusu: Routes = [{
+
   path: '',
   component: GesAsistenciaComponent,
   children: [
@@ -23,7 +27,7 @@ const rutasgesusu: Routes = [{
     },
   ],
 },{
-    path: 'pensiondetalle/:id',
+    path: 'asistenciaalumno/:idcur/:idpro/:dni',
     component: AsistenciaAlumnoComponent,
   }
 ];
@@ -39,6 +43,7 @@ const rutasgesusu: Routes = [{
     ThemeModule,
     CommonModule,
     NbActionsModule,
+    DropdownModule,
     RouterModule.forChild(rutasgesusu),
     NbDialogModule.forChild(),
     NbWindowModule.forChild(),
@@ -53,6 +58,9 @@ const rutasgesusu: Routes = [{
   providers: [
     DocenteService,
     UtilsService,
+    ProgramaDocenteService,
+    CursoDocenteService,
+    AlumnoDocenteService,
   ],
 })
 export class GesAsistenciaModule { }

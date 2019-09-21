@@ -9,47 +9,50 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'nb-home',
     link: '/pages/view-home/',
     home: true,
-    hidden:true,
-    data:[{
-      number:1
-    },{
-      number:2
-    },{
-      number:3
-    },{
-      number:4
-    }]
+    hidden: true,
+    data: [
+      {
+        number: 1,
+      }, {
+        number: 2,
+      }, {
+        number: 3,
+      }, {
+        number: 4,
+      }],
   },
-/*  {
-    title: 'E-commerce',
-    icon: 'nb-e-commerce',
-    link: '/pages/dashboard',
-    home: true,
-  },*/
-/* {
-    title: 'IoT Dashboard',
-    icon: 'nb-home',
-    link: '/pages/iot-dashboard',
-  },*/
+  /*  {
+      title: 'E-commerce',
+      icon: 'nb-e-commerce',
+      link: '/pages/dashboard',
+      home: true,
+    },*/
+  /* {
+      title: 'IoT Dashboard',
+      icon: 'nb-home',
+      link: '/pages/iot-dashboard',
+    },*/
   {
     title: 'Sistema',
     group: true,
     hidden:true,
     data:[
       {
-      number:1
+        number:1
       },{
-      number:3
-    },{
-      number:4
-    }],
+        number:3
+      },{
+        number:2
+      },{
+        number:4
+      }],
   },
   {
     title: 'Gestionar Alumnos',
     icon: 'nb-compose',
     hidden:true,
     data:[{
-      number:1
+      number:3
     },{
       number:4
     }],
@@ -73,7 +76,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'nb-compose',
     hidden:true,
     data:[{
-      number:1
+      number:3
     },{
       number:4
     }],
@@ -89,11 +92,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'nb-star',
     hidden:true,
     data:[{
-      number:1
+      number:3
     },{
       number:4
-    },{
-      number:2
     }],
     children: [
       {
@@ -103,13 +104,28 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
+    title: 'Gestionar Horario',
+    icon: 'nb-star',
+    hidden:true,
+    data:[
+    {
+      number:1
+    }],
+    children: [
+      {
+        title: 'Horario',
+        link: '/pages/ges-horario/agregarhorario',
+      },
+    ],
+  },
+  {
     title: 'Gestionar Pensiones',
     icon: 'nb-compose',
     hidden:true,
     data:[{
-      number:3
-    },{
       number:4
+    },{
+      number:3
     }],
     children: [
       {
@@ -123,10 +139,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'nb-compose',
     hidden:true,
     data:[{
-      number:1
-    },{
-      number:4
-    }],
+      number:2
+    }
+  ],
     children: [
       {
         title: 'Asistencia',
@@ -142,9 +157,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
       number:3
     },{
       number:4
-    },{
-      number:1
-    }],
+    }
+  ],
     children: [
       {
         title: 'Programa',
@@ -157,10 +171,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'nb-compose',
     hidden:true,
     data:[{
-      number:1
-    },{
       number:4
-    }],
+    }
+  ],
     children: [
       {
         title: 'Administrativo',
@@ -168,13 +181,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
-
-  
-
-  
   // {
   //   title: 'Extra Components',
   //   icon: 'nb-star',
+  //   data:[{
+  //     number:1
+  //   },{
+  //     number:4
+  //   }],
   //   children: [
   //     {
   //       title: 'Calendar',
@@ -233,6 +247,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
   // {
   //   title: 'Gestionar Pensiones',
   //   icon: 'nb-compose',
+  //   data:[{
+  //     number:1
+  //   },{
+  //     number:4
+  //   }],
   //   children: [
   //     {
   //       title: 'Form Inputs',
@@ -243,6 +262,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
   // {
   //   title: 'Gestionar Asistencias',
   //   icon: 'nb-compose',
+  //   data:[{
+  //     number:1
+  //   },{
+  //     number:4
+  //   }],
   //   children: [
   //     {
   //       title: 'Form Inputs',
@@ -253,6 +277,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
   // {
   //   title: 'Forms',
   //   icon: 'nb-compose',
+  //   data:[{
+  //     number:1
+  //   },{
+  //     number:4
+  //   }],
   //   children: [
   //     {
   //       title: 'Form Inputs',
@@ -276,6 +305,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //   title: 'UI Features',
   //   icon: 'nb-keypad',
   //   link: '/pages/ui-features',
+  //   data:[{
+  //     number:1
+  //   },{
+  //     number:4
+  //   }],
   //   children: [
   //     {
   //       title: 'Grid',
@@ -298,6 +332,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
   // {
   //   title: 'Modal & Overlays',
   //   icon: 'nb-layout-default',
+  //   data:[{
+  //     number:1
+  //   },{
+  //     number:4
+  //   }],
   //   children: [
   //     {
   //       title: 'Dialog',
@@ -324,6 +363,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
   // {
   //   title: 'Bootstrap',
   //   icon: 'nb-gear',
+  //   data:[{
+  //     number:1
+  //   },{
+  //     number:4
+  //   }],
   //   children: [
   //     {
   //       title: 'Form Inputs',
@@ -342,6 +386,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
   // {
   //   title: 'Maps',
   //   icon: 'nb-location',
+  //   data:[{
+  //     number:1
+  //   },{
+  //     number:4
+  //   }],
   //   children: [
   //     {
   //       title: 'Google Maps',
@@ -364,6 +413,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
   // {
   //   title: 'Charts',
   //   icon: 'nb-bar-chart',
+  //   data:[{
+  //     number:1
+  //   },{
+  //     number:4
+  //   }],
   //   children: [
   //     {
   //       title: 'Echarts',
@@ -382,6 +436,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
   // {
   //   title: 'Editors',
   //   icon: 'nb-title',
+  //   data:[{
+  //     number:1
+  //   },{
+  //     number:4
+  //   }],
   //   children: [
   //     {
   //       title: 'TinyMCE',
@@ -396,6 +455,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
   // {
   //   title: 'Tables',
   //   icon: 'nb-tables',
+  //   data:[{
+  //     number:1
+  //   },{
+  //     number:4
+  //   }],
   //   children: [
   //     {
   //       title: 'Smart Table',
@@ -406,6 +470,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
   // {
   //   title: 'Miscellaneous',
   //   icon: 'nb-shuffle',
+  //   data:[{
+  //     number:1
+  //   },{
+  //     number:4
+  //   }],
   //   children: [
   //     {
   //       title: '404',
@@ -416,6 +485,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
   // {
   //   title: 'Auth',
   //   icon: 'nb-locked',
+  //
+  //   data:[{
+  //     number:1
+  //   },{
+  //     number:4
+  //   }],
   //   children: [
   //     {
   //       title: 'Login',
@@ -435,5 +510,5 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //     },
   //   ],
   // },
-  
+
 ];

@@ -1,5 +1,6 @@
 import {ExtraOptions, RouterModule, Routes} from '@angular/router';
 import { NgModule } from '@angular/core';
+import {RedirectGuard} from './services/authentication/redirect.guard';
 /*import {
   // NbAuthComponent,
   NbLoginComponent,
@@ -11,7 +12,12 @@ import { NgModule } from '@angular/core';
 } from '@nebular/auth';*/
 
 const routes: Routes = [
-  { path: 'pages', loadChildren: 'app/pages/pages.module#PagesModule' },
+  {
+    path: 'pages',
+    loadChildren: 'app/pages/pages.module#PagesModule',
+    canActivate: [RedirectGuard],
+    canActivateChild: [RedirectGuard],
+  },
   { path: '', loadChildren: 'app/pages/@auth/auth-ucps.module#AuthUcpsModule' },
  /*   component: AuthUcpsComponent,
     children: [

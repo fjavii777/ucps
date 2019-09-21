@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthenticationLoginModel} from '../../../models/authentication/authentication.login.model';
 import {SeguridadService} from '../../../services/authentication/seguridad.service';
@@ -22,50 +22,45 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 
 export class AuthUcpsComponent {
+  iserrorCredenciales = false;
   public myformlogin: FormGroup;
   public usuariologin: AuthenticationLoginModel = new AuthenticationLoginModel();
-  tipo:number;
   constructor(private routeService: Router,
               private fb: FormBuilder,
               private seguridadService: SeguridadService) {
     this.myformlogin = this.fb.group({
       logusunom: [null, Validators.required],
       logusucon: [null, Validators.required],
-      logusutipo: ['administrativo', Validators.required],
     });
   }
+  @HostListener('login')
   login() {
+    this.iserrorCredenciales = false;
     this.pasarformToObjet();
-    if(this.usuariologin.logusunom=="admin"){
-      //this.tipo=1;
-      this.mitiposUsuario(1);
-      this.routeService.navigate(['/pages']);
-    }
-
-    
-    // this.seguridadService.ObtenerCredencial(this.usuariologin)
-    //   .subscribe(
-    //     rest => {
-    //       if (rest.logusunom) {
-    //         this.routeService.navigate(['/pages']);
-    //       } else {
-    //         console.log('Error en las credenciales');
-    //       }
-    //     },
-    //     error => {
-    //       console.log('Error en el servicio' + error.message);
-    //     },
-    //   );
-  }
-  mitiposUsuario(tipo:number){
-    return tipo;
+    this.seguridadService.ObtenerCredencial(this.usuariologin)
+      .subscribe(
+        rest => {
+          if (rest.logusu) {
+            this.guardarToken(rest);
+            this.iserrorCredenciales = false;
+            this.routeService.navigate(['/pages']);
+          } else {
+            console.log('Error en las credenciales');
+          }
+        },
+        error => {
+          this.iserrorCredenciales = true;
+          console.log('Error en el servicio' + error.message);
+        },
+      );
   }
   pasarformToObjet() {
-    this.usuariologin.logusunom = this.myformlogin.get('logusunom').value;
-    //console.log("Nombre",this.usuariologin.logusunom);
-    this.usuariologin.logusucon = this.myformlogin.get('logusucon').value;
-    //console.log("Contraseña",this.usuariologin.logusucon);
-    this.usuariologin.logusutipo = this.myformlogin.get('logusutipo').value;
+    this.usuariologin.logusu = this.myformlogin.get('logusunom').value;
+    this.usuariologin.logpass = this.myformlogin.get('logusucon').value;
+  }
+  guardarToken(token) {
+    localStorage.setItem('User', token.logusu);
+    localStorage.setItem('AccessToken', token.token);
   }
 }
 

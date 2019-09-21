@@ -10,6 +10,7 @@ import {AdministrativoService} from '../../../../services/ges-administrativo/adm
   templateUrl: './modal-add-administrativo.component.html',
 })
 export class ModalAddAdministrativoComponent {
+  formError = false;
   titulo = 'Agregar Administrativo';
   boton = 'Guardar';
   flagIsModificar = false;
@@ -34,25 +35,29 @@ export class ModalAddAdministrativoComponent {
      });
   }
   btn_clickAceptar() {
-    this.passFormToObject();
-    this.loadingGuardar = true;
-    if (this.flagIsModificar) {
-      //console.log(this.administrativoToSend);
-      this.administrativoeservice.putModificarAdministrativo(this.administrativoToSend).subscribe(
-        resp => {
-          this.activeModal.close(true);
-        },
-        err => {
-          console.log(err);
-        });
+    this.formError = false;
+    if (this.myformadministrativo.valid) {
+      this.passFormToObject();
+      this.loadingGuardar = true;
+      if (this.flagIsModificar) {
+        this.administrativoeservice.putModificarAdministrativo(this.administrativoToSend).subscribe(
+          resp => {
+            this.activeModal.close(true);
+          },
+          err => {
+            console.log(err);
+          });
+      } else {
+        this.administrativoeservice.postCrearAdministrativo(this.administrativoToSend).subscribe(
+          resp => {
+            this.activeModal.close(true);
+          },
+          err => {
+            console.log(err);
+          });
+      }
     } else {
-      this.administrativoeservice.postCrearAdministrativo(this.administrativoToSend).subscribe(
-        resp => {
-          this.activeModal.close(true);
-        },
-        err => {
-          console.log(err);
-        });
+      this.formError = true;
     }
   }
   passFormToObject() {

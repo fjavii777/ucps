@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-
-import { NbMenuService, NbSidebarService } from '@nebular/theme';
+import {NbMenuService, NbSidebarService} from '@nebular/theme';
 import { UserData } from '../../../@core/data/users';
 import { AnalyticsService } from '../../../@core/utils';
 import { LayoutService } from '../../../@core/utils';
+import {filter} from 'rxjs/operators';
+import {SeguridadService} from '../../../services/authentication/seguridad.service';
 
 @Component({
   selector: 'ngx-header',
@@ -16,11 +17,13 @@ export class HeaderComponent implements OnInit {
 
   user: any;
 
-  userMenu = [{ title: 'Profile' }, { title: 'Cerrar sesion' }];
+  userMenu = [{ title: 'Profile'}, { title: 'Cerrar sesion'}];
+  tag = 'my-context-menu';
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
               private userService: UserData,
+              private seguridadService: SeguridadService,
               private analyticsService: AnalyticsService,
               private layoutService: LayoutService) {
   }
@@ -28,8 +31,15 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.userService.getUsers()
       .subscribe((users: any) => this.user = users.nick);
+    this.menuService.onItemClick()
+      .pipe(filter(({ tag }) => tag === this.tag))
+      .subscribe(bag => {
+        if (bag.item.title === 'Cerrar sesion') {
+          console.log('cerrando sesion');
+          this.seguridadService.cerrarSesion();
+        }
+      });
   }
-
   toggleSidebar(): boolean {
     this.sidebarService.toggle(true, 'menu-sidebar');
     this.layoutService.changeLayoutSize();

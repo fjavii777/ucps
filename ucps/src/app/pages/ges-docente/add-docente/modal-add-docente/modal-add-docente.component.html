@@ -4,7 +4,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      
+
       <div class="modal-body">
         <form [formGroup]="myformdocente">
           <div class="form-row">
@@ -13,6 +13,7 @@
                 <label class="col-sm-5 col-form-label p-r-0">DNI Docente</label>
                 <div class="col-sm-7">
                   <input
+                    required
                     formControlName="formdni"
                     type="text"
                     maxlength="30"
@@ -21,12 +22,13 @@
                 </div>
               </div>
             </div>
-      
+
             <div class="form-group col-md-6">
               <div class="row">
                 <label class="col-sm-5 col-form-label p-r-0">Nombres Docente</label>
                 <div class="col-sm-7">
                   <input
+                    required
                     formControlName="formnombres"
                     type="text"
                     maxlength="20"
@@ -36,13 +38,14 @@
               </div>
             </div>
           </div>
-      
+
           <div class="form-row">
             <div class="form-group col-md-6">
               <div class="row">
                 <label class="col-sm-5 col-form-label p-r-0">Apellido Paterno</label>
                 <div class="col-sm-7">
                   <input
+                    required
                     formControlName="formapepat"
                     type="text"
                     maxlength="20"
@@ -51,12 +54,13 @@
                 </div>
               </div>
             </div>
-      
+
             <div class="form-group col-md-6">
               <div class="row">
                 <label class="col-sm-5 col-form-label p-r-0">Apellido Materno</label>
                 <div class="col-sm-7">
                   <input
+                    required
                     formControlName="formapemat"
                     type="text"
                     maxlength="20"
@@ -66,7 +70,7 @@
               </div>
             </div>
           </div>
-    
+
           <div class="form-row">
             <!-- <div class="form-group col-md-6">
               <div class="row">
@@ -81,7 +85,7 @@
                 </div>
               </div>
             </div> -->
-    
+
             <div class="form-group col-md-6">
               <div class="row">
                 <label class="col-sm-5 col-form-label p-r-0">Correo Docente</label>
@@ -96,13 +100,14 @@
               </div>
             </div>
           </div>
-    
+
           <div class="form-row">
             <div class="form-group col-md-6">
               <div class="row">
                 <label class="col-sm-5 col-form-label p-r-0">Fecha Nacimiento</label>
                 <div class="col-sm-7">
                   <input
+                    required
                     formControlName="formfecnac"
                     type="date"
                     maxlength="50"
@@ -110,12 +115,13 @@
                 </div>
               </div>
             </div>
-    
+
             <div class="form-group col-md-6">
               <div class="row">
                 <label class="col-sm-5 col-form-label p-r-0">Telefono Docente</label>
                 <div class="col-sm-7">
                   <input
+                    required
                     formControlName="formtel"
                     type="text"
                     maxlength="100"
@@ -125,13 +131,14 @@
               </div>
             </div>
           </div>
-    
+
           <div class="form-row">
             <div class="form-group col-md-6">
               <div class="row">
                 <label class="col-sm-5 col-form-label p-r-0">Direccion Docente</label>
                 <div class="col-sm-7">
                   <input
+                    required
                     formControlName="formdir"
                     type="text"
                     maxlength="50"
@@ -140,12 +147,13 @@
                 </div>
               </div>
             </div>
-    
+
             <div class="form-group col-md-6">
               <div class="row">
                 <label class="col-sm-5 col-form-label p-r-0">Nombre Usuario</label>
                 <div class="col-sm-7">
                   <input
+                    required
                     formControlName="formnomusu"
                     type="text"
                     maxlength="100"
@@ -155,13 +163,14 @@
               </div>
             </div>
           </div>
-    
+
           <div class="form-row">
             <div class="form-group col-md-6">
               <div class="row">
                 <label class="col-sm-5 col-form-label p-r-0">Contrasena Usuario</label>
                 <div class="col-sm-7">
                   <input
+                    required
                     formControlName="formcont"
                     type="password"
                     maxlength="50"
@@ -169,13 +178,13 @@
                 </div>
               </div>
             </div>
-    
+
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button nbButton status="success" size="medium" [nbSpinner]="loadingGuardar" nbSpinnerStatus="success" nbSpinnerMessage="" (click)="btn_clickAceptar()">{{boton}}</button>
-        <button type="button" class="btn btn-danger waves-effect text-center m-b-20" (click)="activeModal.close(false)">Cancelar</button>
+        <div *ngIf="formError" class="colorTextRed">Comprobar que todos los campos sean correctos</div>
+        <button style="background-color: #6D0D18" nbButton status="success" size="medium" [nbSpinner]="loadingGuardar" nbSpinnerStatus="success" nbSpinnerMessage="" (click)="btn_clickAceptar()">{{boton}}</button>
+        <button style="background-color: #D9BA82" type="button" class="btn btn-danger waves-effect text-center m-b-20" (click)="activeModal.close(false)">Cancelar</button>
       </div>
-      
-    
+

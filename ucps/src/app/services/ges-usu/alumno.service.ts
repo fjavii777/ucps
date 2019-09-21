@@ -1,23 +1,28 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {DeleteAlumnoModel, GesUsuAlumnoModel} from '../../models/ges-usu/ges-usu-alumno.model';
 import {UtilsService} from '../utils.service';
 import { throwError } from 'rxjs';
 import 'rxjs-compat/add/operator/map';
 import 'rxjs-compat/add/operator/catch';
-import {error} from "util";
+import {SeguridadService} from '../authentication/seguridad.service';
 
 @Injectable()
 export class AlumnoService {
    rutaAlumno = 'https://api-ucps-unsa.herokuapp.com/api';
   constructor(private _http: HttpClient,
+              private seguridadService: SeguridadService,
               private utilsservice: UtilsService) {
 
   }
+  headers: HttpHeaders = new HttpHeaders({
+    'Authorization': '$' + this.seguridadService.obtenerToken(),
+  });
   public getListarAlumnos(): Observable<GesUsuAlumnoModel[]> {
+    console.log(this.headers);
     return this._http
-      .get<any>(this.rutaAlumno + `/usuarios/alumno/read.php`)
+      .get<any>(this.rutaAlumno + `/usuarios/alumno/read.php`, {headers: this.headers})
       .map((response: any) => {
         return response.map(d => new GesUsuAlumnoModel(d));
       })

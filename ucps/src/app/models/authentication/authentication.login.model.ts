@@ -1,5 +1,5 @@
 export class AuthenticationLoginModel {
-  logusunom: string;
-  logusucon: string;
-  logusutipo: string;
+  logusu: string;
+  logpass: string;
+  // logusutipo: string;
 }

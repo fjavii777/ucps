@@ -23,6 +23,10 @@ const routes: Routes = [{
     loadChildren: './ges-pension/ges-pension.module#GesPensionModule',
   } ,
   {
+    path: 'ges-horario',
+    loadChildren: './ges-horario/ges-horario.module#GesHorarioModule',
+  } ,
+  {
     path: 'ges-asistencia',
     loadChildren: './ges-asistencia/ges-asistencia.module#GesAsistenciaModule',
   } ,

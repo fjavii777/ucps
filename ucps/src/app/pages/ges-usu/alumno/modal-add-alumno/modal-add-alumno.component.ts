@@ -21,14 +21,27 @@ export class ModalAddAlumnoComponent {
               public activeModal: NgbActiveModal,
               private alumnoservice: AlumnoService) {
      this.myformalumnos = this.fb.group({
-       formdni: [null, Validators.required],
-       formnombres: [null, Validators.required],
-       formapepat: [null, Validators.required],
-       formapemat: [null, Validators.required],
-       formcui: [null],
-       formcorreo: [null, Validators.required],
+       formdni: [null, Validators.compose(
+         [Validators.pattern('^(0|[1-9][0-9]*)$'),
+           Validators.required])],
+       formnombres: [null, Validators.compose(
+         [Validators.pattern('[A-Za-z]{1,20}'),
+           Validators.required])],
+       formapepat: [null, Validators.compose(
+         [Validators.pattern('[A-Za-z]{1,20}'),
+           Validators.required])],
+       formapemat: [null, Validators.compose(
+         [Validators.pattern('[A-Za-z]{1,20}'),
+           Validators.required])],
+       formcui: [null, Validators.compose(
+         [Validators.pattern('^(0|[1-9][0-9]*)$')])],
+       formcorreo: [null, Validators.compose(
+         [Validators.pattern('^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$'),
+           Validators.required])],
        formfecnac: [null, Validators.required],
-       formtel: [null, Validators.required],
+       formtel: [null, Validators.compose(
+         [Validators.pattern('^(0|[1-9][0-9]*)$'),
+           Validators.required])],
        formdir: [null, Validators.required],
        formnomusu: [null, Validators.required],
        formcont: [null, Validators.required],

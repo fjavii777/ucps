@@ -3,7 +3,7 @@
           <span>Docente</span>
         </nb-card-header>
         <nb-card-body>
-          <button nbButton class="mb-3" (click)="btnAddDocente()">Agregar Docente</button>
+          <button style="background-color: #6D0D18" nbButton class="mb-3" (click)="btnAddDocente()">Agregar Docente</button>
           <table class="table table-bordered table-hover-cells">
             <thead>
             <tr>
@@ -70,7 +70,7 @@
             </tr>
             </thead>
             <tbody>
-    
+
             <tr *ngFor="let m of listDocente; let id = index">
               <td>
                 <div  class="d-flex flex-column">
@@ -146,7 +146,7 @@
                 <div  class="d-flex flex-column">
                   <div class="d-flex justify-content-center" >
                     <i class="ion-trash-a mr-4" style="font-size:23px;" placement="top" ngbTooltip="Eliminar Docente"></i>
-    
+
                     <i (click)="editarDocente(m.docdni)" class="ion-edit" style="font-size:23px;" placement="top" ngbTooltip="Editar Docente"></i>
                   </div>
                 </div>
@@ -159,9 +159,8 @@
                 </div>
               </td>-->
             </tr>
-    
+
             </tbody>
           </table>
         </nb-card-body>
       </nb-card>
-    
