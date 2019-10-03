@@ -16,24 +16,15 @@ import { AsistenciaAlumnoComponent } from './asistencia-alumno/asistencia-alumno
   templateUrl: './add-asistencia.component.html',
 })
 export class AddAsistenciaComponent implements OnInit {
- 
   cars:any[];
+  cont:number=0;
   loading = false;
   selectedPrograma:any;
   listaProgramaDocente: ProgramaDocenteModel []=[];
   listaCursoDocente: CursoDocenteModel []=[];
   
- 
-
- 
-  
-
-  
-  
-    
-
   constructor(private router: Router,private programadocenteservice:ProgramaDocenteService, private cursodocenteservice:CursoDocenteService)  {
-  
+    this.cont=1;
     this.cars = [
       { fila: '1', dia: 'Lunes',ciclo:"II",seccion:'A',curso:'GASTRONOMIA-EDUCACION',horainicial:'07:15',horafinal:'08:45'},
       { fila: '2', dia: 'Martes',ciclo:"I",seccion:'A',curso:'EDUCACION',horainicial:'07:15',horafinal:'08:45'},
@@ -52,7 +43,7 @@ export class AddAsistenciaComponent implements OnInit {
   }
   listarProgramaDocente() {
     this.loading = true;
-    this.programadocenteservice.getListarProgramaDocente('36551420')
+    this.programadocenteservice.getListarProgramaDocente('65881477')
       .subscribe(res => {
         this.listaProgramaDocente = res;
       });
@@ -63,16 +54,15 @@ export class AddAsistenciaComponent implements OnInit {
   }
   listarCursosDocente(codPro:any) {
     this.loading = true;
-    this.cursodocenteservice.getListarCursoDocente('36551420',codPro)
+    this.cursodocenteservice.getListarCursoDocente('65881477',codPro)
       .subscribe(res => {
         this.listaCursoDocente = res;
-        console.log("Curso docentes ",this.listaCursoDocente);
       });
   }
  
   abrirDetallesAsistencia(idcur:number) {
         
-        this.router.navigate(['/pages/ges-asistencia/asistenciaalumno/'+ idcur+'/'+this.selectedPrograma.proid+"/"+"36551420"]);
+        this.router.navigate(['/pages/ges-asistencia/asistenciaalumno/'+ idcur+'/'+this.selectedPrograma.proid+"/"+"65881477"]);
   }
   
   

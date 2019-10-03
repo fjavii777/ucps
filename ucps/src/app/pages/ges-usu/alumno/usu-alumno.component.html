@@ -71,85 +71,64 @@
         </thead>
         <tbody>
 
-        <tr *ngFor="let m of listAlumnos; let id = index">
+        <tr *ngFor="let m of listAlumnos; let indx = index">
           <td>
             <div  class="d-flex flex-column">
               <div class="d-flex justify-content-center" >
-                <p>{{id + 1}}</p>
+                <p>{{indx + 1}}</p>
               </div>
             </div>
           </td>
           <td>
             <div  class="d-flex flex-column">
               <div class="d-flex justify-content-center" >
-                <p>{{m.AlDni}}</p>
+                <p>{{m.aludni}}</p>
               </div>
             </div>
           </td>
           <td>
             <div  class="d-flex flex-column">
               <div class="d-flex justify-content-center" >
-                <p>{{m.AlNom}} {{m.AlApePat}} {{m.AlApeMat}}</p>
+                <p>{{m.alunom}} {{m.aluapepat}} {{m.aluapemat}}</p>
               </div>
             </div>
           </td>
-<!--          <td>-->
-<!--            <div  class="d-flex flex-column">-->
-<!--              <div class="d-flex justify-content-center" >-->
-<!--                <p>{{m.AlApePat}} {{m.AlApeMat}}</p>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </td>-->
           <td>
             <div  class="d-flex flex-column">
               <div class="d-flex justify-content-center" >
-                <p>{{m.AlCui}}</p>
+                <p>{{m.alucui}}</p>
               </div>
             </div>
           </td>
-<!--          <td>-->
-<!--            <div  class="d-flex flex-column">-->
-<!--              <div class="d-flex justify-content-center" >-->
-<!--                <p>{{m.AlNomUsu}}</p>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </td>-->
           <td>
             <div  class="d-flex flex-column">
               <div class="d-flex justify-content-center" >
                 <p>
-                  {{m.AlDir}}<br>
+                  {{m.aludir}}<br>
                   <strong>Tel: </strong>
-                  {{m.AlTel}}
+                  {{m.alutel}}
                 </p>
               </div>
             </div>
           </td>
-<!--          <td>-->
-<!--            <div  class="d-flex flex-column">-->
-<!--              <div class="d-flex justify-content-center" >-->
-<!--                <p>{{m.AlDir}}</p>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </td>-->
           <td>
             <div  class="d-flex flex-column">
               <div class="d-flex justify-content-center" >
-                <p>{{m.AlCorEle}}</p>
+                <p>{{m.alucorele}}</p>
               </div>
             </div>
           </td>
           <td>
             <div  class="d-flex flex-column">
               <div class="d-flex justify-content-center" >
-                <p>{{m.AlFecNac}}</p>
+                <p>{{m.alufecnac}}</p>
               </div>
             </div>
           </td>
           <td>
             <div  class="d-flex flex-column">
               <div class="d-flex justify-content-center" >
-                <p>{{m.AlEstReg|alumnoestadoregPipe}}</p>
+                <p>{{m.aluestreg|alumnoestadoregPipe}}</p>
               </div>
             </div>
           </td>
@@ -158,7 +137,7 @@
               <div class="d-flex justify-content-center" >
                 <i (click)="cambiarEstado(m)" class="ion-trash-a mr-4" style="font-size:23px;" placement="top" ngbTooltip="Eliminar Alumno"></i>
 
-                <i (click)="editarAlumno(m.AlDni)" class="ion-edit" style="font-size:23px;" placement="top" ngbTooltip="Editar Alumno"></i>
+                <i (click)="editarAlumno(m.aludni)" class="ion-edit" style="font-size:23px;" placement="top" ngbTooltip="Editar Alumno"></i>
               </div>
             </div>
           </td>

@@ -1,68 +1,101 @@
 <nb-card size="medium" [nbSpinner]="loading" nbSpinnerSize="xxlarge">
-        <nb-card-header>
-          <span>Programa</span>
-        </nb-card-header>
-        <!-- <nb-card-body>
-          <button nbButton class="mb-3" (click)="btnAddAlumno()">agregar Programa</button>
-          <table class="table table-bordered table-hover-cells">
-            <thead>
-            <tr>
-              <th>
-                <div class="table-contain">
-                  <h6 class="d-flex justify-content-center"><strong>Codigo del Curso</strong></h6>
-                </div>
-              </th>
-              <th style="width: 10%">
-                <div class="table-contain">
-                  <h6 class="d-flex justify-content-center"><strong>Descripcion del Curso</strong></h6>
-                </div>
-              </th>
-            </tr>
-            </thead>
-            <tbody>
-    
-            <tr *ngFor="let m of listAlumnos; let id = index">
-              <td>
-                <div  class="d-flex flex-column">
-                  <div class="d-flex justify-content-center" >
-                    <p>{{curcod}}</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div  class="d-flex flex-column">
-                  <div class="d-flex justify-content-center" >
-                    <p>{{m.curdes}}</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                    <div  class="d-flex flex-column">
-                      <div class="d-flex justify-content-center" >
-                        <p>{{m.curestreg}}</p>
-                      </div>
-                    </div>
-                  </td>
-              <td>
-                <div  class="d-flex flex-column">
-                  <div class="d-flex justify-content-center" >
-                    <i class="ion-trash-a mr-4" style="font-size:23px;" placement="top" ngbTooltip="Eliminar Alumno"></i>
-    
-                    <i (click)="editarAlumno(m.curid)" class="ion-edit" style="font-size:23px;" placement="top" ngbTooltip="Editar Programa"></i>
-                  </div>
-                </div>
-              </td>
-            <td class="text-muted">
-                <div  class="d-flex flex-column">
-                  <div class="d-flex justify-content-center" >
-                    <p><strong>{{m.EstadoActivo | estadotipomatriculaPipe}}</strong></p>
-                  </div>
-                </div>
-              </td>
-            </tr>
-    
-            </tbody>
-          </table>
-        </nb-card-body> -->
-      </nb-card>
-    
+  <nb-card-header>
+    <span>Cursos</span>
+  </nb-card-header>
+  <nb-card-body>
+    <button style="background-color: #6D0D18" nbButton class="mb-3" (click)="btnAddAdministrativo()">Agregar Curso</button>
+    <table class="table table-bordered table-hover-cells">
+      <thead>
+      <tr>
+        <th style="width: 8%">
+          <div class="table-contain">
+            <h6 class="d-flex justify-content-center"><strong>Nro</strong></h6>
+          </div>
+        </th>
+        <th style="width: 15%">
+          <div class="table-contain">
+            <h6 class="d-flex justify-content-center"><strong>Tipo de Curso</strong></h6>
+          </div>
+        </th>
+        <th style="width: 15%">
+          <div class="table-contain">
+            <h6 class="d-flex justify-content-center"><strong>Codigo</strong></h6>
+          </div>
+        </th>
+        <th style="width: 20%">
+          <div class="table-contain">
+            <h6 class="d-flex justify-content-center"><strong>Nombre</strong></h6>
+          </div>
+        </th>
+        <th style="width: 12%">
+          <div class="table-contain">
+            <h6 class="d-flex justify-content-center"><strong>Estado</strong></h6>
+          </div>
+        </th>
+        <th style="width: 12%">
+          <div class="table-contain">
+            <h6 class="d-flex justify-content-center"><strong>Acciones</strong></h6>
+          </div>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let m of listAdtvo; let id = index">
+        <td>
+          <div  class="d-flex flex-column">
+            <div class="d-flex justify-content-center" >
+              <p>{{id + 1}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div  class="d-flex flex-column">
+            <div class="d-flex justify-content-center" >
+              <p>{{m.tipcurid}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div  class="d-flex flex-column">
+            <div class="d-flex justify-content-center" >
+              <p>{{m.curcod}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div  class="d-flex flex-column">
+            <div class="d-flex justify-content-center" >
+              <p>{{m.curnom}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div  class="d-flex flex-column">
+            <div class="d-flex justify-content-center" >
+              <p>{{m.curestreg}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div  class="d-flex flex-column">
+            <div class="d-flex justify-content-center" >
+              <i class="ion-trash-a mr-4" style="font-size:23px;" placement="top" ngbTooltip="Eliminar Curso"></i>
+
+              <i (click)="editarAdministrativo(m.curid)" class="ion-edit" style="font-size:23px;" placement="top" ngbTooltip="Editar Curso"></i>
+            </div>
+          </div>
+        </td>
+        <!--     <td class="text-muted">
+               <div  class="d-flex flex-column">
+                 <div class="d-flex justify-content-center" >
+                   <p><strong>{{m.EstadoActivo | estadotipomatriculaPipe}}</strong></p>
+                 </div>
+               </div>
+             </td>-->
+      </tr>
+
+      </tbody>
+    </table>
+  </nb-card-body>
+</nb-card>

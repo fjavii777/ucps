@@ -6,12 +6,17 @@ div {
     width:100%;
     height:50px;
 }
+.letra{
+    font-family: monospace;
+    font-size: 20px;
+}
+
 .contenidointer {
     height:40px;
     width:20%;
     float:left;
-    margin: 5px;
-    background: #D9BA82;
+    margin: 3px;
+    background: #888181;
     text-align: center;
     padding-top: 2%;
     font-family:monospace;
@@ -25,4 +30,6 @@ div {
     margin: 5px;
     padding-top: 2%;
     font-family:monospace;
+    font-family: monospace;
+    font-size: 20px;
 }

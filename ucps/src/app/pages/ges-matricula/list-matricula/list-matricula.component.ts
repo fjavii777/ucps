@@ -1,8 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
-import {GesDocenteModel} from '../../../models/ges-docente/ges-docente.model';
-import {DocenteService} from '../../../services/ges-docente/docente.service';
-import {ModalAddDocenteComponent} from '../../ges-docente/add-docente/modal-add-docente/modal-add-docente.component';
 import {ModalUpdateMatriculaComponent} from './modal-update-matricula/modal-update-matricula.component';
 import {MatriculaService} from '../../../services/ges-matricula/matricula.service';
 
@@ -17,8 +14,7 @@ export class ListMatriculaComponent implements OnInit  {
   modalref: NgbModalRef;
 
   constructor(private modalService: NgbModal,
-              private matriculaService: MatriculaService,
-              private docenteservice: DocenteService) {
+              private matriculaService: MatriculaService) {
   }
   ngOnInit(): void {
     this.listarMatriculas();
@@ -28,6 +24,8 @@ export class ListMatriculaComponent implements OnInit  {
     this.matriculaService.getListarAllMatriculas()
       .subscribe(res => {
         this.listMatriculas = res;
+        this.loading = false;
+      }, error => {
         this.loading = false;
       });
   }
@@ -40,13 +38,13 @@ export class ListMatriculaComponent implements OnInit  {
       }
     }).catch((res) => {});
   }
-  editarDocente(dni: string) {
-    this.docenteservice.postBuscarDocentexId(dni)
+  editarMatricula(matid: string) {
+    this.matriculaService.getListarMatriculaByID(matid)
       .subscribe(res => {
         console.log('mi objeto es :', res);
-        if (res.docdni) {
-          this.modalref = this.modalService.open(ModalAddDocenteComponent, {size: 'lg'});
-          (<ModalAddDocenteComponent>(this.modalref.componentInstance)).iniciarFormulario(res);
+        if (res) {
+          this.modalref = this.modalService.open(ModalUpdateMatriculaComponent, {size: 'lg'});
+          (<ModalUpdateMatriculaComponent>(this.modalref.componentInstance)).iniciarFormulario(res);
           this.modalref.result.then(result => {
             if (result) {
               this.listarMatriculas();
@@ -54,7 +52,7 @@ export class ListMatriculaComponent implements OnInit  {
             }
           }).catch((resp) => {});
         } else {
-          console.log('No existe alumno');
+          console.log('No existe matricula');
         }
       });
   }

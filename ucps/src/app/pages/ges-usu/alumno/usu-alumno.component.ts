@@ -40,9 +40,9 @@ export class UsuAlumnoComponent implements OnInit {
   editarAlumno(dni: string) {
     this.alumnoservice.postBuscarAlumnoxId(dni)
       .subscribe(res => {
-        if (res[0].AlDni) {
+        if (res.aludni) {
           this.modalref = this.modalService.open(ModalAddAlumnoComponent, {size: 'lg'});
-          (<ModalAddAlumnoComponent>(this.modalref.componentInstance)).iniciarFormulario(res[0]);
+          (<ModalAddAlumnoComponent>(this.modalref.componentInstance)).iniciarFormulario(res);
           this.modalref.result.then(result => {
             if (result) {
               this.listarAlumnos();
@@ -56,15 +56,15 @@ export class UsuAlumnoComponent implements OnInit {
   }
   cambiarEstado(c: GesUsuAlumnoModel) {
     const deleteAlumno = new DeleteAlumnoModel();
-    deleteAlumno.aldni = c.AlDni;
-    if (c.AlEstReg === 'A') {
+    deleteAlumno.aldni = c.aludni;
+    if (c.aluestreg === 'A') {
       deleteAlumno.alestreg = '*';
     } else {
       deleteAlumno.alestreg = 'A';
     }
     this.alumnoservice.deleteAlumno(deleteAlumno)
       .subscribe(res => {
-        c.AlEstReg = res.alestreg;
+        c.aluestreg = res.alestreg;
       });
   }
 }

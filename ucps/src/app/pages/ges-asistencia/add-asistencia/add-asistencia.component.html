@@ -25,9 +25,8 @@
       <p-table [value]="listaCursoDocente">
         <ng-template pTemplate="header">
             <tr>
-                <th>Fila</th>
-                <th>Dia</th>
                 <th>Curso</th>
+                <th>Dia</th>
                 <th>Hora Inicial</th>
                 <th>Hora Final</th>
                 <th>Asistencia</th>
@@ -35,11 +34,11 @@
         </ng-template>
         <ng-template pTemplate="body" let-curso>
             <tr>
-                <td>{{curso.fila}}</td>
-                <td>Lunes</td>
+            
                 <td>{{curso.curnom}}</td>
-                <td>10:00</td>
-                <td>12:00</td>
+                <td>1</td>
+                <td>7:00</td>
+                <td>9:00</td>
                 <td>
                     <div class="d-flex justify-content-center" >
                         <i (click)="abrirDetallesAsistencia(curso.curid)" class="ion-ios-body" style="font-size:20px;" placement="top" ngbTooltip="Ver Asistencias"></i>

@@ -28,11 +28,11 @@ export class AlumnoService {
       })
       .catch(this.handleError);
   }
-  public postBuscarAlumnoxId(dni: string): Observable<GesUsuAlumnoModel[]> {
+  public postBuscarAlumnoxId(dni: string): Observable<GesUsuAlumnoModel> {
     return this._http
       .post<any>(this.rutaAlumno + `/usuarios/alumno/read_id.php`, '{"AlDni":"' + dni + '"}')
       .map((response: any) => {
-        return response.map(d => new GesUsuAlumnoModel(d));
+        return new GesUsuAlumnoModel(response);
       })
       .catch(this.handleError);
   }

@@ -16,9 +16,17 @@ export class MatriculaService {
     return this._http
       .get<any>(this.rutaMatricula + `read.php`);
   }
+  public getListarMatriculaByID(id) {
+    return this._http
+      .post<any>(this.rutaMatricula + `read_id.php`, {matid: id});
+  }
   public postSaveMatricula(data: any) {
     return this._http
-      .post<any>(this.rutaMatricula + `read.php`, data );
+      .post<any>(this.rutaMatricula + `create.php`, data );
+  }
+  public putUpdateMatricula(data: any) {
+    return this._http
+      .post<any>(this.rutaMatricula + `update.php`, data );
   }
   // public getListarMatriculaCabeceraFiltro(dni: string): Observable<GesMatriculaCabeceraModel[]> {
   //   return this._http

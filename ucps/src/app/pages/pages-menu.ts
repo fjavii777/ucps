@@ -140,6 +140,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
     hidden:true,
     data:[{
       number:2
+    },{
+      number:4
     }
   ],
     children: [
@@ -150,7 +152,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
-    title: 'Gestionar Programa',
+    title: 'Gestionar Cursos',
     icon: 'nb-locked',
     hidden:true,
     data:[{
@@ -161,8 +163,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
   ],
     children: [
       {
-        title: 'Programa',
-        link: '/pages/ges-/agregarcurso',
+        title: 'Curso',
+        link: '/pages/ges-curso/agregarcurso',
       },
     ],
   },

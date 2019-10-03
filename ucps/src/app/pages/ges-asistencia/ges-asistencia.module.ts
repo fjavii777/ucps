@@ -16,6 +16,9 @@ import {DropdownModule} from 'primeng/dropdown';
 import { ProgramaDocenteService } from '../../services/ges-asistencia/programadocente.service';
 import { CursoDocenteService } from '../../services/ges-asistencia/cursodocente.service';
 import { AlumnoDocenteService } from '../../services/ges-asistencia/alumno-docente.service';
+import { AsistenciaDatosService } from '../../services/ges-asistencia/asistencia-datos.service';
+import {InputSwitchModule} from 'primeng/inputswitch';
+
 const rutasgesusu: Routes = [{
 
   path: '',
@@ -50,6 +53,7 @@ const rutasgesusu: Routes = [{
     TableModule,
     CardModule,
     RadioButtonModule,
+    InputSwitchModule,
   ],
   entryComponents: [
     
@@ -61,6 +65,7 @@ const rutasgesusu: Routes = [{
     ProgramaDocenteService,
     CursoDocenteService,
     AlumnoDocenteService,
+    AsistenciaDatosService,
   ],
 })
 export class GesAsistenciaModule { }

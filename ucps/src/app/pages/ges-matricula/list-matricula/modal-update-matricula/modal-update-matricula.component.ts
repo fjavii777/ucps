@@ -22,10 +22,11 @@ export class ModalUpdateMatriculaComponent {
               private matriculaService: MatriculaService,
               private docenteservice: DocenteService) {
     this.myformmatricula = this.fb.group({
+      matid: null,
       aludni: [null, Validators.required],
       sedid: [null, Validators.required],
-      proid: [null, Validators.required],
-      horid: [null, Validators.required],
+      procurid: [null, Validators.required],
+      admdni: [null, Validators.required],
       matnomban: [null, Validators.required],
       matcodpag: [null, Validators.required],
       matmonpag: [null, Validators.compose([Validators.min(1), Validators.required])],
@@ -38,17 +39,16 @@ export class ModalUpdateMatriculaComponent {
     this.formError = false;
     console.log(this.myformmatricula.value);
     if (this.myformmatricula.valid) {
-      // this.passFormToObject();
       this.loadingGuardar = true;
-      if (this.flagIsModificar) {
-        this.docenteservice.putModificarDocente(this.docenteToSend).subscribe(
+      if (this.flagIsModificar) { // Modificar
+        this.matriculaService.putUpdateMatricula(this.myformmatricula.value).subscribe(
           resp => {
             this.activeModal.close(true);
           },
           err => {
             console.log(err);
           });
-      } else {
+      } else { // Crear
         this.matriculaService.postSaveMatricula(this.myformmatricula.value).subscribe(
           resp => {
             this.activeModal.close(true);
@@ -61,34 +61,21 @@ export class ModalUpdateMatriculaComponent {
       this.formError = true;
     }
   }
-  // passFormToObject() {
-  //   this.docenteToSend.docdni = this.myformmatricula.get('formdni').value;
-  //   this.docenteToSend.doccorele = this.myformmatricula.get('formcorreo').value;
-  //   this.docenteToSend.docnom = this.myformmatricula.get('formnombres').value;
-  //   this.docenteToSend.docapepat = this.myformmatricula.get('formapepat').value;
-  //   this.docenteToSend.docpemat = this.myformmatricula.get('formapemat').value;
-  //   this.docenteToSend.docfecnac = this.myformmatricula.get('formfecnac').value;
-  //   this.docenteToSend.doctel = this.myformmatricula.get('formtel').value;
-  //   this.docenteToSend.docdir = this.myformmatricula.get('formdir').value;
-  //   this.docenteToSend.docnomusu = this.myformmatricula.get('formnomusu').value;
-  //   this.docenteToSend.doccon = this.myformmatricula.get('formcont').value;
-  //   this.docenteToSend.docestereg = this.myformmatricula.get('formestreg').value;
-  // }
-  iniciarFormulario(docente: GesDocenteModel) {
+  iniciarFormulario(data: any) {
     this.flagIsModificar = true;
-    this.titulo = 'Modificar Docente';
+    this.titulo = 'Modificar Matricula';
     this.boton = 'Modificar';
-    this.myformmatricula.controls['formdni'].setValue(docente.docdni);
-    this.myformmatricula.controls['formnombres'].setValue(docente.docnom);
-    this.myformmatricula.controls['formapepat'].setValue(docente.docapepat);
-    this.myformmatricula.controls['formapemat'].setValue(docente.docpemat);
-    this.myformmatricula.controls['formcorreo'].setValue(docente.doccorele);
-    this.myformmatricula.controls['formfecnac'].setValue(docente.docfecnac);
-    this.myformmatricula.controls['formtel'].setValue(docente.doctel);
-    this.myformmatricula.controls['formdir'].setValue(docente.docdir);
-    this.myformmatricula.controls['formnomusu'].setValue(docente.docnomusu);
-    this.myformmatricula.controls['formcont'].setValue(docente.doccon);
-    this.myformmatricula.controls['formestreg'].setValue(docente.docestereg);
+    this.myformmatricula.controls['matid'].setValue(data.matid);
+    this.myformmatricula.controls['aludni'].setValue(data.aludni);
+    this.myformmatricula.controls['sedid'].setValue(data.sedid);
+    this.myformmatricula.controls['procurid'].setValue(data.procurid);
+    this.myformmatricula.controls['admdni'].setValue(data.admdni);
+    this.myformmatricula.controls['matnomban'].setValue(data.matnomban);
+    this.myformmatricula.controls['matcodpag'].setValue(data.matcodpag);
+    this.myformmatricula.controls['matmonpag'].setValue(data.matmonpag);
+    this.myformmatricula.controls['matfec'].setValue(data.matfec);
+    this.myformmatricula.controls['matobs'].setValue(data.matobs);
+    this.myformmatricula.controls['matestreg'].setValue(data.matestreg);
   }
 }
 

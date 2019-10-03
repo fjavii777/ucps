@@ -30,20 +30,20 @@ const routes: Routes = [{
     path: 'ges-asistencia',
     loadChildren: './ges-asistencia/ges-asistencia.module#GesAsistenciaModule',
   } ,
-  // {
-  //   path: 'ges-curso',
-  //   loadChildren: './ges-curso/ges-curso.module#GesCursoModule',
-  // } ,
+  {
+    path: 'ges-curso',
+    loadChildren: './ges-curso/ges-curso.module#GesCursoModule',
+  } ,
   {
     path: 'ges-docente',
     loadChildren: './ges-docente/ges-docente.module#GesDocenteModule',
-  } , 
+  } ,
   {
     path: 'ges-administrativo',
     loadChildren: './ges-administrativo/ges-administrativo.module#GesAdministrativoModule',
-  } ,    
+  } ,
   {
-    path :'view-home',
+    path : 'view-home',
     component: GesHomeComponent,
   },
   {

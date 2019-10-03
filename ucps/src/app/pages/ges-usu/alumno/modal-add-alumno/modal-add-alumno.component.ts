@@ -78,34 +78,35 @@ export class ModalAddAlumnoComponent {
     }
   }
   passFormToObject() {
-    this.alumnoToSend.AlDni = this.myformalumnos.get('formdni').value;
-    this.alumnoToSend.AlNom = this.myformalumnos.get('formnombres').value;
-    this.alumnoToSend.AlApePat = this.myformalumnos.get('formapepat').value;
-    this.alumnoToSend.AlApeMat = this.myformalumnos.get('formapemat').value;
-    this.alumnoToSend.AlCui = this.myformalumnos.get('formcui').value;
-    this.alumnoToSend.AlCorEle = this.myformalumnos.get('formcorreo').value;
-    this.alumnoToSend.AlFecNac = this.myformalumnos.get('formfecnac').value;
-    this.alumnoToSend.AlTel = this.myformalumnos.get('formtel').value;
-    this.alumnoToSend.AlDir = this.myformalumnos.get('formdir').value;
-    this.alumnoToSend.AlNomUsu = this.myformalumnos.get('formnomusu').value;
-    this.alumnoToSend.AlCon = this.myformalumnos.get('formcont').value;
-    this.alumnoToSend.AlEstReg = this.myformalumnos.get('formestreg').value;
+    this.alumnoToSend.aludni = this.myformalumnos.get('formdni').value;
+    this.alumnoToSend.alunom = this.myformalumnos.get('formnombres').value;
+    this.alumnoToSend.aluapepat = this.myformalumnos.get('formapepat').value;
+    this.alumnoToSend.aluapemat = this.myformalumnos.get('formapemat').value;
+    this.alumnoToSend.alucui = this.myformalumnos.get('formcui').value;
+    this.alumnoToSend.alucorele = this.myformalumnos.get('formcorreo').value;
+    this.alumnoToSend.alufecnac = this.myformalumnos.get('formfecnac').value;
+    this.alumnoToSend.alutel = this.myformalumnos.get('formtel').value;
+    this.alumnoToSend.aludir = this.myformalumnos.get('formdir').value;
+    this.alumnoToSend.alunomusu = this.myformalumnos.get('formnomusu').value;
+    this.alumnoToSend.alucon = this.myformalumnos.get('formcont').value;
+    this.alumnoToSend.aluestreg = this.myformalumnos.get('formestreg').value;
   }
   iniciarFormulario(alumno: GesUsuAlumnoModel) {
+    console.log('entro aca', alumno);
     this.flagIsModificar = true;
     this.titulo = 'Modificar Alumno';
     this.boton = 'Modificar';
-    this.myformalumnos.controls['formdni'].setValue(alumno.AlDni);
-    this.myformalumnos.controls['formnombres'].setValue(alumno.AlNom);
-    this.myformalumnos.controls['formapepat'].setValue(alumno.AlApePat);
-    this.myformalumnos.controls['formapemat'].setValue(alumno.AlApeMat);
-    this.myformalumnos.controls['formcui'].setValue(alumno.AlCui);
-    this.myformalumnos.controls['formcorreo'].setValue(alumno.AlCorEle);
-    this.myformalumnos.controls['formfecnac'].setValue(alumno.AlFecNac);
-    this.myformalumnos.controls['formtel'].setValue(alumno.AlTel);
-    this.myformalumnos.controls['formdir'].setValue(alumno.AlDir);
-    this.myformalumnos.controls['formnomusu'].setValue(alumno.AlNomUsu);
-    this.myformalumnos.controls['formcont'].setValue(alumno.AlCon);
-    this.myformalumnos.controls['formestreg'].setValue(alumno.AlEstReg);
+    this.myformalumnos.controls['formdni'].setValue(alumno.aludni);
+    this.myformalumnos.controls['formnombres'].setValue(alumno.alunom);
+    this.myformalumnos.controls['formapepat'].setValue(alumno.aluapepat);
+    this.myformalumnos.controls['formapemat'].setValue(alumno.aluapemat);
+    this.myformalumnos.controls['formcui'].setValue(alumno.alucui);
+    this.myformalumnos.controls['formcorreo'].setValue(alumno.alucorele);
+    this.myformalumnos.controls['formfecnac'].setValue(alumno.alufecnac);
+    this.myformalumnos.controls['formtel'].setValue(alumno.alutel);
+    this.myformalumnos.controls['formdir'].setValue(alumno.aludir);
+    this.myformalumnos.controls['formnomusu'].setValue(alumno.alunomusu);
+    this.myformalumnos.controls['formcont'].setValue(alumno.alucon);
+    this.myformalumnos.controls['formestreg'].setValue(alumno.aluestreg);
   }
 }
