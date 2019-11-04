@@ -6,7 +6,7 @@ import {DeleteAlumnoModel, GesUsuAlumnoModel} from '../../../models/ges-usu/ges-
 import { ProgramaDocenteService } from '../../../services/ges-asistencia/programadocente.service';
 import { ProgramaDocenteModel } from '../../../models/ges_asistencia/programa-docente';
 import { CursoDocenteService } from '../../../services/ges-asistencia/cursodocente.service';
-import { CursoDocenteModel } from '../../../models/ges_asistencia/curso-docente.Model';
+import { CursoDocenteModel, Horario } from '../../../models/ges_asistencia/curso-docente.Model';
 import { DebugContext } from '@angular/core/src/view';
 import { AsistenciaAlumnoComponent } from './asistencia-alumno/asistencia-alumno.component';
 
@@ -22,6 +22,7 @@ export class AddAsistenciaComponent implements OnInit {
   selectedPrograma:any;
   listaProgramaDocente: ProgramaDocenteModel []=[];
   listaCursoDocente: CursoDocenteModel []=[];
+  listaHorario : Horario[]=[];
   
   constructor(private router: Router,private programadocenteservice:ProgramaDocenteService, private cursodocenteservice:CursoDocenteService)  {
     this.cont=1;
@@ -57,6 +58,12 @@ export class AddAsistenciaComponent implements OnInit {
     this.cursodocenteservice.getListarCursoDocente('65881477',codPro)
       .subscribe(res => {
         this.listaCursoDocente = res;
+        for(var i=0;i<this.listaCursoDocente.length;i++){
+           this.listaCursoDocente[i].idCurso=i+1;
+           this.listaHorario = this.listaCursoDocente[i].horario;
+        }
+        
+        console.log("Mis Listas",this.listaCursoDocente);
       });
   }
  
@@ -64,6 +71,10 @@ export class AddAsistenciaComponent implements OnInit {
         
         this.router.navigate(['/pages/ges-asistencia/asistenciaalumno/'+ idcur+'/'+this.selectedPrograma.proid+"/"+"65881477"]);
   }
+  abrirDetalles() {
+        
+    this.router.navigate(['/pages/ges-asistencia/asistenciadetalle/'+"65881477"]);
+}
   
   
 }

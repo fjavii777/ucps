@@ -1,15 +1,42 @@
 <nb-card size="medium" [nbSpinner]="loading" nbSpinnerSize="xxlarge">
-        <nb-card-header>
-      
-        </nb-card-header>        
+    <nb-card-header>
+        <nb-alert status="active"  style="align-items: center;font-family:monospace;background-color: #a4abb3 ">Pensiones</nb-alert>
+        <div class="row">
+            <div class="col-md-12 col-lg-6 col-xxxl-6">
+              <div class="card" style="width: 32rem;">
+                  <div class="contenedor">
+                      <div class="contenidointer">NOMBRE</div>
+                      <div class="contenido" >{{minombre}}</div>
+                  </div>
+                  <div class="contenedor">
+                      <div class="contenidointer">SEDE</div>
+                      <div class="contenido" >{{misede}}</div>
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-12 col-lg-6 col-xxxl-6">
+                <div class="card" style="width: 32rem;">
+                    <div class="contenedor">
+                        <div class="contenidointer">PROGRAMA</div>
+                        <div class="contenido" >{{miprograma}}</div>
+                    </div>
+                </div>
+              </div>
+
+      </div>
+      <br>
+      <button nbButton class="mb-2" style="background-color: #ff6b83"  (click)="btnAddPension()">Agregar Pension</button>
+      <!-- <button nbButton class="mb-2" style="background-color: #ff6b83"  (click)="btnAddPension()">Agregar Pension</button> -->
+    </nb-card-header>        
         <nb-card-body>
-    
-            <div class="form-row">
+            
+           
+            <!-- <div class="form-row">
                 <div class="form-group col-md-6">
                     <div class="row">
                         <label class="col-sm-2 col-form-label p-r-0">NOMBRE</label>
                       <div class="col-sm-10">
-                          <nb-alert status="disabled" accent="active">{{minombre}}</nb-alert>
+                          <nb-alert status="disabled" >{{minombre}}</nb-alert>
                       </div>
                     </div>
                   </div>
@@ -20,7 +47,7 @@
                     <div class="row">
                         <label class="col-sm-2 col-form-label p-r-0">SEDE</label>
                       <div class="col-sm-7">
-                          <nb-alert status="disabled" accent="active">{{misede}}</nb-alert>
+                          <nb-alert status="disabled" >{{misede}}</nb-alert>
                       </div>
                     </div>
                   </div>
@@ -29,29 +56,29 @@
                   <div class="row">
                     <label class="col-sm-2 col-form-label p-r-0">PROGRAMA</label>
                     <div class="col-sm-7">
-                        <nb-alert status="disabled" accent="active">{{miprograma}}</nb-alert>
+                        <nb-alert status="disabled" >{{miprograma}}</nb-alert>
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
 
 
-          <button nbButton class="mb-3" (click)="btnAddPension()">Agregar Pension</button>
+         
           <table class="table table-bordered table-hover-cells">
             <thead>
             <tr>
-                <th>
-                    <div class="table-contain">
-                        <h6 class="d-flex justify-content-center"><strong>ID</strong></h6>
-                    </div>
-                </th>
-              <th>
+              <th style ="width:5%">
+                  <div class="table-contain">
+                    <h6 class="d-flex justify-content-center"><strong>ID</strong></h6>
+                  </div>
+              </th>
+              <th style="width: 12%">
                 <div class="table-contain">
                   <h6 class="d-flex justify-content-center"><strong>MES</strong></h6>
                 </div>
               </th>
-              <th style="width: 10%">
+              <th style="width: 17%">
                 <div class="table-contain">
                   <h6 class="d-flex justify-content-center"><strong>BANCO</strong></h6>
                 </div>
@@ -66,10 +93,19 @@
                   <h6 class="d-flex justify-content-center"><strong>MONTO</strong></h6>
                 </div>
               </th>
-             
               <th style="width: 12%">
                 <div class="table-contain">
-                  <h6 class="d-flex justify-content-center"><strong>ACCIONES</strong></h6>
+                  <h6 class="d-flex justify-content-center"><strong>N° CUOTA</strong></h6>
+                </div>
+              </th>
+              <th style="width: 8%">
+                <div class="table-contain">
+                  <h6 class="d-flex justify-content-center"><strong>MODIFICAR</strong></h6>
+                </div>
+              </th>
+              <th style="width: 8%">
+                <div class="table-contain">
+                  <h6 class="d-flex justify-content-center"><strong>DETALLES</strong></h6>
                 </div>
               </th>
             </tr>
@@ -87,7 +123,7 @@
               <td>
                 <div  class="d-flex flex-column">
                   <div class="d-flex justify-content-center" >
-                    <p>{{m.pagmes}}</p>
+                    <p>{{m.pagfec}}</p>
                   </div>
                 </div>
               </td>
@@ -105,19 +141,39 @@
                   </div>
                 </div>
               </td>
+              <!-- <td>
+                <div  class="d-flex flex-column">
+                  <div class="d-flex justify-content-center" >
+                    <p>{{m.pagtipo}}</p>
+                  </div>
+                </div>
+              </td> -->
+              
               <td>
                 <div  class="d-flex flex-column">
                   <div class="d-flex justify-content-center" >
-                    <p>{{m.pagmon}}</p>
+                    <p>{{m.pagmontot}}</p>
                   </div>
                 </div>
               </td>
-             
               <td>
                 <div  class="d-flex flex-column">
                   <div class="d-flex justify-content-center" >
-                    <i class="ion-trash-a mr-4" style="font-size:23px;" placement="top" ngbTooltip="Eliminar Docente"></i>
-                    <i (click)="editarDocente(m.pagid)" class="ion-edit" style="font-size:23px;" placement="top" ngbTooltip="Editar Docente"></i>
+                    <p>{{m.pagtipo}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div  class="d-flex flex-column">
+                  <div class="d-flex justify-content-center" >
+                    <i (click)="editarPension(m.matid)" class="ion-edit" style="font-size:23px;" placement="top" ngbTooltip="Editar Docente"></i>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div  class="d-flex flex-column">
+                  <div class="d-flex justify-content-center">
+                    <i (click)="abrirPensionDetalles(m.pagid)" class="ion-clipboard" style="font-size:23px;" placement="top" ngbTooltip="Detalles Pension"></i>
                   </div>
                 </div>
               </td>

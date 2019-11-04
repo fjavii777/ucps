@@ -3,11 +3,13 @@
     <span>Matricula</span>
   </nb-card-header>
   <nb-card-body>
-    <button style="background-color: #6D0D18" nbButton class="mb-3" (click)="btnAddMatricula()">Agregar Matricula</button>
+    <div>
+      <button style="background-color: #6D0D18" nbButton class="mb-3" (click)="btnAddMatricula()">Agregar Matricula</button>
+    </div>
     <table class="table table-bordered table-hover-cells">
       <thead>
       <tr style="width: 5%">
-        <th>
+        <th style="width: 7%">
           <div class="table-contain">
             <h6 class="d-flex justify-content-center"><strong>Nro</strong></h6>
           </div>
@@ -29,7 +31,7 @@
         </th>
         <th style="width: 20%">
           <div class="table-contain">
-            <h6 class="d-flex justify-content-center"><strong>Observaciones</strong></h6>
+            <h6 class="d-flex justify-content-center"><strong>Programa</strong></h6>
           </div>
         </th>
         <th style="width: 12%">
@@ -78,7 +80,7 @@
         <td>
           <div  class="d-flex flex-column">
             <div class="d-flex justify-content-center" >
-              <p>{{m.matobs}}</p>
+              <p>{{m.pronom}}</p>
             </div>
           </div>
         </td>

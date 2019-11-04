@@ -1,4 +1,4 @@
-import {Component,HostListener} from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthenticationLoginModel} from '../../../models/authentication/authentication.login.model';
 import {SeguridadService} from '../../../services/authentication/seguridad.service';

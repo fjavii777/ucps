@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/switchMap';
+import { GesUsuAlumnoModel } from '../../../models/ges-usu/ges-usu-alumno.model';
 
 @Component({
   selector: 'ngx-add-pension',
@@ -19,6 +20,7 @@ import 'rxjs/add/operator/switchMap';
 export class AddPensionComponent implements OnInit {
     inputBuscar = '';
     loading = false;
+    listAlumno : GesUsuAlumnoModel[]=[]; 
     listPension: GesPensionlListModel[] = [];
     modalref: NgbModalRef;
 
@@ -54,45 +56,19 @@ export class AddPensionComponent implements OnInit {
         });
     }
 
-    abrirDetallesPensiones(idcabecera: number,obj:GesPensionlListModel) {
-        console.log("Estoy enviando",obj);
-        var nombres=obj.alnom+" "+obj.alapepat+" "+obj.alpemat;
+    abrirDetallesPensiones(idMatr: number,obj:GesPensionlListModel) {
+        var nombres=obj.alunom +" "+obj.aluapepat+" "+obj.aluapemat;
+        var matri = obj.matid;
         var sede = obj.seddes;
         var programa = obj.pronom;
-        this.router.navigate(['/pages/ges-pension/pensiondetalle/' + idcabecera+'/'+nombres+"/"+sede+"/"+programa]);
+        this.router.navigate(['/pages/ges-pension/pensiondetalle/' + idMatr+'/'+nombres+"/"+sede+"/"+programa]);
       }
     addPension(id: string) {       
-            // this.modalref = this.modalService.open(ModalAddPensionComponent, {size: 'lg'});
-            // (<ModalAddPensionComponent>(this.modalref.componentInstance)).iniciarFormulario(id);
-            // this.modalref.result.then(result => {
-            //   if (result) {
-            //     this.listarPension();
-            //   } else {
-            //   }
-            // }).catch((resp) => {});
-           
+     
        
     }
 
     editarPension(dni: string) {
-        // console.log("Eentreeeeeeee");
-        // console.log(dni);
-    //   this.docenteservice.postBuscarDocentexId(dni)
-    //     .subscribe(res => {
-    //         console.log("mi objeto es :",res);
-    //       if (res.docdni) {
-    //         this.modalref = this.modalService.open(ModalAddDocenteComponent, {size: 'lg'});
-    //         (<ModalAddDocenteComponent>(this.modalref.componentInstance)).iniciarFormulario(res);
-    //         this.modalref.result.then(result => {
-    //           if (result) {
-    //             this.listarDocente();
-    //           } else {
-    //           }
-    //         }).catch((resp) => {});
-    //       } else {
-    //         console.log('No existe alumno');
-    //       }
-    //     });
     }
 
 }

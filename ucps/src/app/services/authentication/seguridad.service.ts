@@ -37,6 +37,9 @@ export class SeguridadService {
       return null;
     }
   }
+  getTokenAsObj(): any {
+    return this.getDecodedAccessToken();
+  }
   public existeToken(): boolean {
      return (this.obtenerToken() != null) ? (true) : false;
   }

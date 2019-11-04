@@ -10,8 +10,8 @@ import {PensionListService} from '../../services/ges-pensiones/ges-pensionesList
 import {UtilsService} from '../../services/utils.service';
 import {PensionDetalleComponent} from './add-pension/pension-detalle/pension-detalle.component';
 import {ModalAddPensionComponent} from './add-pension/modal-add-pension/modal-add-pension.component';
-
-
+import { DetallePagoComponent } from './add-pension/detalle-pago/detalle-pago.component';
+import { ModalAddCuotaComponent } from './add-pension/modal-add-cuota/modal-add-cuota.component';
 const rutasgesusu: Routes = [{
   path: '',
   component: GesPensionComponent,
@@ -26,7 +26,13 @@ const rutasgesusu: Routes = [{
     path: 'pensiondetalle/:id/:nombres/:sede/:programa',
     component: PensionDetalleComponent,
     // data: {modo: 2}
-  }];
+  },
+  {
+    path: 'detallepago/:id',
+    component: DetallePagoComponent,
+    // data: {modo: 2}
+  }
+];
 
 
 @NgModule({
@@ -35,6 +41,8 @@ const rutasgesusu: Routes = [{
     GesPensionComponent,
     PensionDetalleComponent,
     ModalAddPensionComponent,
+    ModalAddCuotaComponent,
+    DetallePagoComponent,
   ],
   imports: [
     ThemeModule,
@@ -51,6 +59,7 @@ const rutasgesusu: Routes = [{
   ],
   entryComponents: [
     ModalAddPensionComponent,
+    ModalAddCuotaComponent,
   ],
 })
 export class GesPensionModule { }

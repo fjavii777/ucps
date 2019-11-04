@@ -1,0 +1,113 @@
+<nb-card size="medium" [nbSpinner]="loading" nbSpinnerSize="xxlarge">
+  <nb-card-header>
+    <span>Programas</span>
+  </nb-card-header>
+  <nb-card-body>
+    <button style="background-color: #6D0D18" nbButton class="mb-3" (click)="btnAddAdministrativo()">Agregar Programa</button>
+    <table class="table table-bordered table-hover-cells">
+      <thead>
+      <tr>
+        <th style="width: 8%">
+          <div class="table-contain">
+            <h6 class="d-flex justify-content-center"><strong>Nro</strong></h6>
+          </div>
+        </th>
+        <th style="width: 30%">
+          <div class="table-contain">
+            <h6 class="d-flex justify-content-center"><strong>Nombre</strong></h6>
+          </div>
+        </th>
+        <th style="width: 15%">
+          <div class="table-contain">
+            <h6 class="d-flex justify-content-center"><strong>Tipo</strong></h6>
+          </div>
+        </th>
+        <th style="width: 8%">
+          <div class="table-contain">
+            <h6 class="d-flex justify-content-center"><strong>Cuota</strong></h6>
+          </div>
+        </th>
+        <th style="width: 8%">
+          <div class="table-contain">
+            <h6 class="d-flex justify-content-center"><strong>Sede</strong></h6>
+          </div>
+        </th>
+        <th style="width: 12%">
+          <div class="table-contain">
+            <h6 class="d-flex justify-content-center"><strong>Estado</strong></h6>
+          </div>
+        </th>
+        <th style="width: 12%">
+          <div class="table-contain">
+            <h6 class="d-flex justify-content-center"><strong>Acciones</strong></h6>
+          </div>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let m of listProgramas; let id = index">
+        <td>
+          <div  class="d-flex flex-column">
+            <div class="d-flex justify-content-center" >
+              <p>{{id + 1}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div  class="d-flex flex-column">
+            <div class="d-flex justify-content-center" >
+              <p>{{m.pronom}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div  class="d-flex flex-column">
+            <div class="d-flex justify-content-center" >
+              <p>{{m.protipo}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div  class="d-flex flex-column">
+            <div class="d-flex justify-content-center" >
+              <p>{{m.procuota}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div  class="d-flex flex-column">
+            <div class="d-flex justify-content-center" >
+              <p>{{m.sedid}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div  class="d-flex flex-column">
+            <div class="d-flex justify-content-center" >
+              <p>{{m.proestreg}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div  class="d-flex flex-column">
+            <div class="d-flex justify-content-center" >
+              <i class="ion-trash-a mr-4" style="font-size:23px;" placement="top" ngbTooltip="Eliminar Programa"></i>
+
+              <i (click)="editarAdministrativo(m.proid)" class="ion-edit" style="font-size:23px;" placement="top" ngbTooltip="Editar Programa"></i>
+            </div>
+          </div>
+        </td>
+        <!--     <td class="text-muted">
+               <div  class="d-flex flex-column">
+                 <div class="d-flex justify-content-center" >
+                   <p><strong>{{m.EstadoActivo | estadotipomatriculaPipe}}</strong></p>
+                 </div>
+               </div>
+             </td>-->
+      </tr>
+
+      </tbody>
+    </table>
+  </nb-card-body>
+</nb-card>

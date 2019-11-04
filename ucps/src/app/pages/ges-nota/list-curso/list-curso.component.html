@@ -1,0 +1,54 @@
+<nb-card  [nbSpinner]="loading" nbSpinnerSize="xxlarge">
+    <nb-card-header>
+            <nb-card-header>
+                    <div style="text-align: center; background-color: #6D0D18; color: white; height:40px;margin: 5px; padding-top: 8px">SUBIR NOTAS</div>
+            </nb-card-header>
+            <div>
+                <div class="card" style="width: 30rem;">                  
+                    <div class="contenedor">
+                        <div class="contenidointer">Docente</div>
+                        <div class="contenido" >Pedro Gonzales Suárez</div>                    
+                    </div> 
+                                                           
+                </div>                          
+            </div>
+      <!-- <span>Este es una Asistencinga </span> -->
+    </nb-card-header>  
+    <nb-card-body>
+      <p-table [value]="listaCursosDocente">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:40px">ID</th>
+                <th>Programa</th>
+                <th>Curso</th>
+                <th>turno</th>
+                <th>Registar notas parciales</th>
+                <th>Registrar notas finales</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-curso let-i="rowIndex">
+            <tr>
+                <td>{{i + 1}}</td>
+                <td>{{curso.pronom}}</td> 
+                <td>{{curso.curnom}}</td>
+                <td>{{curso.turnom}}</td>
+                <td>
+                    <div class="d-flex justify-content-center" >
+                        <i (click)="ingresarNotasCurso(curso.curid,1)" class="ion-android-document" style="font-size:20px;" placement="top" ngbTooltip="Ingresar Nota 1"></i>
+
+                        <i (click)="ingresarNotasCurso(curso.curid,2)" class="ion-android-document" style="font-size:20px;" placement="top" ngbTooltip="Ingresar Nota 2"></i>
+
+                        <i (click)="ingresarNotasCurso(curso.curid,3)" class="ion-android-document" style="font-size:20px;" placement="top" ngbTooltip="Ingresar Nota 3"></i>     
+                    </div>
+                </td>
+                <td>
+                    <div class="d-flex justify-content-center" >
+                        <i  class="ion-clipboard" style="font-size:20px;" placement="top" ngbTooltip="Ver notas finales"></i>
+                    
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    </nb-card-body>
+  </nb-card>

@@ -1,0 +1,116 @@
+<nb-card size="medium" [nbSpinner]="loading" nbSpinnerSize="xxlarge">
+    <nb-card-header>
+      <nb-alert status="active"  style="align-items: center;font-family:monospace;background-color: #a4abb3 ">Cuota</nb-alert>
+      <div class="row">
+        <div class="col-md-12 col-lg-4 col-xxxl-4">
+          <div class="card" style="width: 24rem;">
+              <div class="contenedor">
+                  <div class="contenidointer">NOMBRE</div>
+                  <div class="contenido" >Rafael Sánchez Silvaz</div>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4 col-xxxl-4">
+            <div class="card" style="width: 24rem;">
+                <div class="contenedor">
+                    <div class="contenidointer" >MES</div>
+                    <div class="contenido" >Octubre</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-4 col-xxxl-4">
+          <div class="card" style="width: 10rem;">
+              <div class="contenedor">
+                  <div class="contenidointer" style="width: 55%; padding-top: 7%;" >N°CUOTAS</div>
+                  <div class="contenido" style="width: 10%; font-size: xx-large;margin: auto; padding-left: 12%;padding-top: 5%;
+                  " >2</div>
+              </div>
+          </div>
+      </div>
+        
+  </div>
+  <br>
+  <button nbButton class="mb-2" style="background-color: #ff6b83"   (click)="btnAddCuota()">Agregar Cuota</button>
+  </nb-card-header>        
+    <nb-card-body>
+            
+      <table class="table table-bordered table-hover-cells">
+        <thead>
+        <tr>
+          <th style ="width:5%">
+              <div class="table-contain">
+                <h6 class="d-flex justify-content-center"><strong>NUMERO CUOTA</strong></h6>
+              </div>
+          </th>
+          <th style="width: 12%">
+            <div class="table-contain">
+              <h6 class="d-flex justify-content-center"><strong>N° CUENTA</strong></h6>
+            </div>
+          </th>
+          <th style="width: 17%">
+            <div class="table-contain">
+              <h6 class="d-flex justify-content-center"><strong>FECHA</strong></h6>
+            </div>
+          </th>
+          <th style="width: 12%">
+            <div class="table-contain">
+              <h6 class="d-flex justify-content-center"><strong>MONTO</strong></h6>
+            </div>
+          </th>
+          <th style="width: 12%">
+            <div class="table-contain">
+              <h6 class="d-flex justify-content-center"><strong>MODIFICAR</strong></h6>
+            </div>
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr *ngFor="let m of listcuotas; let id = index">
+          <td>
+            <div  class="d-flex flex-column">
+              <div class="d-flex justify-content-center" >
+                <p>{{id + 1}}</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div  class="d-flex flex-column">
+              <div class="d-flex justify-content-center" >
+                <p>{{m.cunumero}}</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div  class="d-flex flex-column">
+              <div class="d-flex justify-content-center" >
+                <p>{{m.cufec}}</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div  class="d-flex flex-column">
+              <div class="d-flex justify-content-center" >
+                <p>{{m.cumon}} </p>
+              </div>
+            </div>
+          </td>
+          <td>
+             <div  class="d-flex flex-column">
+                  <div class="d-flex justify-content-center" >
+                    <i  class="ion-edit" style="font-size:23px;" placement="top" ngbTooltip="Editar Docente"></i>
+                  </div>
+                </div>
+          </td>
+         
+        </tr>
+
+        </tbody>
+      </table>
+
+
+
+
+    </nb-card-body>
+</nb-card>
+    

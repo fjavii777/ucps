@@ -64,8 +64,21 @@ export class UsuAlumnoComponent implements OnInit {
     }
     this.alumnoservice.deleteAlumno(deleteAlumno)
       .subscribe(res => {
-        c.aluestreg = res.alestreg;
+        c.aluestreg = res.aluestreg;
       });
+  }
+  filtroDNI(filtro) {
+    console.log(filtro);
+    if (filtro) {
+      this.loading = true;
+      this.alumnoservice.getListarSearchAlumno(filtro)
+        .subscribe(res => {
+          this.listAlumnos = res;
+          this.loading = false;
+        });
+    } else {
+      this.listarAlumnos();
+    }
   }
 }
 

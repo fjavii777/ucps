@@ -28,8 +28,6 @@ export class AddAdministrativoComponent implements OnInit {
           this.listAdtvo = res;
           this.loading = false;
         });
-        console.log('listandodoo');
-        console.log(this.listAdtvo);
     }
     btnAddAdministrativo() {
       const modalR = this.modalService.open(ModalAddAdministrativoComponent, { size: 'lg'});

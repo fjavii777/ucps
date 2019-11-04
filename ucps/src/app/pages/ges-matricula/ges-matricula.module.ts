@@ -1,7 +1,7 @@
 import {NgModule } from '@angular/core';
 import {ThemeModule} from '../../@theme/theme.module';
 import {CommonModule } from '@angular/common';
-import {NbDialogModule, NbWindowModule, NbActionsModule } from '@nebular/theme';
+import {NbDialogModule, NbWindowModule, NbActionsModule, NbSelectModule, NbInputModule} from '@nebular/theme';
 import {RouterModule, Routes} from '@angular/router';
 import {AddMatriculaComponent} from './add-matricula/add-matricula.component';
 import {GesMatriculaComponent} from './ges-matricula.component';
@@ -67,9 +67,6 @@ const rutasgesusu: Routes = [{
     RouterModule.forChild(rutasgesusu),
     NbDialogModule.forChild(),
     NbWindowModule.forChild(),
-    Ng2SmartTableModule,
-    TableModule,
-    NbActionsModule,
   ],
   providers: [
     MatriculaDetalleService,

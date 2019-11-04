@@ -66,7 +66,7 @@ export class ModalAddDocenteComponent {
     this.docenteToSend.doccorele = this.myformdocente.get('formcorreo').value;
     this.docenteToSend.docnom = this.myformdocente.get('formnombres').value;
     this.docenteToSend.docapepat = this.myformdocente.get('formapepat').value;
-    this.docenteToSend.docpemat = this.myformdocente.get('formapemat').value;
+    this.docenteToSend.docapemat = this.myformdocente.get('formapemat').value;
     this.docenteToSend.docfecnac = this.myformdocente.get('formfecnac').value;
     this.docenteToSend.doctel = this.myformdocente.get('formtel').value;
     this.docenteToSend.docdir = this.myformdocente.get('formdir').value;
@@ -81,7 +81,7 @@ export class ModalAddDocenteComponent {
     this.myformdocente.controls['formdni'].setValue(docente.docdni);
     this.myformdocente.controls['formnombres'].setValue(docente.docnom);
     this.myformdocente.controls['formapepat'].setValue(docente.docapepat);
-    this.myformdocente.controls['formapemat'].setValue(docente.docpemat);
+    this.myformdocente.controls['formapemat'].setValue(docente.docapemat);
     this.myformdocente.controls['formcorreo'].setValue(docente.doccorele);
     this.myformdocente.controls['formfecnac'].setValue(docente.docfecnac);
     this.myformdocente.controls['formtel'].setValue(docente.doctel);

@@ -10,15 +10,25 @@
     <div class="form-row">
       <div class="form-group col-md-6">
         <div class="row">
-          <label class="col-sm-5 col-form-label p-r-0">DNI Alumno</label>
-          <div class="col-sm-7">
+          <label class="col-sm-5 col-form-label p-r-0">Nombre Alumno</label>
+          <div class="col-sm-7" *ngIf="!flagIsModificar">
             <input
-              required
-              formControlName="aludni"
+              id="busqueda"
               type="text"
-              maxlength="30"
-              class="form-control form-control-sm"
-              placeholder="Documento de Identidad">
+              class="form-control"
+              placeholder="Nombre Alumno..."
+              formControlName="aludni"
+              [ngbTypeahead]="searchAlumnoXdni"
+              [resultFormatter]="formatearEntradaAlumnoXdni"
+              [inputFormatter]="formatearEntradaAlumnoXdni">
+          </div>
+          <div class="col-sm-7" *ngIf="flagIsModificar">
+            <input
+              disabled
+              type="text"
+              class="form-control"
+              placeholder="Nombre editar..."
+              formControlName="aludni">
           </div>
         </div>
       </div>
@@ -27,12 +37,9 @@
         <div class="row">
           <label class="col-sm-5 col-form-label p-r-0">Sede</label>
           <div class="col-sm-7">
-            <input
-              required
-              formControlName="sedid"
-              type="text"
-              maxlength="20"
-              class="form-control form-control-sm">
+            <select  class="form-control" formControlName="sedid">
+              <option *ngFor="let s of cbSedes" [ngValue]="s.sedid">{{s.seddes}}</option>
+            </select>
           </div>
         </div>
       </div>
@@ -43,26 +50,20 @@
         <div class="row">
           <label class="col-sm-5 col-form-label p-r-0">Programa</label>
           <div class="col-sm-7">
-            <input
-              required
-              formControlName="procurid"
-              type="text"
-              maxlength="20"
-              class="form-control form-control-sm">
+            <select  class="form-control" formControlName="proid">
+              <option *ngFor="let s of cbProgramas" [ngValue]="s.proid">{{s.pronom}}</option>
+            </select>
           </div>
         </div>
       </div>
 
       <div class="form-group col-md-6">
         <div class="row">
-          <label class="col-sm-5 col-form-label p-r-0">Administrativo</label>
+          <label class="col-sm-5 col-form-label p-r-0">Turno</label>
           <div class="col-sm-7">
-            <input
-              required
-              formControlName="admdni"
-              type="text"
-              maxlength="20"
-              class="form-control form-control-sm">
+            <select  class="form-control" formControlName="turid">
+              <option *ngFor="let s of cbTurnos" [ngValue]="s.turid">{{s.turnom}}</option>
+            </select>
           </div>
         </div>
       </div>
@@ -74,12 +75,9 @@
         <div class="row">
           <label class="col-sm-5 col-form-label p-r-0">Nombre Banco</label>
           <div class="col-sm-7">
-            <input
-              formControlName="matnomban"
-              type="text"
-              maxlength="30"
-              class="form-control form-control-sm"
-              placeholder="Ejm: alumno@gmail.com">
+            <select  class="form-control" formControlName="matnomban">
+              <option *ngFor="let s of cbBancos" [ngValue]="s.descBan">{{s.descBan}}</option>
+            </select>
           </div>
         </div>
       </div>
@@ -136,7 +134,6 @@
           <label class="col-sm-5 col-form-label p-r-0">Observacion</label>
           <div class="col-sm-7">
             <input
-              required
               formControlName="matobs"
               type="text"
               maxlength="50"

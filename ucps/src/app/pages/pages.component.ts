@@ -34,12 +34,15 @@ export class PagesComponent implements OnInit {
 
   mostrarVista(estado: any) {
     this.recorrerMenu(estado);
+    // this.recorrerMenu(4);
   }
   recorrerMenu(numero: number) {
     for (let i = 0; i < this.menu.length; i++) {
       for (let j = 0; j < this.menu[i].data.length; j++) {
         if (this.menu[i].data[j].number === numero) {
           this.menu[i].hidden = false;
+        }else {
+          this.menu[i].hidden = true;
         }
       }
     }

@@ -35,8 +35,8 @@ export class HeaderComponent implements OnInit {
       .pipe(filter(({ tag }) => tag === this.tag))
       .subscribe(bag => {
         if (bag.item.title === 'Cerrar sesion') {
-          console.log('cerrando sesion');
           this.seguridadService.cerrarSesion();
+          window.location.reload();
         }
       });
   }

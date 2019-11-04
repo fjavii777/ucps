@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {GesUsuAlumnoModel} from '../../../../models/ges-usu/ges-usu-alumno.model';
+import {GesUsuAlumnoModel, GesUsuAlumnoModelSaveUpdate} from '../../../../models/ges-usu/ges-usu-alumno.model';
 import {AlumnoService} from '../../../../services/ges-usu/alumno.service';
 
 @Component({
@@ -9,52 +9,95 @@ import {AlumnoService} from '../../../../services/ges-usu/alumno.service';
   styleUrls: ['./modal-add-alumno.component.scss'],
   templateUrl: './modal-add-alumno.component.html',
 })
-export class ModalAddAlumnoComponent {
+export class ModalAddAlumnoComponent implements OnInit {
   formError = false;
   titulo = 'Agregar Alumno';
   boton = 'Guardar';
   flagIsModificar = false;
   loadingGuardar = false;
   public myformalumnos: FormGroup;
-  alumnoToSend: GesUsuAlumnoModel = new GesUsuAlumnoModel();
+  alumnoToSend: GesUsuAlumnoModelSaveUpdate = new GesUsuAlumnoModelSaveUpdate();
+  alumnoupdate: any;
   constructor(private fb: FormBuilder,
               public activeModal: NgbActiveModal,
               private alumnoservice: AlumnoService) {
-     this.myformalumnos = this.fb.group({
-       formdni: [null, Validators.compose(
-         [Validators.pattern('^(0|[1-9][0-9]*)$'),
-           Validators.required])],
-       formnombres: [null, Validators.compose(
-         [Validators.pattern('[A-Za-z]{1,20}'),
-           Validators.required])],
-       formapepat: [null, Validators.compose(
-         [Validators.pattern('[A-Za-z]{1,20}'),
-           Validators.required])],
-       formapemat: [null, Validators.compose(
-         [Validators.pattern('[A-Za-z]{1,20}'),
-           Validators.required])],
-       formcui: [null, Validators.compose(
-         [Validators.pattern('^(0|[1-9][0-9]*)$')])],
-       formcorreo: [null, Validators.compose(
-         [Validators.pattern('^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$'),
-           Validators.required])],
-       formfecnac: [null, Validators.required],
-       formtel: [null, Validators.compose(
-         [Validators.pattern('^(0|[1-9][0-9]*)$'),
-           Validators.required])],
-       formdir: [null, Validators.required],
-       formnomusu: [null, Validators.required],
-       formcont: [null, Validators.required],
-       formestreg: ['A', Validators.required],
-     });
+  }
+  ngOnInit(): void {
+    if (this.flagIsModificar) {
+      console.log('modifucar');
+      this.iniciarFormUpdate();
+      this.myformalumnos.controls['formdni'].setValue(this.alumnoupdate.aludni);
+      this.myformalumnos.controls['formnombres'].setValue(this.alumnoupdate.alunom);
+      this.myformalumnos.controls['formapepat'].setValue(this.alumnoupdate.aluapepat);
+      this.myformalumnos.controls['formapemat'].setValue(this.alumnoupdate.aluapemat);
+      this.myformalumnos.controls['formcorreo'].setValue(this.alumnoupdate.alucorele);
+      this.myformalumnos.controls['formfecnac'].setValue(this.alumnoupdate.alufecnac);
+      this.myformalumnos.controls['formtel'].setValue(this.alumnoupdate.alutel);
+      this.myformalumnos.controls['formdir'].setValue(this.alumnoupdate.aludir);
+      this.myformalumnos.controls['formnomusu'].setValue(this.alumnoupdate.alunomusu);
+      this.myformalumnos.controls['formestreg'].setValue(this.alumnoupdate.aluestreg);
+    } else {
+      this.iniciarFormCreate();
+      console.log('crear');
+    }
+  }
+
+  iniciarFormCreate() {
+    this.myformalumnos = this.fb.group({
+      formdni: [null, Validators.compose(
+        [Validators.pattern('^(0|[1-9][0-9]*)$'),
+          Validators.required])],
+      formnombres: [null, Validators.compose(
+        [Validators.required])],
+      formapepat: [null, Validators.compose(
+        [Validators.required])],
+      formapemat: [null, Validators.compose(
+        [Validators.required])],
+      formcorreo: [null, Validators.compose(
+        [Validators.pattern('^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$'),
+          Validators.required])],
+      formfecnac: [null, Validators.required],
+      formtel: [null, Validators.compose(
+        [Validators.pattern('^(0|[1-9][0-9]*)$'),
+          Validators.required])],
+      formdir: [null, Validators.required],
+      formnomusu: [null, Validators.required],
+      formcont: [null, Validators.required],
+      formestreg: ['A', Validators.required],
+    });
+  }
+  iniciarFormUpdate() {
+    this.myformalumnos = this.fb.group({
+      formdni: [null, Validators.compose(
+        [Validators.pattern('^(0|[1-9][0-9]*)$'),
+          Validators.required])],
+      formnombres: [null, Validators.compose(
+        // Validators.pattern('[A-Za-z]{1,20}'),
+        [Validators.required])],
+      formapepat: [null, Validators.compose(
+        [Validators.required])],
+      formapemat: [null, Validators.compose(
+        [Validators.required])],
+      formcorreo: [null, Validators.compose(
+        [Validators.pattern('^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$'),
+          Validators.required])],
+      formfecnac: [null, Validators.required],
+      formtel: [null, Validators.compose(
+        [Validators.pattern('^(0|[1-9][0-9]*)$'),
+          Validators.required])],
+      formdir: [null, Validators.required],
+      formnomusu: [null, Validators.required],
+      formestreg: ['A', Validators.required],
+    });
   }
   btn_clickAceptar() {
     this.formError = false;
+    console.log(this.myformalumnos.value);
     if (this.myformalumnos.valid) {
       this.formError = false;
       this.passFormToObject();
       this.loadingGuardar = true;
-      if (this.flagIsModificar) {
+      if (this.flagIsModificar) { // MODIFICAR
         this.alumnoservice.putModificarAlumno(this.alumnoToSend).subscribe(
           resp => {
             this.activeModal.close(true);
@@ -63,7 +106,7 @@ export class ModalAddAlumnoComponent {
             this.activeModal.close(true);
             console.log(err);
           });
-      } else {
+      } else { // CREAR
         this.alumnoservice.postCrearAlumno(this.alumnoToSend).subscribe(
           resp => {
             this.activeModal.close(true);
@@ -78,35 +121,26 @@ export class ModalAddAlumnoComponent {
     }
   }
   passFormToObject() {
-    this.alumnoToSend.aludni = this.myformalumnos.get('formdni').value;
-    this.alumnoToSend.alunom = this.myformalumnos.get('formnombres').value;
-    this.alumnoToSend.aluapepat = this.myformalumnos.get('formapepat').value;
-    this.alumnoToSend.aluapemat = this.myformalumnos.get('formapemat').value;
-    this.alumnoToSend.alucui = this.myformalumnos.get('formcui').value;
-    this.alumnoToSend.alucorele = this.myformalumnos.get('formcorreo').value;
-    this.alumnoToSend.alufecnac = this.myformalumnos.get('formfecnac').value;
-    this.alumnoToSend.alutel = this.myformalumnos.get('formtel').value;
-    this.alumnoToSend.aludir = this.myformalumnos.get('formdir').value;
-    this.alumnoToSend.alunomusu = this.myformalumnos.get('formnomusu').value;
-    this.alumnoToSend.alucon = this.myformalumnos.get('formcont').value;
-    this.alumnoToSend.aluestreg = this.myformalumnos.get('formestreg').value;
+    this.alumnoToSend.AlDni = this.myformalumnos.get('formdni').value;
+    this.alumnoToSend.AlNom = this.myformalumnos.get('formnombres').value;
+    this.alumnoToSend.AlApePat = this.myformalumnos.get('formapepat').value;
+    this.alumnoToSend.AlApeMat = this.myformalumnos.get('formapemat').value;
+    // this.alumnoToSend.AlCui = this.myformalumnos.get('formcui').value;
+    this.alumnoToSend.AlCorEle = this.myformalumnos.get('formcorreo').value;
+    this.alumnoToSend.AlFecNac = this.myformalumnos.get('formfecnac').value;
+    this.alumnoToSend.AlTel = this.myformalumnos.get('formtel').value;
+    this.alumnoToSend.AlDir = this.myformalumnos.get('formdir').value;
+    this.alumnoToSend.AlNomUsu = this.myformalumnos.get('formnomusu').value;
+    this.alumnoToSend.AlEstReg = this.myformalumnos.get('formestreg').value;
+    if (!this.flagIsModificar) {
+      this.alumnoToSend.AlCon = this.myformalumnos.get('formcont').value;
+    }
   }
   iniciarFormulario(alumno: GesUsuAlumnoModel) {
+    this.alumnoupdate = alumno;
     console.log('entro aca', alumno);
     this.flagIsModificar = true;
     this.titulo = 'Modificar Alumno';
     this.boton = 'Modificar';
-    this.myformalumnos.controls['formdni'].setValue(alumno.aludni);
-    this.myformalumnos.controls['formnombres'].setValue(alumno.alunom);
-    this.myformalumnos.controls['formapepat'].setValue(alumno.aluapepat);
-    this.myformalumnos.controls['formapemat'].setValue(alumno.aluapemat);
-    this.myformalumnos.controls['formcui'].setValue(alumno.alucui);
-    this.myformalumnos.controls['formcorreo'].setValue(alumno.alucorele);
-    this.myformalumnos.controls['formfecnac'].setValue(alumno.alufecnac);
-    this.myformalumnos.controls['formtel'].setValue(alumno.alutel);
-    this.myformalumnos.controls['formdir'].setValue(alumno.aludir);
-    this.myformalumnos.controls['formnomusu'].setValue(alumno.alunomusu);
-    this.myformalumnos.controls['formcont'].setValue(alumno.alucon);
-    this.myformalumnos.controls['formestreg'].setValue(alumno.aluestreg);
   }
 }

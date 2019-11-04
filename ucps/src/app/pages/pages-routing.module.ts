@@ -43,6 +43,10 @@ const routes: Routes = [{
     loadChildren: './ges-administrativo/ges-administrativo.module#GesAdministrativoModule',
   } ,
   {
+    path: 'ges-nota',
+    loadChildren: './ges-nota/ges-nota.module#GesNotaModule',
+  },
+  {
     path : 'view-home',
     component: GesHomeComponent,
   },

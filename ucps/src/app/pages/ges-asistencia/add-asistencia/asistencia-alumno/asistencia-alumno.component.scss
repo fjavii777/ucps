@@ -16,13 +16,19 @@ div {
     width:20%;
     float:left;
     margin: 3px;
-    background: #888181;
+    background: #a4abb3;
     text-align: center;
     padding-top: 2%;
     font-family:monospace;
     color: snow;
 }
-
+.botonimagen{
+    background-image:url("http://www.pngmart.com/files/8/Save-Button-PNG-Transparent-Image.png");
+    background-repeat:no-repeat;
+    height:100px;
+    width:100px;
+    background-position:center;
+  }
 .contenido {
     height:0px;
     width:75%;

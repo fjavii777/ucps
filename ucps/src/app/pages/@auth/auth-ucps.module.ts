@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthUcpsComponent} from './login/auth-ucps.component';
 import {ThemeModule} from '../../@theme/theme.module';
 import {SeguridadService} from '../../services/authentication/seguridad.service';
-import {HttpClientModule} from '@angular/common/http';
+// import {HttpClientModule} from '@angular/common/http';
 export const AuthenticationRoutes: Routes = [
   {
     path: '',
@@ -29,7 +29,7 @@ export const AuthenticationRoutes: Routes = [
     RouterModule.forChild(AuthenticationRoutes),
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    // HttpClientModule,
 ],
   declarations: [AuthUcpsComponent],
   providers: [SeguridadService],

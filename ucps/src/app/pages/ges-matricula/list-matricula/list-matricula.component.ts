@@ -41,7 +41,6 @@ export class ListMatriculaComponent implements OnInit  {
   editarMatricula(matid: string) {
     this.matriculaService.getListarMatriculaByID(matid)
       .subscribe(res => {
-        console.log('mi objeto es :', res);
         if (res) {
           this.modalref = this.modalService.open(ModalUpdateMatriculaComponent, {size: 'lg'});
           (<ModalUpdateMatriculaComponent>(this.modalref.componentInstance)).iniciarFormulario(res);

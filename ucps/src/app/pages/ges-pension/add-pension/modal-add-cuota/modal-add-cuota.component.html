@@ -1,0 +1,62 @@
+<div class="modal-header">
+    <h4 class="modal-title">AGREGAR CUOTA</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.close(false)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="myformpension" >
+      <div class="form-row">
+        <div class="form-group col-md-6">
+            <div class="row">                   
+                <label class="col-sm-5 col-form-label p-r-0">MES DE PAGO</label>
+                <div class="col-sm-7">
+                      <input
+                      required
+                      formControlName="formfecpag"
+                      type="date"
+                      maxlength="50"
+                      class="form-control form-control-sm">                       
+                </div>
+              </div>
+        </div>
+  
+        <div class="form-group col-md-6">
+            <div class="row">
+              <label class="col-sm-3 col-form-label p-r-0">CUENTA</label>
+              <div class="col-sm-7">
+                <input
+                required
+                formControlName="formcuent"
+                type="text"
+                maxlength="50"
+                class="form-control form-control-sm">                       
+          </div>
+            </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="row">
+            <label class="col-sm-5 col-form-label p-r-0">MONTO</label>
+            <div class="col-sm-7">
+                <input
+                formControlName="formpagmon"
+                type="number"
+                maxlength="20"
+                class="form-control form-control-sm"
+                placeholder="Ejm: 00.00">
+            </div>
+          </div>
+        </div>
+  
+        
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+        <button nbButton status="success" size="medium" [nbSpinner]="loadingGuardar"  nbSpinnerStatus="success" nbSpinnerMessage="" (click)="btn_clickAceptar()">{{boton}}</button>
+        <button type="button" class="btn btn-danger waves-effect text-center m-b-20" (click)="activeModal.close(false)">Cancelar</button>
+  </div>
+  

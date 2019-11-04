@@ -2,16 +2,19 @@
         
         <nb-card-header>
                 <nb-card-header>
-                  <div style="text-align: center; background-color: #6D0D18; color: white; height:40px;margin: 5px; padding-top: 8px">CONTROL DE ASISTENCIAS DE ALUMNO</div>
+                  <div style="text-align: center; background-color: #a4abb3; color: white; height:40px;margin: 5px; padding-top: 8px">CONTROL DE ASISTENCIAS DE ALUMNO</div>
                 </nb-card-header>
+                
                 <div class="row">
                         <div class="col-md-12 col-lg-6 col-xxxl-6">
                           <nb-card>
                             <nb-card-body>
                                 <div  style="width: 30rem;">
                                     <div class="contenedor">
-                                        <div class="contenidointer">Periodo</div>
-                                        <div class="contenido" >2019</div>
+                                        <div class="contenidointer">Fecha</div>
+                                        <div class="contenido" >
+                                            {{curDate | date:'dd-MM-yyyy'}}
+                                        </div>
                                     </div>
                                     <div class="contenedor">
                                         <div class="contenidointer">Programa</div>
@@ -37,14 +40,26 @@
                                     </div>
                                 </nb-card-body>
                                 </nb-card>
-                            </div>
+                        </div>
                 </div>
-                <button type="button" style="border-radius: 0px; background-color: #6D0D18" class="btn btn-success">Guardar</button>
 
+                <div class="row">
+                    <div class="col-md-12 col-lg-6 col-xxxl-6">
+                        <div  style="width: 30rem;">
+                                <button nbButton class="mb-2"  (click)="btn_clickAgregarAsistencia()"  style="background-color: #ff6b83"   >Guardar Asistencia</button>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6 col-xxxl-6">
+                          <div  style="width: 30rem;"> <p style="font-size: x-large;">HORA  :  {{curDate | date:'hh:mm'}}</p></div>
+                    </div>
+                </div>
+
+                
+                
         </nb-card-header>
         <nb-card-body>
-          
-            <!-- <table class="table table-bordered table-hover-cells">
+        
+            <table class="table table-bordered table-hover-cells">
                 <thead>
                 <tr>
                   <th style="width: 5%">
@@ -52,22 +67,22 @@
                       <h6 class="d-flex justify-content-center"><strong>Fila</strong></h6>
                     </div>
                   </th>
-                  <th style="width: 10%">
+                  <th style="width: 8%">
                     <div class="table-contain">
                       <h6 class="d-flex justify-content-center"><strong>DNI</strong></h6>
                     </div>
                   </th>
-                  <th style="width: 12%">
+                  <th style="width: 20%">
                     <div class="table-contain">
                       <h6 class="d-flex justify-content-center"><strong>Nombres</strong></h6>
                     </div>
                   </th>
-                  <th style="width: 12%">
+                  <th style="width: 7%">
                     <div class="table-contain">
-                      <h6 class="d-flex justify-content-center"><strong>CUI</strong></h6>
+                      <h6 class="d-flex justify-content-center"><strong>Tipo Asistencia</strong></h6>
                     </div>
                   </th>
-                  <th style="width: 14%">
+                  <th style="width: 7%">
                     <div class="table-contain">
                       <h6 class="d-flex justify-content-center"><strong>Asistencia</strong></h6>
                     </div>
@@ -100,45 +115,56 @@
                   </td>
                   <td>
                     <div  class="d-flex flex-column">
-                      <div class="d-flex justify-content-center" >
-                        <p>{{m.alucui}} </p>
+                      
+                      <div class="d-flex justify-content-center">
+                        
+                          <label *ngIf="m.altipoasis"> Asistió</label>
+                          <label *ngIf="!m.altipoasis"> Faltó</label>
                       </div>
                     </div>
                   </td>
                   <td>
-                    <div class="row">                      
-                      <div class="col-lg-6">
-                          <p-radioButton name="groupname" value="Option 1" label="Option 1" inputId="opt1" [(ngModel)]="selectedValue"></p-radioButton>
-                      </div>
-                      <div class="col-lg-6">
-                          <p-radioButton name="groupname" value="Option 2" label="Option 2" inputId="opt2" [(ngModel)]="selectedValue"></p-radioButton>
-                      </div>
-                      Selected Value = {{val1||'none'}}
+                    <div class="d-flex flex-column">
+                      <div class="d-flex justify-content-center">
+                          <p-inputSwitch [(ngModel)]="m.altipoasis"></p-inputSwitch> 
+                          <!-- <p-radioButton name="m.aludni" value="Option 1" label="Falto" inputId="opt1" [(ngModel)]="val1"></p-radioButton> -->
+                      </div> 
+                      <!-- <div class="col-lg-6">
+                          <p-radioButton name="m.aludni" value="Option 2" label="Asistio" inputId="opt2" [(ngModel)]="val2"></p-radioButton>
+                      </div>  -->
                     </div>
                   </td>
                 </tr>
                 </tbody>
-              </table>  -->
+              </table> 
+
+
+<!-- 
           <p-table [value]="alumnoDocentelist">
+              <ng-template pTemplate="header">
+                  <tr>
+                      <th style="width: 5%">Fila</th>                    
+                      <th>Dni</th>
+                      <th>Nombre</th> 
+                      <th>Tipo Asistencia</th>
+                      <th>Asistencia</th>
+                  </tr>
+              </ng-template>
             <ng-template pTemplate="body" let-al>
                 <tr>
-                    <td>{{al.fila}}</td>
+                    <td>{{al.alufil}}</td>
                     <td>{{al.aludni}}</td>
                     <td>{{al.alunom}} {{al.aluapepat}} {{al.aluapemat}}</td>
-                    <td>{{al.alucui}}</td>
+                    <td >
+                      <label *ngIf="al.altipoasis"> Asistió</label>
+                      <label *ngIf="!al.altipoasis"> Faltó</label>
+                    </td>
                     <td>
-                        <div class="row">
-                                <div class="col-lg-6">
-                                    <p-radioButton name="groupname" value="Option 1" label="Option 1" inputId="opt1" [(ngModel)]="val1"></p-radioButton>
-                                </div>
-                                <div class="col-lg-6">
-                                    <p-radioButton name="groupname" value="Option 2" label="Option 2" inputId="opt2" [(ngModel)]="val2"></p-radioButton>
-                                </div>
-                        </div>
+                        <p-inputSwitch [(ngModel)]="al.altipoasis"></p-inputSwitch>
                     </td>
                 </tr>
             </ng-template>
-          </p-table>
+          </p-table> -->
         
         </nb-card-body>
       </nb-card>

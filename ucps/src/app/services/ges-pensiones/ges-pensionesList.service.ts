@@ -21,10 +21,10 @@ export class PensionListService {
       })
       .catch(this.handleError);
   }
-  public getListarPensionxDNIFiltro(dni: string): Observable<GesPensionlListModel[]> {
+  public getListarPensionxDNIFiltro(pal: string): Observable<GesPensionlListModel[]> {
     return this._http
-      .post<any>(this.rutaPensionList + `/pension/dni_busqueda.php`,
-        '{"aldni":"' + dni + '"}')
+      .post<any>(this.rutaPensionList + `/pension/busqueda_dni_nombre.php`,
+        '{"palabrabus":"' + pal + '"}')
       .map((response: any) => {
         return response.map(d => new GesPensionlListModel(d));
       })

@@ -8,6 +8,10 @@ import {GesCursoComponent} from './ges-curso.component';
 import {ModalAddCursoComponent} from './add-curso/modal-add-curso/modal-add-curso.component';
 import {UtilsService} from '../../services/utils.service';
 import {CursoService} from '../../services/ges-curso/curso.service';
+import {ProgramaService} from '../../services/ges-programa/programa.service';
+import {AddProgramaComponent} from './add-programa/add-programa.component';
+import {ModalAddProgComponent} from './add-programa/modal-add-prog/modal-add-prog.component';
+import {SedeService} from '../../services/ges-sede/sede.service';
 
 
 const rutasgesusu: Routes = [{
@@ -15,8 +19,12 @@ const rutasgesusu: Routes = [{
   component: GesCursoComponent,
   children: [
     {
-      path: 'agregarcurso',
+      path: 'cursos',
       component: AddCursoComponent,
+    },
+    {
+      path: 'programas',
+      component: AddProgramaComponent,
     },
   ],
 }];
@@ -25,7 +33,9 @@ const rutasgesusu: Routes = [{
   declarations: [
     GesCursoComponent,
     AddCursoComponent,
+    AddProgramaComponent,
     ModalAddCursoComponent,
+    ModalAddProgComponent,
   ],
   imports: [
     ThemeModule,
@@ -38,9 +48,12 @@ const rutasgesusu: Routes = [{
   providers: [
     UtilsService,
     CursoService,
+    ProgramaService,
+    SedeService,
   ],
   entryComponents: [
     ModalAddCursoComponent,
+    ModalAddProgComponent,
   ],
 })
 export class GesCursoModule { }

@@ -3,11 +3,20 @@
       <span>Alumnos</span>
     </nb-card-header>
     <nb-card-body>
-      <button nbButton class="mb-3" (click)="btnAddAlumno()" style="background-color: #6D0D18">agregar Alumno</button>
+      <div class="d-flex justify-content-between">
+        <button nbButton class="mb-3" (click)="btnAddAlumno()" style="background-color: #6D0D18">agregar Alumno</button>
+        <input
+          type="text"
+          class="mb-3"
+          (change)="filtroDNI($event.target.value)"
+          nbInput
+          shape="round"
+          placeholder="Buscar DNI...">
+      </div>
       <table class="table table-bordered table-hover-cells">
         <thead>
         <tr>
-          <th>
+          <th style="width: 7%">
             <div class="table-contain">
               <h6 class="d-flex justify-content-center"><strong>Nro</strong></h6>
             </div>
@@ -24,39 +33,24 @@
           </th>
 <!--          <th style="width: 12%">-->
 <!--            <div class="table-contain">-->
-<!--              <h6 class="d-flex justify-content-center"><strong>Apellidos</strong></h6>-->
+<!--              <h6 class="d-flex justify-content-center"><strong>CUI</strong></h6>-->
 <!--            </div>-->
 <!--          </th>-->
-          <th style="width: 12%">
-            <div class="table-contain">
-              <h6 class="d-flex justify-content-center"><strong>CUI</strong></h6>
-            </div>
-          </th>
-<!--          <th style="width: 12%">-->
-<!--            <div class="table-contain">-->
-<!--              <h6 class="d-flex justify-content-center"><strong>Usuario</strong></h6>-->
-<!--            </div>-->
-<!--          </th>-->
-          <th style="width: 15%">
+          <th style="width: 20%">
             <div class="table-contain">
               <h6 class="d-flex justify-content-center"><strong>Datos</strong></h6>
             </div>
           </th>
-<!--          <th style="width: 12%">-->
-<!--            <div class="table-contain">-->
-<!--              <h6 class="d-flex justify-content-center"><strong>Direccion</strong></h6>-->
-<!--            </div>-->
-<!--          </th>-->
           <th style="width: 12%">
             <div class="table-contain">
               <h6 class="d-flex justify-content-center"><strong>Correo</strong></h6>
             </div>
           </th>
-          <th style="width: 12%">
-            <div class="table-contain">
-              <h6 class="d-flex justify-content-center"><strong>Fec Nacimiento</strong></h6>
-            </div>
-          </th>
+<!--          <th style="width: 12%">-->
+<!--            <div class="table-contain">-->
+<!--              <h6 class="d-flex justify-content-center"><strong>Fec Nacimiento</strong></h6>-->
+<!--            </div>-->
+<!--          </th>-->
           <th style="width: 12%">
             <div class="table-contain">
               <h6 class="d-flex justify-content-center"><strong>Estado Alumno</strong></h6>
@@ -93,13 +87,13 @@
               </div>
             </div>
           </td>
-          <td>
-            <div  class="d-flex flex-column">
-              <div class="d-flex justify-content-center" >
-                <p>{{m.alucui}}</p>
-              </div>
-            </div>
-          </td>
+<!--          <td>-->
+<!--            <div  class="d-flex flex-column">-->
+<!--              <div class="d-flex justify-content-center" >-->
+<!--                <p>{{m.alucui}}</p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </td>-->
           <td>
             <div  class="d-flex flex-column">
               <div class="d-flex justify-content-center" >
@@ -118,13 +112,13 @@
               </div>
             </div>
           </td>
-          <td>
-            <div  class="d-flex flex-column">
-              <div class="d-flex justify-content-center" >
-                <p>{{m.alufecnac}}</p>
-              </div>
-            </div>
-          </td>
+<!--          <td>-->
+<!--            <div  class="d-flex flex-column">-->
+<!--              <div class="d-flex justify-content-center" >-->
+<!--                <p>{{m.alufecnac}}</p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </td>-->
           <td>
             <div  class="d-flex flex-column">
               <div class="d-flex justify-content-center" >

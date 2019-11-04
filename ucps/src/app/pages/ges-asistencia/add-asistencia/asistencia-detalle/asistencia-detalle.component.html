@@ -1,0 +1,180 @@
+<nb-card   nbSpinnerSize="xxlarge" >
+       <nb-card-header>
+               <nb-card-header>
+                 <div style="text-align: center; background-color: #a4abb3; color: white; height:40px;margin: 5px; padding-top: 8px">DETALLE DE ALUMNOS</div>
+               </nb-card-header>
+               
+               <!-- <div class="row">
+                       <div class="col-md-12 col-lg-6 col-xxxl-6">
+                                   <div class="card" style="width: 32rem;">
+                                                 <div class="contenedor">
+                                                        <div class="contenidointer"> Programa</div>
+                                                        <div class="contenido" >
+                                                               <p-dropdown [style]="{'width':'320px'}" [options]="listaProgramaDocente" [(ngModel)]="selectedPrograma" (onChange)="seleccionPrograma()" placeholder="Seleccione Programa"  optionLabel="pronom" [showClear]="true"></p-dropdown>
+                                                        </div>  
+                                                 </div>
+                                                 <div class="contenedor">
+                                                        <div class="contenidointer"> Curso</div>
+                                                        <div class="contenido" >
+                                                               <p-dropdown [style]="{'width':'320px'}" [options]="listaCursoDocente" [(ngModel)]="selectedCurso" (onChange)="ListarCursoDocente()" placeholder="Seleccione Curso"  optionLabel="curnom" [showClear]="true"></p-dropdown>
+                                                        </div>
+                                                 </div>
+                                   </div>
+                       </div>
+                       <div class="col-md-12 col-lg-6 col-xxxl-6">
+                                   <div class="card" style="width: 32rem;">
+                                                 <div class="contenedor">
+                                                        <div class="contenidointer"> Fecha</div>
+                                                        <div class="contenido" >
+                                                               <p-dropdown [style]="{'width':'320px'}" [options]="listaProgramaDocente" [(ngModel)]="selectedPrograma" (onChange)="seleccionPrograma()" placeholder="Seleccione Programa"  optionLabel="pronom" [showClear]="true"></p-dropdown>
+                                                        </div>  
+                                                 </div>
+                                                 <div class="contenedor">
+                                                        <div class="contenidointer"> Curso</div>
+                                                        <div class="contenido" >
+                                                               <p-dropdown [style]="{'width':'320px'}" [options]="listaCursoDocente" [(ngModel)]="selectedCurso" (onChange)="ListarCursoDocente()" placeholder="Seleccione Curso"  optionLabel="curnom" [showClear]="true"></p-dropdown>
+                                                        </div>
+                                                 </div>
+                                   </div>
+                       </div>
+               </div>  -->
+               
+               <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-6">
+                                          <div class="card" style="width: 90%;">
+                                                        <div class="contenedor">
+                                                               <div class="contenidointer"> Programa</div>
+                                                               <div class="contenido" >
+                                                                      <p-dropdown [style]="{'width':'95%'}" [options]="listaProgramaDocente" [(ngModel)]="selectedPrograma" (onChange)="seleccionPrograma()" placeholder="Seleccione Programa"  optionLabel="pronom" [showClear]="true"></p-dropdown>
+                                                               </div>  
+                                                        </div>
+                                                        <div class="contenedor">
+                                                               <div class="contenidointer"> Curso</div>
+                                                               <div class="contenido" >
+                                                                      <p-dropdown [style]="{'width':'95%'}" [options]="listaCursoDocente" [(ngModel)]="selectedCurso" (onChange)="listarCursoDocente()" placeholder="Seleccione Curso"  optionLabel="curnom" [showClear]="true"></p-dropdown>
+                                                               </div>
+                                                        </div>
+                                          </div>
+                            </div>
+                            <div class="ui-g-12 ui-md-6 ui-lg-6">
+                                          <div class="card" style="width: 90%;">
+                                                        <div class="contenedor">
+                                                               <div class="contenidointer"> Fecha</div>
+                                                               <div class="contenido" > 
+                                                                             <input
+                                                                             style="width: 95%;"
+                                                                             required
+                                                                             type="date"
+                                                                             maxlength="50"
+                                                                             [(ngModel)]="date11"
+                                                                             >                       
+                                                                                     
+                                                               </div>  
+                                                               <!-- <p-calendar [(ngModel)]="dateValue" [touchUI]="true" [readonlyInput]="true"></p-calendar> -->
+                                                        </div>
+                                          </div>
+                            </div>
+                     </div>
+                     <div class="row">
+                                   <div class="col-md-12 col-lg-6 col-xxxl-6">
+                                       <div  style="width: 30rem;">
+                                               <button nbButton class="mb-2"  (click)="btn_clickAgregarAsistencia()"  style="background-color: #ff6b83"   >Buscar Asistencias</button>
+                                       </div>
+                                   </div>
+                     </div>
+       </nb-card-header>
+       <nb-card-body>
+                     <table class="table table-bordered table-hover-cells">
+                                   <thead>
+                                   <tr>
+                                     <th style="width: 5%">
+                                       <div class="table-contain">
+                                         <h6 class="d-flex justify-content-center"><strong>Fila</strong></h6>
+                                       </div>
+                                     </th>
+                                     <th style="width: 8%">
+                                       <div class="table-contain">
+                                         <h6 class="d-flex justify-content-center"><strong>DNI</strong></h6>
+                                       </div>
+                                     </th>
+                                     <th style="width: 20%">
+                                       <div class="table-contain">
+                                         <h6 class="d-flex justify-content-center"><strong>Nombres</strong></h6>
+                                       </div>
+                                     </th>
+                                     <th style="width: 7%">
+                                       <div class="table-contain">
+                                         <h6 class="d-flex justify-content-center"><strong>Tipo Asistencia</strong></h6>
+                                       </div>
+                                     </th>
+                                   </tr>
+                                   </thead>
+                                   <tbody>
+                       
+                                   <tr *ngFor="let m of alumnoDocentelist; let id = index">
+                                     <td>
+                                       <div  class="d-flex flex-column">
+                                         <div class="d-flex justify-content-center" >
+                                           <p>{{id + 1}}</p>
+                                         </div>
+                                       </div>
+                                     </td>
+                                     <td>
+                                       <div  class="d-flex flex-column">
+                                         <div class="d-flex justify-content-center" >
+                                           <p>{{m.aludni}}</p>
+                                         </div>
+                                       </div>
+                                     </td>
+                                     <td>
+                                       <div  class="d-flex flex-column">
+                                         <div class="d-flex justify-content-center" >
+                                           <p>{{m.alunom}} {{m.aluapepat}} {{m.aluapemat}}</p>
+                                         </div>
+                                       </div>
+                                     </td>
+                                     <td>
+                                       <div  class="d-flex flex-column">
+                                         
+                                         <div class="d-flex justify-content-center">
+                                           
+                                             <label *ngIf="m.altipoasis"> Asistió</label>
+                                             <label *ngIf="!m.altipoasis"> Faltó</label>
+                                         </div>
+                                       </div>
+                                     </td>
+                                   </tr>
+                                   </tbody>
+                                 </table>  
+
+
+<!-- 
+         <p-table [value]="alumnoDocentelist">
+             <ng-template pTemplate="header">
+                 <tr>
+                     <th style="width: 5%">Fila</th>                    
+                     <th>Dni</th>
+                     <th>Nombre</th> 
+                     <th>Tipo Asistencia</th>
+                     <th>Asistencia</th>
+                 </tr>
+             </ng-template>
+           <ng-template pTemplate="body" let-al>
+               <tr>
+                   <td>{{al.alufil}}</td>
+                   <td>{{al.aludni}}</td>
+                   <td>{{al.alunom}} {{al.aluapepat}} {{al.aluapemat}}</td>
+                   <td >
+                     <label *ngIf="al.altipoasis"> Asistió</label>
+                     <label *ngIf="!al.altipoasis"> Faltó</label>
+                   </td>
+                   <td>
+                       <p-inputSwitch [(ngModel)]="al.altipoasis"></p-inputSwitch>
+                   </td>
+               </tr>
+           </ng-template>
+         </p-table> -->
+       
+       </nb-card-body>
+     </nb-card>
+

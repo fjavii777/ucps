@@ -1,0 +1,74 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{titulo}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.close(false)">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <form [formGroup]="myformadministrativo">
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <div class="row">
+          <label class="col-sm-4 col-form-label p-r-0">Nombre</label>
+          <div class="col-sm-8">
+            <input
+              formControlName="pronom"
+              type="text"
+              maxlength="30"
+              class="form-control form-control-sm">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <div class="row">
+          <label class="col-sm-4 col-form-label p-r-0">Tipo</label>
+          <div class="col-sm-8">
+            <input
+              formControlName="protipo"
+              type="text"
+              maxlength="20"
+              class="form-control form-control-sm">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <div class="row">
+          <label class="col-sm-4 col-form-label p-r-0">Cuota</label>
+          <div class="col-sm-8">
+            <input
+              formControlName="procuota"
+              type="number"
+              maxlength="20"
+              class="form-control form-control-sm">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <div class="row">
+          <label class="col-sm-4 col-form-label p-r-0">Sede</label>
+          <div class="col-sm-8">
+            <select  class="form-control" formControlName="sedid">
+              <option *ngFor="let s of cbSedes" [ngValue]="s.sedid">{{s.seddes}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <div *ngIf="formError" class="colorTextRed">Comprobar que todos los campos sean correctos</div>
+  <button style="background-color: #6D0D18" nbButton status="success" size="medium" [nbSpinner]="loadingGuardar" nbSpinnerStatus="success" nbSpinnerMessage="" (click)="btn_clickAceptar()">{{boton}}</button>
+  <button style="background-color: #D9BA82" type="button" class="btn btn-danger waves-effect text-center m-b-20" (click)="activeModal.close(false)">Cancelar</button>
+</div>
+

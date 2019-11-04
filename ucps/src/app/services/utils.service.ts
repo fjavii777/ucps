@@ -4,7 +4,7 @@ import {NbGlobalPhysicalPosition, NbGlobalPosition, NbToastrService} from '@nebu
 
 @Injectable()
 export class UtilsService {
-  position: NbGlobalPosition = NbGlobalPhysicalPosition.BOTTOM_RIGHT;
+  position: NbGlobalPosition = NbGlobalPhysicalPosition.TOP_RIGHT;
   preventDuplicates = false;
   index = 1;
 

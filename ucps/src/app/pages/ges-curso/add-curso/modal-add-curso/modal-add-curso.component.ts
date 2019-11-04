@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {GesAdministrativoModel} from '../../../../models/ges-administrativo/ges-administrativo.model';
 import {CursoService} from '../../../../services/ges-curso/curso.service';
+import {ProgramaService} from '../../../../services/ges-programa/programa.service';
 
 @Component({
   selector: 'ngx-modal-add-curso',
@@ -15,9 +16,11 @@ export class ModalAddCursoComponent {
   boton = 'Guardar';
   flagIsModificar = false;
   loadingGuardar = false;
+  cbProgramas: any;
   public myformadministrativo: FormGroup;
   administrativoToSend: GesAdministrativoModel = new GesAdministrativoModel();
   constructor(private fb: FormBuilder,
+              private programaService: ProgramaService,
               private cursoService: CursoService,
               public activeModal: NgbActiveModal) {
     this.myformadministrativo = this.fb.group({
@@ -25,13 +28,23 @@ export class ModalAddCursoComponent {
       curnom: [null, Validators.required],
       curcod: [null, Validators.required],
       tipcurid: [null, Validators.required],
+      proid: [null, Validators.required],
       curestreg: ['A', Validators.required],
     });
+    this.listcbProgramas();
+  }
+  listcbProgramas() {
+    this.programaService.getListarProgramas().subscribe(
+      resp => {
+        this.cbProgramas = resp;
+      },
+      err => {
+        console.log(err);
+      });
   }
   btn_clickAceptar() {
     this.formError = false;
     if (this.myformadministrativo.valid) {
-      // this.passFormToObject();
       this.loadingGuardar = true;
       console.log('to send', this.myformadministrativo.value);
       if (this.flagIsModificar) {
@@ -55,19 +68,6 @@ export class ModalAddCursoComponent {
       this.formError = true;
     }
   }
-  // passFormToObject() {
-  //   this.administrativoToSend.admdni = this.myformadministrativo.get('formdni').value;
-  //   this.administrativoToSend.admcorele = this.myformadministrativo.get('formcorreo').value;
-  //   this.administrativoToSend.admnom = this.myformadministrativo.get('formnombres').value;
-  //   this.administrativoToSend.admapepat = this.myformadministrativo.get('formapepat').value;
-  //   this.administrativoToSend.admapemat = this.myformadministrativo.get('formapemat').value;
-  //   this.administrativoToSend.admfecnac = this.myformadministrativo.get('formfecnac').value;
-  //   this.administrativoToSend.admtel = this.myformadministrativo.get('formtel').value;
-  //   this.administrativoToSend.admdir = this.myformadministrativo.get('formdir').value;
-  //   this.administrativoToSend.admnomusu = this.myformadministrativo.get('formnomusu').value;
-  //   this.administrativoToSend.admcon = this.myformadministrativo.get('formcont').value;
-  //   this.administrativoToSend.admestreg = this.myformadministrativo.get('formestreg').value;
-  // }
   iniciarFormulario(curso) {
     this.flagIsModificar = true;
     this.titulo = 'Modificar Curso';
@@ -76,6 +76,7 @@ export class ModalAddCursoComponent {
     this.myformadministrativo.controls['curnom'].setValue(curso.curnom);
     this.myformadministrativo.controls['curcod'].setValue(curso.curcod);
     this.myformadministrativo.controls['tipcurid'].setValue(curso.tipcurid);
+    this.myformadministrativo.controls['proid'].setValue(curso.proid);
     this.myformadministrativo.controls['curestreg'].setValue(curso.curestreg);
   }
 }

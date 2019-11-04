@@ -1,4 +1,4 @@
-export class AlumnoDocenteModel {
+export class AlumnoAsistDocenteModel {
     docdni: string;
     proid: string;
     curid: string;
@@ -9,9 +9,13 @@ constructor(obj?: any) {
     this.proid = obj && (obj.proid) || null;
     this.curid = obj && (obj.curid) || null;
     this.alumnos = obj && (obj.alumnos) || [];
-    }
+    }   
 }
 export class AlumnosAsistencia{
     aludni: string;
-    aluasi: boolean;
+    aluasi: string;
+    constructor(obj?: any) {
+        this.aludni = obj && (obj.aludni) || null;
+        this.aluasi = obj && (obj.aluasi) || true;
+        } 
 } 

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {GesPensionModel} from '../../../../models/ges-pensiones/ges-pensiones.model';
 import {PensionService} from '../../../../services/ges-pensiones/ges-pensiones.service';
+import { DebugContext } from '@angular/core/src/view';
 
 @Component({
   selector: 'ngx-modal-add-pension',
@@ -24,14 +25,14 @@ export class ModalAddPensionComponent {
               private pensionservice: PensionService) {
      
      this.myformpension = this.fb.group({
-      formpagid: [null,Validators.required],
-      formmatdetid:['B',Validators.required],
-      formpagmes: [null, Validators.required],
+    
+      formmat:[this.idDetalle,Validators.required],
+      formfecpag: [null,Validators.required],
       formpagnomban: [null, Validators.required],
       formpagcod: [null, Validators.required],
-      formpagmon: [null, Validators.required],
-      formpagestreg: ['A', Validators.required],
-
+      formpagmon: [null, Validators.required],      
+      formpagtipo: [null,Validators.required],
+      formpagestreg: ['A', Validators.required]
      });
      this.listMes = [
       { id: 'ENERO', nombreMes: 'ENERO' },
@@ -50,6 +51,7 @@ export class ModalAddPensionComponent {
   }
   enviarId(id:string){
     this.idDetalle=id;
+    console.log("ID MATRICULA" ,this.idDetalle);
   }
   onSubmit(f) {
     console.log(f.value);
@@ -61,7 +63,7 @@ export class ModalAddPensionComponent {
     this.passFormToObject();
     this.loadingGuardar = true;
     if (this.flagIsModificar) {
-      //console.log(this.docenteToSend);
+    
       this.pensionservice.putModificarPension (this.pensionToSend).subscribe(
         resp => {
           this.activeModal.close(true);
@@ -80,30 +82,32 @@ export class ModalAddPensionComponent {
     }
   }
   passFormToObject() {
-    this.pensionToSend.pagid = this.myformpension.get('formpagid').value;
-    if(this.pensionToSend.matdetid !=null){
-      this.pensionToSend.matdetid = this.myformpension.get('formmatdetid').value;
+    //this.pensionToSend.pagid = this.myformpension.get('formpagid').value;
+    
+    if(this.pensionToSend.matid !=null){
+      this.pensionToSend.matid = this.myformpension.get('formmat').value;
     } else {
-      this.pensionToSend.matdetid = this.idDetalle
+      this.pensionToSend.matid = this.idDetalle
     }   
-    this.pensionToSend.pagmes = this.myformpension.get('formpagmes').value;
+    this.pensionToSend.matid = this.idDetalle;
+    this.pensionToSend.pagfec = this.myformpension.get('formfecpag').value;
     this.pensionToSend.pagnomban = this.myformpension.get('formpagnomban').value;
     this.pensionToSend.pagcod= this.myformpension.get('formpagcod').value;
-    this.pensionToSend.pagmon = this.myformpension.get('formpagmon').value;
+    this.pensionToSend.pagmontot = this.myformpension.get('formpagmon').value;
+    this.pensionToSend.pagtipo = this.myformpension.get('formpagtipo').value;    
     this.pensionToSend.pagestreg = this.myformpension.get('formpagestreg').value;
-
   }
   iniciarFormulario(pension: GesPensionModel,idCabecera:string) {
     this.flagIsModificar = true;
     this.titulo = 'Modificar Pension';
     this.boton = 'Modificar';
-    this.idDetalle=pension.matdetid;
-    this.myformpension.controls['formpagid'].setValue(pension.pagid);
-    this.myformpension.controls['formmatdetid'].setValue(pension.matdetid);
-    this.myformpension.controls['formpagmes'].setValue(pension.pagmes);
+    this.idDetalle=pension.matid;
+    this.myformpension.controls['formmat'].setValue(pension.matid);
+    this.myformpension.controls['formfecpag'].setValue(pension.pagfec);
     this.myformpension.controls['formpagnomban'].setValue(pension.pagnomban);
     this.myformpension.controls['formpagcod'].setValue(pension.pagcod);
-    this.myformpension.controls['formpagmon'].setValue(pension.pagmon);
+    this.myformpension.controls['formpagmon'].setValue(pension.pagmontot);
+    this.myformpension.controls['formpagtip'].setValue(pension.pagtipo);
     this.myformpension.controls['formpagestreg'].setValue(pension.pagestreg);
     console.log(pension);
   }

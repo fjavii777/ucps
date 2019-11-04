@@ -1,13 +1,9 @@
 <nb-card size="medium" [nbSpinner]="loading" nbSpinnerSize="xxlarge">
-      <nb-card-header>
-          <nb-alert status="primary" style="text-align: center">PENSIONES</nb-alert>
-      </nb-card-header>
+    <nb-card-header>
+        <nb-alert status="active"  style="align-items: center;font-family:monospace;background-color: #a4abb3 ">Pensiones</nb-alert>
+    </nb-card-header> 
     <nb-card-body>
-      <!-- <button nbButton class="mb-3" (click)="btnAddDocente()">Agregar Docente</button> -->
-      <div class="row">
-          <!-- <div class="col-md-3">
-              <nb-alert status="disabled" accent="success">Busqueda DNI</nb-alert>
-          </div> -->
+      <div class="row">        
         <div class="col-md-3">
             <div class="input-group has-person-icon">
               <input
@@ -26,9 +22,14 @@
         <tr>
             <th style="width: 12%">
                 <div class="table-contain">
+                  <h6 class="d-flex justify-content-center"><strong>N</strong></h6>
+                </div>
+            </th>
+            <th style="width: 12%">
+                <div class="table-contain">
                   <h6 class="d-flex justify-content-center"><strong>DNI</strong></h6>
                 </div>
-              </th>
+            </th>
           <th style="width: 15%">
             <div class="table-contain">
               <h6 class="d-flex justify-content-center"><strong>Nombre del Alumno</strong></h6>
@@ -58,18 +59,25 @@
         </thead>
         <tbody>
 
-        <tr *ngFor="let m of listPension; let id = index">       
+        <tr *ngFor="let m of listPension; let id = index">
+            <td>
+                <div  class="d-flex flex-column">
+                  <div class="d-flex justify-content-center" >
+                    <p>{{id+1}}</p>
+                  </div>
+                </div>
+            </td>       
           <td>
             <div  class="d-flex flex-column">
               <div class="d-flex justify-content-center" >
-                <p>{{m.aldni}}</p>
+                <p>{{m.aludni}}</p>
               </div>
             </div>
           </td>
           <td>
             <div  class="d-flex flex-column">
               <div class="d-flex justify-content-center" >
-                {{m.alnom}} {{m.alapepat}} {{m.alpemat}}  
+                {{m.alunom}} {{m.aluapepat}} {{m.aluapemat}}  
               </div>
             </div>
           </td>
@@ -90,17 +98,14 @@
           <td>
               <div  class="d-flex flex-column">
                 <div class="d-flex justify-content-center" >
-                  <p>{{m.matdetfec}}</p>
+                  <p>{{m.matfec}}</p>
                 </div>
               </div>
             </td>
           <td>
             <div  class="d-flex flex-column">
-              <div class="d-flex justify-content-center" >
-                <!-- <i (click)="agregarPensiones(m.matdetid)"class="ion-trash-a mr-4" style="font-size:23px;" placement="top" ngbTooltip="Agregar Pension"></i> -->
-                
-                <i (click)="abrirDetallesPensiones(m.matdetid,m)" class="ion-clipboard" style="font-size:23px;" placement="top" ngbTooltip="Ver Pensiones"></i>
-                
+              <div class="d-flex justify-content-center" >            
+                <i (click)="abrirDetallesPensiones(m.matid,m)" class="ion-clipboard" style="font-size:23px;" placement="top" ngbTooltip="Ver Pensiones"></i>                
               </div>
             </div>
           </td>

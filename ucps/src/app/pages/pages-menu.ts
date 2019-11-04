@@ -12,11 +12,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     hidden: true,
     data: [
       {
-        number: 1,
+        number: 1 ,
       }, {
         number: 2,
-      }, {
-        number: 3,
       }, {
         number: 4,
       }],
@@ -39,8 +37,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     data:[
       {
         number:1
-      },{
-        number:3
       },{
         number:2
       },{
@@ -124,8 +120,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     hidden:true,
     data:[{
       number:4
-    },{
-      number:3
     }],
     children: [
       {
@@ -140,8 +134,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     hidden:true,
     data:[{
       number:2
-    },{
-      number:4
     }
   ],
     children: [
@@ -164,7 +156,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Curso',
-        link: '/pages/ges-curso/agregarcurso',
+        link: '/pages/ges-curso/cursos',
+      },
+      {
+        title: 'Programa',
+        link: '/pages/ges-curso/programas',
       },
     ],
   },
@@ -183,6 +179,49 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
+
+  {
+    title: 'Calificaciones',
+    icon: 'nb-compose',
+    hidden:true,
+    data:[{
+      number:2
+    }
+  ],
+    children: [
+      {
+        title: 'Subir notas',
+        link: '/pages/ges-nota/listacursos',
+      },
+      {
+        title: 'Notas finales',
+        link: '/pages/ges-nota/notasfinales',
+      },
+    ],
+  },
+
+  {
+    title: 'Mis notas',
+    icon: 'nb-compose',
+    hidden:true,
+    data:[{
+      number:1
+    },{
+      number:4
+    }],
+    children: [
+      {
+        title: 'Notas parciales',
+        link: '/pages/ges-nota/notasparciales',
+      },
+      {
+        title: 'Libreta de notas',
+        link: '/pages/ges-nota/libretanotas',
+      },
+    ],
+  },
+//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
   // {
   //   title: 'Extra Components',
   //   icon: 'nb-star',
@@ -487,7 +526,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   // {
   //   title: 'Auth',
   //   icon: 'nb-locked',
-  //
+
   //   data:[{
   //     number:1
   //   },{
@@ -512,5 +551,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //     },
   //   ],
   // },
+
+  //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
 ];

@@ -5,14 +5,14 @@ import {ModalAddPensionComponent} from '../modal-add-pension/modal-add-pension.c
 import {GesPensionModel} from '../../../../models/ges-pensiones/ges-pensiones.model';
 import {PensionService} from '../../../../services/ges-pensiones/ges-pensiones.service';
 import {GesPensionlListModel} from '../../../../models/ges-pensiones/ges-pensiones-list.model';
-
+import {Router} from '@angular/router';
 @Component({
   selector: 'ngx-pension-detalle',
   templateUrl: './pension-detalle.component.html',
   styleUrls: ['./pension-detalle.component.scss'],
 })
 export class PensionDetalleComponent {
-idCabecera: string;
+idMatr: string;
 minombre:string;
 misede:string;
 miprograma:string;
@@ -21,11 +21,11 @@ listmisPensiones: GesPensionModel[] = [];
 modalref: NgbModalRef;
 mipension:GesPensionlListModel=new GesPensionlListModel();
 
-constructor(private modalService: NgbModal,
+constructor(private router: Router,private modalService: NgbModal,
             private pensionservice: PensionService,private route: ActivatedRoute) {
             route.params.subscribe(
                 data => {
-                    this.idCabecera = data.id;
+                    this.idMatr = data.id;
                     this.minombre=data.nombres;
                     this.miprograma=data.programa;
                     this.misede=data.sede;
@@ -34,18 +34,21 @@ constructor(private modalService: NgbModal,
 }
 ngOnInit(): void {
   this.listarPension();
+  
+  
 }
 listarPension() {
   this.loading = true;
-  this.pensionservice.postBuscarPensionxParteIdDetalle(this.idCabecera)
-    .subscribe(res => {
+  this.pensionservice.postBuscarPensionxParteIdDetalle(this.idMatr)
+    .subscribe(res => {     
+      console.log("Gaaaa",res);
       this.listmisPensiones = res;
       this.loading = false;
     });
 }
 btnAddPension() {
   const modalR = this.modalService.open(ModalAddPensionComponent, { size: 'lg'});
-  (<ModalAddPensionComponent>(modalR.componentInstance)).enviarId(this.idCabecera);
+  (<ModalAddPensionComponent>(modalR.componentInstance)).enviarId(this.idMatr);
   modalR.result.then(result => {
     if (result) {
       this.listarPension();
@@ -53,14 +56,14 @@ btnAddPension() {
     }
   }).catch((res) => {});
 }
-editarDocente(id: string) {
-   // console.log(dni);
+editarPension(id: string) {
+   //console.log(dni);
   this.pensionservice.postBuscarPensionxId(id)
     .subscribe(res => {
         //console.log("mi objeto es :",res);
-      if (res.pagid) {
+      if (res.matid) {
         this.modalref = this.modalService.open(ModalAddPensionComponent, {size: 'lg'});
-        (<ModalAddPensionComponent>(this.modalref.componentInstance)).iniciarFormulario(res,this.idCabecera);
+        (<ModalAddPensionComponent>(this.modalref.componentInstance)).iniciarFormulario(res,this.idMatr);
         this.modalref.result.then(result => {
           if (result) {
             this.listarPension()
@@ -72,4 +75,10 @@ editarDocente(id: string) {
       }
     });
 }
+
+abrirPensionDetalles(idpago:string) {
+  console.log("El Id del Pago",idpago);
+  this.router.navigate(['/pages/ges-pension/detallepago/' + idpago]);
+}
+
 }

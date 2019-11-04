@@ -1,49 +1,78 @@
 <nb-card  nbSpinnerSize="xxlarge">
     <nb-card-header>
             <nb-card-header>
-                    <div style="text-align: center; background-color: #6D0D18; color: white; height:40px;margin: 5px; padding-top: 8px">MIS ASIGNATURAS</div>
+                <nb-alert status="active"  style="align-items: center;font-family:monospace ">Mis Asignaturas</nb-alert>
             </nb-card-header>
-            <div>
-                <div class="card" style="width: 32rem;">
-                    <div class="contenedor">
-                        <div class="contenidointer">Periodo</div>
-                        <div class="contenido" >2019-I</div>
-                    </div>
-                    <div class="contenedor">
-                        <i class='fas fa-landmark' style='font-size:36px'></i>
-                        <div class="contenidointer"> Programa</div>
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-6 ui-lg-6">
+                    <div class="card" style="width: 90%;">
+                        <div class="contenedor">
+                            <div class="contenidointer">Periodo</div>
+                            <div class="contenido" >2019-I</div>
+                        </div>
+                        <div class="contenedor">
+                            <i class='fas fa-landmark' style='font-size:36px'></i>
+                            <div class="contenidointer"> Programa</div>
 
-                        <div class="contenido" >
-                                <p-dropdown [options]="listaProgramaDocente" [(ngModel)]="selectedPrograma" (onChange)="seleccionPrograma()" placeholder="Seleccione Programa"  optionLabel="pronom" [showClear]="true"></p-dropdown>
+                            <div class="contenido" >
+                                    <p-dropdown [style]="{'width':'95%'}" [options]="listaProgramaDocente" [(ngModel)]="selectedPrograma" (onChange)="seleccionPrograma()" placeholder="Seleccione Programa"  optionLabel="pronom" [showClear]="true"></p-dropdown>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="ui-g-12 ui-md-6 ui-lg-6" style="text-align: -webkit-center;">
+                        <div class="card" style="width: 50%;">
+                                <div class="contenedor" >
+                                    <div class="contenidointer" style="width: 100%;margin: auto;margin-bottom: 3px;;">
+                                            DETALLE ASISTENCIAS
+
+                                    </div>
+                                    <div class="contenedor">
+                                            <button pButton type="button" style="width: 100%;" (click)="abrirDetalles()" label="VER DETALLE"  class="ui-button-info"></button>
+                                            
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- <div class="card" style="width: 90%;">
+                            <div class="contenidointer"> Detalles Asistencia </div>
+                            <div class="contenido" style="width: 100%;" >
+                            <button nbButton class="mb-1"  (click)="abrirDetalles()"  style="background-color: #ff6b83"> VER DETALLES </button>        
+                            </div>
+                        </div> -->
+                </div>
             </div>
-      <!-- <span>Este es una Asistencinga </span> -->
+
+
+
     </nb-card-header>
     <nb-card-body>
       <p-table [value]="listaCursoDocente">
         <ng-template pTemplate="header">
             <tr>
-                <th>Curso</th>
-                <th>Dia</th>
-                <th>Hora Inicial</th>
-                <th>Hora Final</th>
-                <th>Asistencia</th>
+                <th style="width: 5%">Fila</th>
+                <th style="width: 20%">Curso</th>
+                <th style="width: 40%">Dia</th>
+                <th style="width: 10%">Asistencia</th>
+            
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-curso>
             <tr>
-            
+                <td>{{curso.idCurso}}</td>
                 <td>{{curso.curnom}}</td>
-                <td>1</td>
-                <td>7:00</td>
-                <td>9:00</td>
+                <td >
+                    <ul class="list-group">
+                        <label *ngFor="let m of curso.horario;let id = index">
+                            <li class="list-group-item"> {{m.curhordia}} [ {{m.curhorfechini}}-{{m.curhorfechfin}} ] </li>
+                        </label>
+                    </ul>
+                </td>
                 <td>
                     <div class="d-flex justify-content-center" >
-                        <i (click)="abrirDetallesAsistencia(curso.curid)" class="ion-ios-body" style="font-size:20px;" placement="top" ngbTooltip="Ver Asistencias"></i>
+                        <i (click)="abrirDetallesAsistencia(curso.curid)" class="ion-ios-body" style="font-size:30px;" placement="top" ngbTooltip="Ver Asistencias"></i>
                     </div>
                 </td>
+               
             </tr>
         </ng-template>
     </p-table>
